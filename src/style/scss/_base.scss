@@ -1,0 +1,863 @@
+@import "variables";
+@import "mixins";
+
+// --------------------
+// VISUALS
+// --------------------
+
+* {
+  @include element-matched;
+  outline: none 0 !important;
+}
+a {
+  color: $link-base-color;
+  word-wrap: normal;
+  @if $link-decoration == true {
+    text-decoration: $link-decoration-type;
+  }
+  @else {
+    text-decoration: none;
+  }
+  &:hover {
+    @if $link-hover-type == "color" {
+      color: $link-hover-color;
+      text-decoration: none;
+    }
+    @else {
+      text-decoration: $link-hover-type;
+      * {
+        color: inherit;
+      }
+    }
+  }
+  &:visited, &.active {
+    color: $link-visited-color;
+  }
+}
+@include class-model(link) {
+  display: block;
+  cursor: pointer;
+  color: $link-base-color;
+  text-decoration: $link-decoration-type;
+  // type
+  @include class-modifire(inline) {
+    width: auto !important;
+    display: inline-block !important;
+  }
+  @include class-modifire(naked) {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+@mixin cursor-inherit($value) {
+  @include class-option(inherit) {
+    * {
+      cursor: $value !important;
+    }
+  }
+}
+@include class-model(cursor) {
+  * {
+    cursor: auto;
+  }
+  // type
+  @include class-modifire(pointer) {
+    cursor: pointer;
+    @include cursor-inherit(pointer);
+  }
+  @include class-modifire(default) {
+    cursor: default;
+    @include cursor-inherit(default);
+  }
+  @include class-modifire(auto) {
+    cursor: auto;
+    @include cursor-inherit(auto);
+  }
+}
+
+// Backgrounds
+@include class-model(background) {
+  // color
+  @include class-modifire(color) {
+    $n: length($background-color-name);
+    @for $i from 1 through $n {
+      @include class-option(nth($background-color-name, $i)) {
+        background-color: #{nth($background-color-code, $i)};
+      }
+    }
+  }
+}
+
+// Borders
+@include class-model(border) {
+  // types
+  @each $border-type in $border-types {
+    @include class-option($border-type) {
+      border-#{$border-type}: $border-default !important;
+      border-color: $border-default-color;
+      border: none;
+    }
+  }
+  @include class-option(full) {
+    border: $border-default $border-default-color;
+  }
+  // color
+  @include class-modifire(color) {
+    $n: length($border-color-name);
+    @for $i from 1 through $n {
+      @include class-option(nth($border-color-name, $i)) {
+        border-width: 1px;
+        border-style: $border-default;
+        border-color: #{nth($border-color-code, $i)} !important;
+      }
+    }
+  }
+  // others
+  @include class-modifire(bold) {
+    border-width: $border-bold-size !important;
+  }
+  @include class-modifire(none) {
+    border: none !important;
+  }
+  @include class-modifire(radius) {
+    @include class-option(circle) {
+      @include border-radius(50%);
+    }
+    @include class-option(small) {
+      @include border-radius($border-radius-small);
+    }
+    @include class-option(medium) {
+      @include border-radius($border-radius-medium);
+    }
+    @include class-option(big) {
+      @include border-radius($border-radius-big);
+    }
+  }
+}
+
+// Shifts
+@include class-model(shift) {
+  @include shift_types(normal horizontal vertical, $shift-iteration, margin, margin);
+  @include shift_types(normal horizontal vertical, $shift-iteration, padding, padding);
+  @include shift_types(top bottom left right, $shift-iteration, margin, margin);
+  @include shift_types(top bottom left right, $shift-iteration, padding, padding);
+}
+
+// --------------------
+// FONTS / TEXTS
+// --------------------
+
+strong {
+  @if $font-custom == true {
+    @if $font-custom-master == true {
+      @if $font-base-bold {
+        font-family: $font-base-bold;
+      }
+      @else {
+        font-weight: bold;
+      }
+      font-weight: normal;
+    }
+    @else {
+      font-family: $font-base-simple;
+      font-weight: bold;
+    }
+  }
+  @else {
+    font-family: $font-base-simple;
+    font-weight: bold;
+  }
+}
+@include class-model(text) {
+  @include class-modifire(color) {
+    $n-colors: length($font-colors-name);
+    @for $i from 1 through $n-colors {
+      @include class-option(nth($font-colors-name, $i)) {
+        color: #{nth($font-colors-code, $i)};
+      }
+    }
+  }
+  @include class-modifire(size) {
+    $n-sizes: length($font-sizes-name);
+    @for $i from 1 through $n-sizes {
+      @include class-option(nth($font-sizes-name, $i)) {
+        @include font-size(nth($font-sizes-number, $i));
+      }
+    }
+  }
+  @include class-modifire(align) {
+    @include class-option(right) {
+      text-align: right;
+    }
+    @include class-option(left) {
+      text-align: left;
+    }
+    @include class-option(center) {
+      text-align: center;
+    }
+  }
+}
+@if $font-custom == true {
+  @if $font-base-thin and not $font-base-thin == false  {
+    @include font-face($font-base-thin);
+  }
+  @if $font-base-regular and not $font-base-regular == false  {
+    @include font-face($font-base-regular);
+  }
+  @if $font-base-light and not $font-base-light == false {
+    @include font-face($font-base-light);
+  }
+  @if $font-base-medium and not $font-base-medium == false  {
+    @include font-face($font-base-medium);
+  }
+  @if $font-base-bold and not $font-base-bold == false  {
+    @include font-face($font-base-bold);
+  }
+  @if $font-base-semibold and not $font-base-semibold == false  {
+    @include font-face($font-base-semibold);
+  }
+  @if $headings-bold and $font-base-bold == true {
+    h1, h2, h3 {
+      font-family: $font-base-bold;
+    }
+  }
+  @else {
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: normal;
+    }
+  }
+  @if $font-base-regular-it {
+    em {
+      font-family: $font-base-regular-it;
+    }
+  }
+}
+@if $font-secondary == true {
+  @if $font-secondary-regular and not $font-secondary-regular == false  {
+    @include font-face($font-secondary-regular);
+  }
+  @if $font-secondary-bold and not $font-secondary-bold == false  {
+    @include font-face($font-secondary-bold);
+  }
+  @if $font-secondary-semibold and not $font-secondary-semibold == false  {
+    @include font-face($font-secondary-semibold);
+  }
+}
+@if $font-icons == true {
+  @include font-face($font-icons-name);
+}
+// Headings size factor
+$prefix: text;
+@for $i from 1 through $headings-count {
+  h#{$i}, .h#{$i} {
+    // $headings-size-factor defined in _variables
+    font-size: $headings-size - ($i * $headings-size-factor) + em;
+    line-height: ($headings-lineheight-size - ($i * $headings-lineheight-factor));
+  }
+}
+// Custom font class definition
+@if $font-custom == true {
+  .cf {
+    font-family: $font-base-regular;
+  }
+  .cfb, .cfs {
+    font-family: $font-base-bold;
+  }
+  .cfl {
+    font-family: $font-base-light;
+  }
+}
+
+// --------------------
+// BOXES / BLOCKS
+// --------------------
+
+@include class-model(box) {
+  // Box with default setup
+  @include class-modifire(full) {
+    @include class-option(width) {
+      width: $width-100;
+    }
+    @include class-option(height) {
+      height: $height-100;
+      @include class-option(flexible) {
+        height: auto !important;
+        // min-height: $height-100;
+      }
+    }
+  }
+  @include class-modifire(relative) {
+    position: relative;
+  }
+  // Box with grid system
+  @include class-modifire(grid) {
+    height: auto;
+    position: relative;
+    @include font-size(0);
+    > * {
+      vertical-align: top;
+    }
+    @include class-model(column, false) {
+      @include class-modifire(full) {
+        @include class-option(width) {
+          width: $width-100;
+        }
+        @include class-option(height) {
+          height: $height-100;
+        }
+      }
+      position: relative;
+      display: inline-block;
+      @include font-size($font-base-size);
+      // $grid-count defined in _variables
+      @for $i from 1 through $grid-count {
+        @include class-modifire(width_#{$i}) {
+          width: 100% / $grid-count * $i;
+        }
+      }
+      @for $i from 1 through $grid-count {
+        @include class-modifire(offset_#{$i}) {
+          width: 100% / $grid-count * $i;
+        }
+      }
+    }
+  }
+  // Box with horizontal align elements
+  @include class-modifire(vertical_align) {
+    @include class-option(transform) {
+      > * { @include element-vertical-align; }
+    }
+    @include class-option(top) {
+      > * { vertical-align: top; }
+    }
+    @include class-option(middle) {
+      > * { vertical-align: middle; }
+    }
+    @include class-option(bottom) {
+      > * { vertical-align: bottom; }
+    }
+    @include class-option(baseline) {
+      > * { vertical-align: baseline; }
+    }
+    // internet explorer behavior
+    .ie-8 &, .ie-9 & {
+      display: table;
+      > * {
+        vertical-align: middle;
+        display: table-cell;
+      }
+    }
+  }
+  // Box with inline elements
+  @include class-modifire(inline) {
+    display: inline-block;
+    .element-inline {
+      @include font-size($font-base-size);
+      display: inline-block;
+    }
+    @include class-option(all) {
+      > * { display: inline-block; }
+    }
+  }
+  // Box with images
+  @include class-modifire(image) {
+    position: relative;
+    height: auto;
+    %image-extended {
+      width: $width-100;
+      height: auto;
+      position: relative;
+      display: inline-block;
+      @include class-modifire(full) {
+        @include class-option(height) {
+          height: $height-100;
+        }
+      }
+    }
+    @include class-model(element-image) {
+      @extend %image-extended;
+      // special declaration for a wrapp
+      @include class-option(inherit) {
+        img {
+          @extend %image-extended;
+        }
+      }
+    }
+  }
+  // Box with floated elements
+  @include class-modifire(float) {
+    overflow: hidden;
+    width: $width-100;
+    @include class-option(left) { float: left; }
+    @include class-option(right) { float: right; }
+  }
+  // Box with flex layout
+  @include class-modifire(flex) {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    // flexbox settings
+    flex-wrap: nowrap;
+    // content justify
+    @include class-option(end) { justify-content: flex-end; }
+    @include class-option(center) { justify-content: flex-end; }
+    @include class-option(spacebetween) { justify-content: space-between; }
+    @include class-option(spacearound) { justify-content: space-around;}
+    // items positions
+    @include class-modifire(items) {
+      @include class-option(top) { align-items: flex-start; }
+      @include class-option(bottom) { align-items: flex-end; }
+      @include class-option(middle) { align-items: center; }
+      @include class-option(baseline) { align-items: baseline; }
+      @include class-option(stretch) { align-items: stretch; }
+      // items direction
+      @include class-option(direction) {
+        @include class-option(row) { flex-direction: row; }
+        @include class-option(rowreverse) { flex-direction: row-reverse; }
+        @include class-option(col) { flex-direction: column; }
+        @include class-option(colreverse) { flex-direction: column-reverse; }
+      }
+    }
+    @include class-modifire(item) {
+      @for $i from 1 through $flex-box-items-sequence-count {
+        @include class-modifire("sequence_#{$i}") {
+          flex: $i;
+        }
+      }
+    }
+    @include class-modifire(flow) {
+      @include class-option(wraprow) { flex-flow: row wrap; }
+    }
+    @include class-model(column) {
+      height: auto;
+    }
+  }
+}
+@include class-model(el-fit) {
+  display: inline-block;
+}
+@include class-model(_mobile) {
+  display: none;
+}
+
+// --------------------
+// TABLE
+// --------------------
+@include class-model(box-table) {
+  table-layout: fixed;
+  @include class-modifire(row) {
+    width: 100%;
+    display: table;
+  }
+  @include class-modifire(col) {
+    width: auto;
+    display: table-cell;
+    vertical-align: middle;
+    @include class-modifire(truncate) {
+      @include text-truncate;
+    }
+  }
+  @include class-modifire(width) {
+    @for $i from 1 through 20 {
+      @include class-option("#{$i}0") {
+        width: $i * 10 + px;
+      }
+    }
+  }
+}
+
+// --------------------
+// MOBILE
+// --------------------
+
+// global mobile disabled class
+.rwd-disabled {
+  display: none;
+}
+// $grid media queries break
+$dimension :
+    "app-width",
+    "ipad-landscape",
+    "ipad-portrait",
+    "tablet-landscape",
+    "tablet-portrait",
+    "iphone6-landscape",
+    "iphone6-portrait",
+    "iphone5-landscape",
+    "iphone-landscape",
+    "iphone-portrait";
+// media queries dimensions class
+$dimension-name :
+    "break_app_width",
+    "break_landscape_ipad",
+    "break_portrait_ipad",
+    "break_landscape_tablet",
+    "break_portrait_tablet",
+    "break_landscape_iphone6",
+    "break_portrait_iphone6",
+    "break_landscape_iphone5",
+    "break_landscape_iphone",
+    "break_portrait_iphone";
+$n: length($dimension);
+@include class-model(rwd) {
+  @for $i from 1 through $n {
+    @include class-modifire(nth($dimension-name, $i)) {
+      @include breakpoint(nth($dimension, $i)) {
+        display: block;
+        @include class-modifire(cut) {
+          @include class-option(full) {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+          }
+          @include class-option(half) {
+            display: inline-block;
+            width: 50%;
+          }
+          @include class-option(quarter) {
+            display: inline-block;
+            width: 25%;
+          }
+          @include class-option(hidden) {
+            display: none;
+          }
+          @include class-option(float) {
+            @include class-option(topright) {
+              @include position-absolute-custom(0px 0px 0 0);
+            }
+            @include class-option(topleft) {
+              @include position-absolute-custom(0px 0 0 0px);
+            }
+            @include class-option(bottomright) {
+              @include position-absolute-custom(0 0px 0px 0);
+            }
+            @include class-option(bottomleft) {
+              @include position-absolute-custom(0 0 0px 0px);
+            }
+          }
+        }
+        @include class-modifire(reset) {
+          $types: left, right, top, bottom;
+          @include class-option(padding) {
+            @each $type in $types {
+              @include class-option($type) {
+                padding-#{$type}: 0 !important;
+              }
+            }
+            @include class-option(full) {
+              padding: 0 !important;
+            }
+          }
+          @include class-option(margin) {
+            @each $type in $types {
+              @include class-option($type) {
+                margin-#{$type}: 0 !important;
+              }
+            }
+            @include class-option(full) {
+              margin: 0 !important;
+            }
+          }
+          @include class-option(border) {
+            @each $type in $types {
+              @include class-option($type) {
+                border-#{$type}: 0 !important;
+              }
+            }
+            @include class-option(full) {
+              border: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// --------------------
+// COLLECTIONS
+// --------------------
+
+@include class-model(breadcrumbs) {
+  @include class-modifire(headstrong) {
+    li {
+      &:first-child {
+        @if $font-custom {
+          font-family: $font-base-bold;
+        }
+        @else {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  li {
+    display: inline-block;
+    &:first-child {
+      margin-left: 0;
+    }
+    &::after {
+      @include font-icon(\e66c);
+      vertical-align: text-bottom;
+      color: $color-lightgrey;
+      font-size: 1.2em;
+    }
+    &:last-child {
+      cursor: default;
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+// --------------------
+// BUTTONS
+// --------------------
+
+@include class-model(button) {
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  color: $button-text-color;
+  text-decoration: none;
+  @include appearance();
+  * {
+    vertical-align: middle;
+  }
+  @if $font-custom and $button-text-style != regular  {
+    @if $font-base-bold {
+      font-family: $font-base-bold;
+    }
+    @else {
+      font-family: $font-base-regular;
+    }
+  }
+  @else {
+    font-weight: bold;
+  }
+  @include class-modifire(thin) {
+    font-family: $font-base-thin;
+  }
+  @include class-modifire(regular) {
+    font-family: $font-base-regular;
+  }
+  // sizes
+  @for $i from 1 through $button-size-iteration {
+    @include class-modifire("size_#{$i}") {
+      @include font-size($font-root-size + ($i * $button-text-size-factor));
+      @if $button-size-proportion == panoramic {
+        padding: (4 + $i * $button-size-factor + px) (2 * 7 +  $i * $button-size-factor + px);
+      } @else {
+        padding: (4 + $i * $button-size-factor + px) (4 + $i * $button-size-factor + px);
+      }
+      @include class-modifire(full) {
+        @include class-option(width) {
+          padding: (2 + $i * $button-size-factor + px) ($i * $button-size-factor + px);
+        }
+      }
+    }
+  }
+  // roundings
+  @for $i from 1 through $button-rounding-iteration {
+    @include class-modifire("rounded_#{$i}") {
+      @include border-radius(1 + $i * $button-rounding-factor + px);
+    }
+  }
+  // colors - defined in _variables
+  $n-colors: length($button-color-name);
+  @include class-modifire(color) {
+    @for $i from 1 through $n-colors {
+      @include class-option(nth($button-color-name, $i)) {
+        @if /*nth($button-color-name, $i) == lightgrey or*/ nth($button-color-name, $i) == lightergrey {
+          color: $button-text-color-opposite !important;
+        }
+        border: $border-default #{nth($button-color-code, $i)};
+        background: #{nth($button-color-code, $i)};
+        @include class-option(clear) {
+          background: $color-white;
+          border: $border-default #{nth($button-color-code, $i)};
+          color: #{nth($button-color-code, $i)};
+        }
+      }
+    }
+  }
+  // shadow
+  @if $button-shadow == true {
+    @include box-shadow($button-shadow-size $button-shadow-color);
+    &:hover {
+      @include box-shadow(
+        $button-shadow-size $button-shadow-color,
+        inset 200px 200px 0 0 rgba(0, 0, 0, 0.03)
+      );
+    }
+    &:active {
+      @include box-shadow(
+        $button-shadow-size-active $button-shadow-color,
+        inset 200px 200px 0 0 rgba(0, 0, 0, 0.03)
+      );
+    }
+  } @else {
+    &:hover {
+      @include box-shadow(inset 200px 200px 0 0 rgba(0, 0, 0, 0.03));
+      color: $button-text-color;
+    }
+    &:active {
+      @include box-shadow(inset 200px 200px 0 0 rgba(0, 0, 0, 0.06));
+    }
+  }
+  @include class-modifire(full) {
+    @include class-option(width) {
+      width: 100%;
+      text-align: center;
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @include class-option(height) {
+      height: 100%;
+      line-height: 1.2;
+    }
+  }
+  &:visited {
+    color: $button-text-visited-color;
+  }
+  // with icon
+  i {
+    display: inline-block;
+    vertical-align: middle;
+    // margin-top: -4%; // proportion between button height and icon position
+  }
+  @include class-modifire(react) {
+    &:disabled {
+      @include opacity(0.5);
+    }
+  }
+}
+.actionContainer {
+  @include element-width-custom(100%);
+  position: relative;
+}
+
+// --------------------
+// INPUTS
+// --------------------
+
+fieldset {
+  @include class-model(input) {
+    @include class-option(regular) {
+      width: $width-100;
+      padding: $shift-overall;
+      color: $input_text-color;
+      border: $input-text-border;
+      // options
+      @include class-modifire(rounded) {
+        @include border-radius($input_text-border-radius);
+      }
+      // sizes
+      @for $i from 1 through $input_text-size-iteration {
+        @include class-modifire("scale_#{$i}") {
+          padding: 2 + $i * $input_text-size-factor + px;
+          // @include font-size($font-base-size + $i);
+        }
+      }
+      // colors
+      @include class-modifire(color) {
+        $n-colors: length($input_text-color-name);
+        @for $i from 1 through $n-colors {
+          @include class-option(nth($input_text-color-name, $i)) {
+            border-color: #{nth($input_text-color-code, $i)} !important;
+          }
+        }
+      }
+    }
+  }
+  @include class-model(type) {
+    @include class-modifire(inlined) {
+      label, input {
+        display: inline-block;
+        width: auto;
+      }
+    }
+    @include class-modifire(blocked) {
+      label, input {
+        display: block;
+        width: 100%;
+      }
+    }
+    // Search Input
+    @include class-modifire(search) {
+      button {
+        width: 15%;
+      }
+      input {
+        width: 85%;
+      }
+    }
+  }
+  @include class-model(textarea) {
+    background-color: $color-white;
+    color: $input_text-color;
+    border: $input-text-border;
+    width: $width-100;
+    resize: none;
+    @for $i from 1 through $textarea-size-iteration {
+      @include class-modifire("scale_#{$i}") {
+        @if $textarea-text-resize == true {
+          @include font-size($font-base-size + $i * $textarea-text-size-factor);
+        } @else {
+          @include font-size($textarea-text-size);
+        }
+        padding: 2 + $i * $input_text-size-factor + px;
+        height: $textarea-size-factor * $i + px;
+      }
+    }
+    @include class-modifire(rounded) {
+      @include border-radius($input_text-border-radius);
+    }
+  }
+}
+
+// --------------------
+// RESETS
+// --------------------
+
+@include class-model(reset) {
+  // Borders
+  @include class-modifire(border) {
+    $types: top, right, bottom, left;
+    @each $type in $types {
+      @include class-option($type) {
+        border-#{$type}: none !important;
+      }
+    }
+    @include class-option(full) {
+      border: none !important;
+    }
+  }
+  // Background
+  @include class-modifire(bg) {
+    background: none;
+  }
+  @include class-modifire(margin) {
+    margin: 0 !important;
+  }
+  @include class-modifire(padding) {
+    $types: left, right, top, bottom;
+    @each $type in $types {
+      @include class-option($type) {
+        padding-#{$type}: 0 !important;
+      }
+    }
+    @include class-option(full) {
+      padding: 0 !important;
+    }
+  }
+}

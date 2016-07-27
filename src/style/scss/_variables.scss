@@ -1,0 +1,290 @@
+// **
+// --------------------
+// PROJECT
+// --------------------
+// Project variables define
+// special and additional data
+// for custom app functions and
+// features like colors or sizes.
+// --------------------
+// **
+
+$color-app-grey: #ccc;
+
+// **
+// --------------------
+// GLOBAL
+// --------------------
+// Global variables should be left unchanged.
+// They are used precisely in the whole framework.
+// You can use them globally.
+// --------------------
+// **
+
+// Colors
+$color-black: rgb(0,0,0);
+$color-white: rgb(255,255,255);
+
+// Grayscale
+$color-grey: lighten($color-black, 50%);
+$color-darkgrey: lighten($color-black, 25%);
+$color-lightgrey: lighten($color-black, 75%);
+$color-lightergrey: lighten($color-black, 90%);
+$color-lightenesgrey: lighten($color-black, 97%);
+
+// Palette
+$color-aqua     : #7FDBFF;
+$color-blue     : #0074D9;
+$color-navy     : #001F3F;
+$color-teal     : #39CCCC;
+$color-green    : #2ECC40;
+$color-olive    : #3D9970;
+$color-lime     : #01FF70;
+$color-yellow   : #FFDC00;
+$color-orange   : #FF851B;
+$color-red      : #FF4136;
+$color-fuchsia  : #F012BE;
+$color-purple   : #B10DC9;
+$color-maroon   : #85144B;
+
+// Shifts
+$shift-overall: 5px; // margin/padding: 5px;
+$shift-overall-middium: $shift-overall * 2;
+$shift-overall-big: $shift-overall * 4;
+$shift-small-horizontal: 0 $shift-overall;  // margin/padding: 0 5px;
+$shift-middium-horizontal: 0 ($shift-overall * 2);
+$shift-big-horizontal: 0 ($shift-overall * 4);
+$shift-small-vertical: $shift-overall 0;   // margin/padding: 5px 0;
+$shift-middium-vertical: ($shift-overall * 2) 0;
+$shift-big-vertical: ($shift-overall * 4) 0;
+
+$shift-iteration: 6;
+
+// Widths
+$width-10: 10%; $width-30: 30%; $width-50: 50%;
+$width-70: 70%; $width-90: 90%; $width-100: 100%;
+
+// Heights
+$height-100: 100%;
+
+// Others
+$margin-centered: 0 auto;
+
+// **
+// --------------------
+// SYSTEM
+// --------------------
+// System variables define the appearance and behavior
+// of the various functions and parts of the visual.
+// You can change them according to the data stored
+// in the project area. Check out the docs.
+// --------------------
+// **
+
+// Fonts
+$font-root-size: 10;
+$font-base-size: 12;
+$font-base-line-height: 14;
+
+$font-base-simple: Arial, Vardana, Tahoma, sans-serif;
+
+// Colors
+$color-base: black; // project base color
+
+// tip! :
+// leave standard color names with b prefix (you can change it to your own)
+// this is for prevent coverting color names to hex code - f.g. white to #fff
+$font-colors-name: // font/text color names
+        bwhite,
+        bblack,
+        bgrey,
+        lightgrey,
+        lightergrey;
+$font-colors-code: // font/text color code
+        $color-white,
+        $color-black,
+        $color-grey,
+        $color-lightgrey,
+        $color-lightergrey;
+$font-sizes-name:  // font sizes name
+        huge,
+        big,
+        medium,
+        small,
+        tiny,
+        micro;
+$font-sizes-number: // font sizes
+        24,
+        20,
+        16,
+        14,
+        12,
+        10;
+
+$font-custom-path: '../font'; // custom font face path
+
+$font-custom: false; // custom font will be used
+$font-custom-master: false; // custom font is master
+$font-base-thin: false; // font face Thin
+$font-base-light: false; // font face Light
+$font-base-medium: false; // font face Medium
+$font-base-regular: false; // e.g. 'Custom-Rg' // font face Ragular
+$font-base-bold: false; // font face Bold
+$font-base-semibold: false; // font face SemiBold
+
+$font-base-regular-it: false; // e.g. 'Custom-Rg-It'; // font face Regular Italic
+
+$font-secondary: false; // secondary font face will be used
+$font-secondary-regular: false; // secondary font face Regular
+$font-secondary-bold: false; // secondary font face Bold
+$font-secondary-semibold: false; // secondary font face Semi Bold
+
+$font-icons: false; // icons library will be built
+$font-icons-name: 'fonticons'; // font-icons name - file name must be the same
+$font-icons-prefix: false; // if you need prefix, set in "" operator
+$font-icons-size-factor: 8; // scale of icons size
+$font-icons-colors-name: // font-icons colors name
+        bwhite,
+        bblack,
+        bgrey,
+        lightgrey,
+        lightergrey;
+$font-icons-colors-code: // font-icons colors code
+        $color-white,
+        $color-black,
+        $color-grey,
+        $color-lightgrey,
+        $color-lightergrey;
+
+// Headings
+$headings-count: 6; // number of global headings <h1>/<h6>
+$headings-size: 2.8; // base headings size
+$headings-size-factor: .3; // reduction in the scale of headings font size
+$headings-lineheight-size: 1; // base headings line height
+$headings-lineheight-factor: .5; // reduction in the scale of headings line height
+$headings-bold: true; // disable bold font-face for h1-h3 headings
+
+// Mobile
+$media-queries: true; // disable media-queries system
+$grid-count: 12; // default grid columns count schema - recomended
+
+// Viewports
+$breakpoint-appwidth      : 980px;
+$breakpoint-largescreen   : 1824px;
+$breakpoint-bigscreen     : 1824px;
+$breakpoint-ipad-max      : 1024px;
+$breakpoint-ipad-min      : 768px;
+$breakpoint-tablet-max    : 800px;
+$breakpoint-tablet-min    : 600px;
+$breakpoint-iphone6-max   : 667px;
+$breakpoint-iphone6-min   : 375px;
+$breakpoint-iphone5-max   : 568px;
+$breakpoint-iphone-max    : 480px;
+$breakpoint-iphone-min    : 320px;
+
+// Backgrounds
+$background-color-name: // background colors names
+        bwhite,
+        bblack,
+        bgrey,
+        lightgrey,
+        lightergrey;
+$background-color-code: // backgrund colors codes
+        $color-white,
+        $color-black,
+        $color-grey,
+        $color-lightgrey,
+        $color-lightergrey;
+
+// Borders
+$border-default: 1px solid; // default value of border width
+$border-default-color: $color-lightgrey; // default value of border color
+$border-bold-size: 2px; // border bold size
+$border-radius-small: 2px; // border radius small
+$border-radius-medium: 5px; // border radius medium
+$border-radius-big: 10px; // border radius big
+$border-types: top, right, bottom, left;
+$border-color-code: // border colors name
+        bwhite,
+        bblack,
+        bgrey,
+        lightgrey,
+        lightergrey;
+$border-color-name: // border colors code
+        $color-white,
+        $color-black,
+        $color-grey,
+        $color-lightgrey,
+        $color-lightergrey;
+
+// Flex box
+$flex-box: false; // disable flex box layout
+$flex-box-items-sequence-count: 6; // sequence of flex box layout items
+
+// Sprites
+$global-sprite-type: "png"; // format of global sprite image
+$global-sprite-name: "global_sprite"; // name of global sprite image
+$global-sprite-size: 300px 300px; // size of global sprite image
+$global-images-path: "../img/"; // global images path
+
+// Links/Anhors
+$link-base-color: #000; // project base link color
+$link-decoration: false; // set link decoration
+$link-decoration-type: underline; // link decoration type
+$link-hover-type: none; // link hover decoration type
+$link-hover-color: $color-blue; // link hover color
+$link-visited-color: $color-grey; // link visited decoration type
+
+// Buttons
+$button-size-factor: 2; // proportion of growth buttons size
+$button-size-proportion: panoramic; // proportion type of button presentation - use square for equal proportions
+$button-size-iteration: 6; // sizes iteration number
+$button-rounding-iteration: 6; // rounding iteration number
+$button-rounding-factor: 2; // proportion of growth rounded corrners size
+$button-text-style: regular; // default buttons text style - use custom to change it
+$button-text-size-factor: .5; // default buttons text size
+$button-text-color: $color-white; // default buttons text color
+$button-text-color-opposite: $color-black; // default buttons text color
+$button-text-visited-color: $color-lightenesgrey; // visited buttons text color
+$button-shadow: false; // buttons shadow disable
+$button-shadow-size: 0 3px 0; // size of buttons shadow
+$button-shadow-size-active: 0 1px 0; // size of active buttons shadow
+$button-shadow-color: $color-lightgrey; // color of buttons shadow
+$button-color-name: // buttons colors names
+        bwhite,
+        bblack,
+        bgrey,
+        lightgrey,
+        lightergrey;
+$button-color-code: // buttons colors code
+        $color-white,
+        $color-black,
+        $color-grey,
+        $color-lightgrey,
+        $color-lightergrey;
+
+// Inputs
+$input_text-size-factor: 1.5; // proportion of growth inputs size
+$input_text-size-iteration: 6; // sizes iteration number
+$input_text-color: $color-grey; // text input value color
+$input-text-border: 1px solid $color-lightergrey; // text input border color
+$input_text-border-radius: $shift-overall; // text input border radius factor
+$input_text-color-name: // text input colors names
+        bblack,
+        bgrey,
+        lightgrey,
+        lightergrey;
+$input_text-color-code: // text input colors code
+        $color-black,
+        $color-grey,
+        $color-lightgrey,
+        $color-lightergrey;
+
+$textarea-size-factor: 20; // textarea height proportion of growth
+$textarea-size-iteration: 6; // sizes iteration number
+$textarea-text-resize: false; // disable text scalable function
+$textarea-text-size-factor: .5; // textarea text size factor value
+$textarea-text-size: 12; // textarea test size if it is't scalable
+
+// Others
+$ui-appearance: false;

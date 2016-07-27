@@ -1,0 +1,751 @@
+@import "variables";
+
+// --------------------
+// CLASS SYNTAX
+// --------------------
+
+// Model
+@mixin class-model($model, $inherit: true) {
+  @if $inherit == false {
+    > [class*="#{$model}"] {
+      @content;
+    }
+  }
+  @else {
+    [class*="#{$model}"] {
+      @content;
+    }
+  }
+}
+// Modifier
+@mixin class-modifire($name-1: false, $name-2: false, $name-3: false, $name-4: false, $name-5: false) {
+  @at-root {
+    @if $name-1 and $name-1 != false and not $name-2 and not $name-3 and not $name-4 and not $name-5   {
+      &[class*="-#{$name-1}"] {
+        @content;
+      }
+    }
+    @if $name-2 and $name-2 != false and not $name-3 and not $name-4 and not $name-5 {
+      &[class*="-#{$name-1}"], &[class*="-#{$name-2}"] {
+        @content;
+      }
+    }
+    @if $name-3 and $name-3 != false and not $name-4 and not $name-5 {
+      &[class*="-#{$name-1}"], &[class*="-#{$name-2}"], &[class*="-#{$name-3}"]   {
+        @content;
+      }
+    }
+    @if $name-4 and $name-4 != false and not $name-5 {
+      &[class*="-#{$name-1}"], &[class*="-#{$name-2}"], &[class*="-#{$name-3}"], &[class*="-#{$name-4}"]   {
+        @content;
+      }
+    }
+    @if $name-5 and $name-5 != false {
+      &[class*="-#{$name-1}"], &[class*="-#{$name-2}"], &[class*="-#{$name-3}"], &[class*="-#{$name-4}"], &[class*="-#{$name-5}"]   {
+        @content;
+      }
+    }
+  }
+}
+// Option
+@mixin class-option($name-1: false, $name-2: false, $name-3: false, $name-4: false, $name-5: false) {
+  @at-root {
+    @if $name-1 and $name-1 != false and not $name-2 and not $name-3 and not $name-4 and not $name-5 {
+      &[class*="_#{$name-1}"] {
+        @content;
+      }
+    }
+    @if $name-2 and $name-2 != false and not $name-3 and not $name-4 and not $name-5 {
+      &[class*="_#{$name-1}"], &[class*="_#{$name-2}"] {
+        @content;
+      }
+    }
+    @if $name-3 and $name-3 != false and not $name-4 and not $name-5 {
+      &[class*="_#{$name-1}"], &[class*="_#{$name-2}"], &[class*="_#{$name-3}"]   {
+        @content;
+      }
+    }
+    @if $name-4 and $name-4 != false and not $name-5 {
+      &[class*="_#{$name-1}"], &[class*="_#{$name-2}"], &[class*="_#{$name-3}"], &[class*="_#{$name-4}"]   {
+        @content;
+      }
+    }
+    @if $name-5 and $name-5 != false {
+      &[class*="_#{$name-1}"], &[class*="_#{$name-2}"], &[class*="_#{$name-3}"], &[class*="_#{$name-4}"] , &[class*="_#{$name-5}"]   {
+        @content;
+      }
+    }
+  }
+}
+
+// --------------------
+// GLOBALS
+// --------------------
+
+// Vendor Prefixer
+@mixin prefixr($attribute, $value, $prefixes) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit {
+      -webkit-#{$attribute}: $value;
+    }
+    @else if $prefix == moz {
+      -moz-#{$attribute}: $value;
+    }
+    @else if $prefix == ms {
+      -ms-#{$attribute}: $value;
+    }
+    @else if $prefix == o {
+      -o-#{$attribute}: $value;
+    }
+    @else if $prefix == cstm {
+      #{$attribute}: $value;
+    }
+  }
+}
+
+// Clearfix
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: ""; }
+  &:after {
+    clear: both; }
+}
+
+// Text/Font Alternates
+@mixin font-size($size: $font-base-size, $inherit: true) {
+  @if $inherit == false {
+    font-size: $size + px !important;
+    font-size: (0.100 * $size) + rem !important;
+  }
+  @else {
+    font-size: $size + px;
+    font-size: (0.100 * $size) + rem;
+  }
+}
+@mixin line-height($line-height: $font-base-line-height) {
+  line-height: $line-height + px;
+  line-height: (0.100 * $line-height) + rem;
+}
+@mixin font-reset {
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+}
+@mixin text-hide {
+  font-size: 0;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@mixin text-wrap {
+  text-wrap: wrap;
+  word-wrap: break-word;
+  @include prefixr(white-space, pre-wrap, moz cstm);
+}
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin font-face($font-face-name, $font-face-path: $font-custom-path) {
+  @font-face {
+    font-family: $font-face-name;
+    font-style: normal;
+    font-weight: normal;
+    src: url('#{$font-face-path}/#{$font-face-name}.eot?#iefix');
+    src: url('#{$font-face-path}/#{$font-face-name}.eot??#iefix') format('eot'),
+    url('#{$font-face-path}/#{$font-face-name}.woff') format('woff'),
+    url('#{$font-face-path}/#{$font-face-name}.ttf') format('truetype'),
+    url('#{$font-face-path}/#{$font-face-name}.svg') format('svg');
+  }
+}
+@mixin font-icon($code) {
+  content: "#{$code}";
+  font-size: inherit;
+  font-family: $font-icons-name;
+}
+
+// --------------------
+// VISUALS
+// --------------------
+
+@mixin border-radius($radius: 5px) {
+  @include prefixr(border-radius, $radius, webkit cstm);
+}
+@mixin border-radius-unregullar($top-left: 0, $top-right: 0, $bottom-left: 0, $bottom-right: 0) {
+  @if $top-left != 0 and not unitless($top-left) {
+    @include prefixr(border-top-left-radius, $top-left, webkit cstm);
+  }
+  @if $top-right != 0 and not unitless($top-right) {
+    @include prefixr(border-top-right-radius, $top-right, webkit cstm);
+  }
+  @if $bottom-left != 0 and not unitless($bottom-left) {
+    @include prefixr(border-bottom-left-radius, $bottom-left, webkit cstm);
+  }
+  @if $bottom-right != 0 and not unitless($bottom-right) {
+    @include prefixr(border-bottom-right-radius, $bottom-right, webkit cstm);
+  }
+}
+@mixin box-shadow($shadow-1, $shadow-2: false, $shadow-3: false, $shadow-4: false) {
+  $params: $shadow-1;
+  @if $shadow-2 != false { $params: $shadow-1, $shadow-2; }
+  @if $shadow-3 != false { $params: $shadow-1, $shadow-2, $shadow-3; }
+  @if $shadow-4 != false { $params: $shadow-1, $shadow-2, $shadow-3, $shadow-4; }
+  @include prefixr(box-shadow, $params, webkit cstm);
+}
+@mixin opacity($alpha) {
+  opacity: $alpha;
+  filter: alpha(opacity=$alpha*100);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=$alpha*100);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$alpha*100})";
+}
+
+// Functionals
+@mixin placeholder-color($color) {
+  -webkit-text-fill-color: initial;
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}
+@mixin element-disabled {
+  display: none;
+  visibility: hidden;
+  @include opacity(0);
+}
+@mixin element-matched($type: border-box) {
+  @include prefixr(box-sizing, $type, moz cstm);
+}
+@mixin element-width-custom($width: 100%, $margin-top: false, $margin-bottom: false) {
+  width: $width;
+  @if $margin-top == false or $margin-bottom == false {
+    margin: $margin-centered;
+  }
+  @else {
+    margin: $margin-top auto $margin-bottom auto;
+  }
+}
+@mixin element-height-full {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+}
+@mixin element-size($size) {
+  $height: nth($size, 1);
+  $width: $height;
+  @if length($size) > 1 {
+    $height: nth($size, 2);
+  }
+  @if $height == auto or (type-of($height) == number and not unitless($height)) {
+    height: $height;
+  }
+  @if $width == auto or (type-of($height) == number and not unitless($width)) {
+    width: $width;
+  }
+}
+
+// Shifts
+@mixin shift_types($types, $iteration, $value, $operator) {
+  @each $type in $types {
+    @if $type == normal {
+      @for $i from 1 through $iteration {
+        @include class-modifire(#{$operator}_#{$i}) {
+          #{$value}: $shift-overall * $i
+        }
+      }
+    }
+    @if $type == horizontal {
+      @for $i from 1 through $iteration {
+        @include class-modifire(#{$operator}_#{$i}) {
+          @include class-modifire(horizontal) {
+            #{$value}-left: $shift-overall * $i;
+            #{$value}-right: $shift-overall * $i;
+          }
+        }
+      }
+    }
+    @if $type == vertical {
+      @for $i from 1 through $iteration {
+        @include class-modifire(#{$operator}_#{$i}) {
+          @include class-modifire(vertical) {
+            #{$value}-top: $shift-overall * $i;
+            #{$value}-bottom: $shift-overall * $i;
+          }
+        }
+      }
+    }
+    @if $type == top {
+      @for $i from 1 through $iteration {
+        @include class-modifire(#{$operator}_#{$i}) {
+          @include class-modifire(top) { #{$value}: ($shift-overall * $i) 0 0 0 }
+        }
+      }
+    }
+    @if $type == bottom {
+      @for $i from 1 through $iteration {
+        @include class-modifire(#{$operator}_#{$i}) {
+          @include class-modifire(bottom) { #{$value}: 0 0 ($shift-overall * $i) 0 }
+        }
+      }
+    }
+    @if $type == left {
+      @for $i from 1 through $iteration {
+        @include class-modifire(#{$operator}_#{$i}) {
+          @include class-modifire(left) { #{$value}: 0 0 0 ($shift-overall * $i) }
+        }
+      }
+    }
+    @if $type == right {
+      @for $i from 1 through $iteration {
+        @include class-modifire(#{$operator}_#{$i}) {
+          @include class-modifire(right) { #{$value}: 0 ($shift-overall * $i) 0 0 }
+        }
+      }
+    }
+  }
+}
+
+// Positions
+@mixin position-absolute-center($top: 0) {
+  position: absolute;
+  left: 0; right: 0;
+  margin-right: auto; margin-left: auto;
+  @if ($top and $top not unitless($top)) {
+    top: $top;
+  }
+  @if (not $top and unitless($top)) {
+    top: $top;
+  }
+}
+@mixin position-absolute-custom($coords: 0 0 0 0, $fixed: false) {
+  @if $fixed == fixed {
+    position: fixed;
+  }
+  @else {
+    position: absolute;
+  }
+  @if $fixed == fixed-push {
+    position: fixed !important;
+  }
+  $top: nth($coords, 1);
+  $right: nth($coords, 2);
+  $bottom: nth($coords, 3);
+  $left: nth($coords, 4);
+  @if ($top and $top == auto) or (type-of($top) == number and not unitless($top)) {
+    top: $top;
+  }
+  @if ($right and $right == auto) or (type-of($right) == number and not unitless($right)) {
+    right: $right;
+  }
+  @if ($bottom and $bottom == auto) or (type-of($bottom) == number and not unitless($bottom)) {
+    bottom: $bottom;
+  }
+  @if ($left and $left == auto) or (type-of($left) == number and not unitless($left)) {
+    left: $left;
+  }
+}
+@mixin element-vertical-align {
+  top: 49%;
+  position: relative;
+  @include transform-translate(0, -50%);
+}
+
+// Backgrounds
+@mixin background-clip($clip) {
+  @include prefixr(background-clip, $clip, webkit cstm);
+}
+@mixin background-cover($image, $bg-position-x, $bg-position-y, $box-width, $box-height) {
+  background-image: url('#{$global-images-path}#{$image}');
+  background-position: $bg-position-x $bg-position-y;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: $box-height;
+  @include element-width-custom($box-width);
+}
+@mixin background-custom($image, $position-horizontal: center,  $position-vertical: top, $background-repeat: no-repeat, $background-size: auto) {
+  background: url('#{$global-images-path}#{$image}') $position-horizontal $position-vertical $background-repeat;
+  background-size: $background-size;
+}
+@mixin background-multiply($background_1, $background_2: false, $background_3: false) {
+  $params: $background_1;
+  @if $background_2 != false { $params: $background_1, $background_2; }
+  @if $background_3 != false { $params: $background_2, $background_2, $background_3; }
+  background: $params;
+}
+@mixin background-sprite($x: 0, $y: 0, $retina: false) {
+  $file-type: $global-sprite-type;
+  background: url('#{$global-images-path}' + $global-sprite-name + '.' + $file-type) $x $y no-repeat;
+  background-size: $global-sprite-size;
+  @if $retina == true {
+    @media
+    (min-moz-device-pixel-ratio: 1.3),
+    (-o-min-device-pixel-ratio: 2.6/2),
+    (-webkit-min-device-pixel-ratio: 1.3),
+    (min-device-pixel-ratio: 1.3),
+    (min-resolution: 1.3dppx) {
+      background: url($global-images-path + $global-sprite-name + '@2x' + '.' + $file-type) $x $y no-repeat;
+    }
+  }
+}
+@mixin background-transparent($color, $alpha) {
+  $rgba: rgba($color, $alpha);
+  $ie-hex-str: ie-hex-str($rgba);
+  background-color: $rgba;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+}
+
+// Gradients
+@mixin background-gradient-linear($position: top, $from: #fff 50%, $color-a: false, $color-b: false, $color_c: false) {
+  @if $color-a == false {
+    background-color: $from;
+  }
+  @if $color-a != false {
+    background-color: $from;
+    background-image: -webkit-linear-gradient($position, $from, $color-a);
+    background-image: linear-gradient($position, $from, $color-a);
+    // filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($from)}', endColorstr='#{ie-hex-str($color-a)}');
+  }
+  @else if $color-a and $color-b != false {
+    background-color: $from;
+    background-image: -webkit-linear-gradient($position, $from, $color-a, $color-b);
+    background-image: linear-gradient($position, $from, $color-a, $color-b);
+    // filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($from)}', endColorstr='#{ie-hex-str($color-b)}');
+  }
+  @else if $color-a and $color-b and $color-c != false {
+    background-color: $from;
+    background-image: -webkit-linear-gradient($position, $from, $color-a, $color-b, $color-c);
+    background-image: linear-gradient($position, $from, $color-a, $color-b, $color-c);
+    // filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($from)}', endColorstr='#{ie-hex-str($color-c)}');
+  }
+  .ie-9 & {
+    filter: none !important;
+  }
+}
+
+// --------------------
+// ABSTRACTS
+// --------------------
+
+// Transforms
+@mixin tranform-custom($params) {
+  @include prefixr(transform, $params, webkit ms cstm);
+}
+@mixin transform-rotate($degrees: 0) {
+  @include prefixr(transform, rotate(#{$degrees}deg), webkit ms cstm);
+}
+@mixin transform-scale($factor: 0) {
+  @include prefixr(transform, scale($factor), webkit ms cstm);
+}
+@mixin transform-skew($x: 0, $y: 0) {
+  @include prefixr(transform, skew(#{$x}deg, #{$y}deg), webkit ms cstm);
+}
+@mixin transform-translate($x: 0, $y: 0) {
+  @include prefixr(transform, translate(#{$x}, #{$y}), webkit ms cstm);
+}
+@mixin transform-translate3d($perspective: 100px, $x: 0, $y: 0, $z: 0) {
+  @include prefixr(transform, perspective($perspective) translate3d(#{$x}, #{$y}, #{$z}), webkit ms cstm);
+}
+@mixin transform-origin($x: 0, $y: 0) {
+  @include prefixr(transform-origin, (#{$x} #{$y}), webkit ms cstm)
+}
+
+// Transitions
+@mixin transition-all($time: 300ms) {
+  @include prefixr(transition, all $time ease-in-out, webkit cstm);
+}
+@mixin transition-custom($property, $time: 300ms, $type: ease-in-out) {
+  @include prefixr(transition, $property $time $type, webkit cstm);
+}
+@mixin transition-cubic($property, $time) {
+  @include prefixr(transition, $property $time, webkit cstm);
+}
+// use always with transit-cubic() @mixin
+@mixin transition-cubic-params($param-a: 0, $param-b: 0, $param-c: 0, $param-d: 0) {
+  @include prefixr(transition-timing-function, cubic-bezier($param-a, $param-b, $praram-c, $param-d), webkit cstm);
+}
+
+// Animations
+@mixin animation-custom($animation-name, $coords: 0 0 0) {
+  $duration: nth($coords, 1);
+  $delay: nth($coords, 2);
+  $iteration: nth($coords, 3);
+  @include prefixr(animation-name, $animation-name, webkit cstm);
+  @include prefixr(animation-duration, $duration, webkit cstm);
+  @include prefixr(animation-delay, $delay, webkit cstm);
+  @if type-of($iteration) == number and unitless($iteration) or type-of($iteration) != number {
+    @include prefixr(animation-iteration-count, $iteration, webkit cstm);
+  }
+  @else if type-of($iteration) == number and not unitless($iteration) {
+    @include prefixr(animation-iteration-count, 1, webkit cstm);
+  }
+}
+// **
+// ---------------
+// Animations Keyframes
+// use always with animation-custom() @mixin
+// name value must be the same as animation-custom() @mixin name value
+// ---------------
+// div {
+//   @include animation-custom(fadeout, 2s 0 infinite);
+//   @include animation-keyframe(fadeout) {
+//     0% { opacity: 1; width: 0;}
+//     50% { opacity: 0; width: 300px;}
+//     100% {opacity: 1; width: 0;}
+//   }
+// }
+// ---------------
+// **
+@mixin animation-keyframe($animation-name) {
+  @at-root {
+    @-webkit-keyframes #{$animation-name} { @content; }
+    @-moz-keyframes #{$animation-name} { @content; }
+    @-o-keyframes #{$animation-name} { @content; }
+    @keyframes #{$animation-name} { @content; }
+  }
+}
+
+// --------------------
+// MOBILE
+// --------------------
+
+@mixin breakpoint($point, $direction: false) {
+  @if ($media-queries) {
+    // **
+    // --------------------
+    // Options of screen breakpoints are
+    // defined in variables.
+    // --------------------
+    // **
+    @if type-of($point) == number and not unitless($point) and $direction == false {
+      @media // Custom
+      only screen and (max-width: #{$point}),
+      only screen and (max-device-width: #{$point})
+      {
+        @content;
+      }
+    }
+    @if not $direction == false and $direction == 'from-to' {
+      $from : nth($point, 1);
+      $to   : nth($point, 2);
+      @media all // Custom
+      and (max-width: #{$to})
+      and (max-device-width: #{$to})
+      and (min-width: #{$from})
+      and (min-device-width: #{$from})
+      {
+        @content;
+      }
+    }
+    @if type-of($point) == number and not unitless($point) and not $direction == false and $direction == 'to' {
+      @media // Custom
+      only screen and (max-width: #{$point}),
+      only screen and (max-device-width: #{$point})
+      {
+        @content;
+      }
+    }
+    @if type-of($point) == number and not unitless($point) and not $direction == false and $direction == 'from' {
+      @media // Custom
+      only screen and (min-width: #{$point}),
+      only screen and (min-device-width: #{$point})
+      {
+        @content;
+      }
+    }
+    @if $point == large-screen {
+      @media // Very Large Screens
+      only screen and (min-width: #{$breakpoint-largescreen}),
+      only screen and (min-device-width: #{$breakpoint-largescreen})
+      {
+        @content;
+      }
+    }
+    @if $point == big-screen {
+      @media // Desktops and Laptops
+      only screen and (max-width: #{$breakpoint-bigscreen}),
+      only screen and (max-device-width: #{$breakpoint-bigscreen})
+      {
+        @content;
+      }
+    }
+    @if $point == app-width {
+      @media // Desktops and Laptops
+      only screen and (max-width: #{$breakpoint-appwidth}),
+      only screen and (max-device-width: #{$breakpoint-appwidth})
+      {
+        @content;
+      }
+    }
+    @if $point == ipad-landscape {
+      @media // iPad (portrait and landscape)
+      handheld,
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (max-width: #{$breakpoint-ipad-max})
+      and (min-width: #{$breakpoint-tablet-max})
+      {
+        @content;
+      }
+    }
+    @if $point == ipad-portrait {
+      @media // iPad (portrait)
+      handheld,
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (max-width: #{$breakpoint-ipad-min})
+      and (min-width: #{$breakpoint-tablet-min})
+        // and (orientation: portrait)
+      {
+        @content;
+      }
+    }
+    @if $point == tablet-landscape {
+      @media // iPad (portrait and landscape)
+      handheld,
+      only screen and (max-width: #{$breakpoint-tablet-max})
+      and (min-width: #{$breakpoint-iphone-min})
+      {
+        @content;
+      }
+    }
+    @if $point == tablet-portrait {
+      @media // iPad (portrait and landscape)
+      handheld,
+      only screen and (max-width: #{$breakpoint-tablet-min})
+      and (min-width: #{$breakpoint-iphone6-min})
+      {
+        @content;
+      }
+    }
+    @if $point == ipad-mini {
+      @media // iPad-Mini (portrait and landscape)
+      handheld,
+      only screen and (min-device-pixel-ratio: 1),
+      only screen and (max-width: #{$breakpoint-ipad-min})
+      and (min-width: #{$breakpoint-iphone-min})
+      {
+        @content;
+      }
+    }
+    @if $point == iphone6-landscape {
+      @media // iPhone 6 (portrait)
+      handheld,
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (max-width: #{$breakpoint-iphone6-max})
+      and (min-width: #{$breakpoint-iphone6-min})
+      {
+        @content;
+      }
+    }
+    @if $point == iphone6-portrait {
+      @media // iPhone 6 (portrait)
+      handheld,
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (max-width: #{$breakpoint-iphone6-min})
+      and (min-width: #{$breakpoint-iphone-min})
+      {
+        @content;
+      }
+    }
+    @if $point == iphone5-landscape {
+      @media // iPhone 5 (landscape, portrait is the same as iphone-portrait)
+      handheld,
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (max-width: #{$breakpoint-iphone5-max})
+      {
+        @content;
+      }
+    }
+    @if $point == iphone-landscape {
+      @media // iPhone (landscape)
+      handheld,
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (max-width: #{$breakpoint-iphone-max})
+      and (min-width: #{$breakpoint-iphone-min})
+      {
+        @content;
+      }
+    }
+    @if $point == iphone-portrait {
+      @media // iPhone (portrait)
+      handheld,
+      only screen and (min-device-pixel-ratio: 2),
+      only screen and (max-width: #{$breakpoint-iphone-min})
+      {
+        @content;
+      }
+    }
+  }
+}
+
+// --------------------
+// OTHERS
+// --------------------
+
+@mixin calc($property, $value) {
+  #{$property}: -webkit-calc(#{$value});
+  #{$property}: calc(#{$value});
+}
+@mixin appearance($value: none) {
+  @include prefixr(appearance, $value, webkit cstm);
+}
+@mixin user-select($value: none) {
+  @include prefixr(user-select, $value, webkit cstm);
+}
+@mixin image-rendering($type: crisp) {
+  @if $type == crisp {
+    @include prefixr(image-rendering, crisp-edges, moz cstm);
+    image-rendering: -webkit-optimize-contrast;
+  }
+  @else {
+    // this contains only auto option
+    image-rendering: $type;
+  }
+}
+
+// Columns
+@mixin columns-custom($column-width: 200px, $column-count: 0, $column-gap: 20px, $column-rule: false) {
+  $base-unit-size: 1;
+  $base-unit-type: 1px;
+  $base-unit: $base-unit-type * $base-unit-size !default;
+  @include prefixr(column-width, $column-width, webkit moz cstm);
+  @if type-of($column-count) == number and unitless($column-count) {
+    @include prefixr(column-count, $column-count, webkit moz cstm);
+  }
+  @else if type-of($column-count) == number and not unit($base-unit) != px {
+    @include prefixr(column-count, 2, webkit moz cstm);
+    $column-count: $column-gap;
+  }
+  @else if type-of($column-count) == number and not unitless($column-count) or length($column-count) > 1 {
+    @include prefixr(column-count, 2, webkit moz cstm);
+    $column-rule-coords: $column-count;
+    $width: nth($column-rule-coords, 1);
+    $style: nth($column-rule-coords, 2);
+    $color: nth($column-rule-coords, 3);
+    @include prefixr(column-rule, $width $style $color, webkit moz cstm);
+  }
+  @if length($column-gap) > 1 {
+    @include prefixr(column-gap, 20px, webkit moz cstm);
+    $column-rule-coords: $column-gap;
+    $width: nth($column-rule-coords, 1);
+    $style: nth($column-rule-coords, 2);
+    $color: nth($column-rule-coords, 3);
+    @include prefixr(column-rule, $width $style $color, webkit moz cstm);
+  }
+  @else if length($column-gap) == 1 {
+    @include prefixr(column-gap, $column-gap, webkit moz cstm);
+  }
+  @if $column-rule != false {
+    $column-rule-coords: $column-rule;
+    $width: nth($column-rule-coords, 1);
+    $style: nth($column-rule-coords, 2);
+    $color: nth($column-rule-coords, 3);
+    @include prefixr(column-rule, $width $style $color, webkit moz cstm);
+  }
+}

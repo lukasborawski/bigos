@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+@import "mixins";
+@import "icons";
+@import "extends";
+@import "normalize";
+@import "variables";
+
+html {
+  height: 100%;
+  font-size: 62.5%;
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+body {
+  min-height: 100%;
+  font-style: normal;
+  font-family: $font-base-regular, $font-base-simple;
+  @include font-size($font-base-size);
+}
+
+// leave this imports
+// at the bottom of
+// main stylesheet
+@import "globals";
+@import "base";
