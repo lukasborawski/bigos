@@ -201,6 +201,12 @@ strong {
       text-align: center;
     }
   }
+  @include class-modifire(uppercase) {
+    text-transform: uppercase;
+  }
+  @include class-modifire(capitalize) {
+    text-transform: capitalize;
+  }
 }
 @if $font-custom == true {
   @if $font-base-thin and not $font-base-thin == false  {

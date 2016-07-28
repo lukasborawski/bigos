@@ -272,7 +272,7 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 
 **Font reset** - `font-reset()` - will reset/normalize style, weight and variant of font values
 
-**Text hide** - `text-hide()` - will hide but not disabled text
+**Text hide** - `text-hide()` - will hide but not disable text
 
 **Text wrap** - `text-wrap()` - will wrap to long text
 
@@ -881,6 +881,9 @@ Text align - `left`, `center` and of course `right`.
 // or
 <span class="text-align_right"></span>
 ```
+
+Text uppercase - use `uppercase` modifire.
+Text capitalize - use `capitalize` modifire.
 
 **Important** - The text class model is a great opportunity to show connection feature. 
 
