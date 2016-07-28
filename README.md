@@ -229,7 +229,7 @@ body {
 ```
 
 <a name="class-option"></a>
-OK. At the end remember to not use `class-option` notation without nested in `class-modifire` above. Element will be not recognized as a dedicated class connection element and styles for it will be not assigned. Be careful especially when you are using the predefined classes. 
+OK. At the end remember to not use `class-option` notation without nested in `class-modifire` above. Element will be not recognized as a dedicated class connection one and styles for it will be not assigned. Be careful especially when you are using the predefined classes. 
 
 **Tip**: Inside framework code there will be a lot of class connections examples, analize them to learn more.
 
