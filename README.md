@@ -491,7 +491,7 @@ Now, the core of mobile mixins usage looks like this:
 
 `breakpoint($breakpoint, $direction: false)`
 
-If you want to use it with custom viewport values you can this by:
+If you want to use it with custom viewport values use:
 
 ```scss
 @include breakpoint(640px) {
@@ -1426,14 +1426,14 @@ Usage:
 
 ```html
 <fieldset>
-	<input class="input-regular-scale_1" type="text"/>
+	<input class="input_regular-scale_1" type="text"/>
 </fieldset>
 // or
 <fieldset>
 	<textarea class="textarea-scale_1"></textarea>
 </fieldset>
 ```
-As you've noticed input element has also `regular` modifire. This prevents the adoption of styles from other input type elements. For text input's keep this special class modifire. 
+As you've noticed input element has also `regular` option. This prevents the adoption of styles from other input type elements. For text input's keep this special class option. 
 
 Of course there is posibility to change input color. And just like with other elements there is two variables type array iteration - `$input_text-color-name` and `$input_text-color-code`. Use defined ones or set your own.
 
@@ -1506,18 +1506,18 @@ The path for icons font face is the same as for normal custom used font faces. B
 * Code inside docs,
 * Divider patterns,
 * ~~Align positions: vertical classes~~,
-* ~~Name of classes sistematize~~,
-* Add gulp build and configuration file.
-* ~~Add multiple class model option~~
-* Expand flexbox base classes
-* ~~Media queries tight ranges~~
+* ~~Name of classes sistematize~~`
+* ~~Add gulp build and configuration file~~`
+* ~~Add multiple class model option~~`
+* Expand flexbox base classes`
+* ~~Media queries tight ranges~~`
 
 ###### Small
 
-* ~~Default HTML elements restes: button, input, select~~.
+* ~~Default HTML elements restes: button, input, select~~`
 * Add important option for some elements,
 * Buttons disabled status, types names (primary, error, success),
-* ~~Colors and sizes classes~~`
+* ~~Colors and sizes classes~~``
 * ~~Colors for borders~~,
 * ~~Link style / decorations classes~~,
 * Dept on font size units em/rem,
