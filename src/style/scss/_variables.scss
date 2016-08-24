@@ -204,13 +204,13 @@ $border-radius-small: 2px; // border radius small
 $border-radius-medium: 5px; // border radius medium
 $border-radius-big: 10px; // border radius big
 $border-types: top, right, bottom, left;
-$border-color-code: // border colors name
+$border-color-name: // border colors name
   bwhite,
   bblack,
   bgrey,
   blightgrey,
   lightergrey;
-$border-color-name: // border colors code
+$border-color-code: // border colors code
   $color-white,
   $color-black,
   $color-grey,
