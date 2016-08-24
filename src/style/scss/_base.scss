@@ -646,12 +646,21 @@ $n: length($dimension);
     @else {
       font-family: $font-base-regular;
     }
+    @include class-modifire(thin) {
+      @if $font-base-thin {
+        font-family: $font-base-thin;
+      }
+      @else {
+        @if $font-base-light {
+          font-family: $font-base-light;
+        } @else {
+          font-family: $font-base-regular;
+        }
+      }
+    }
   }
   @else {
     font-weight: bold;
-  }
-  @include class-modifire(thin) {
-    font-family: $font-base-thin;
   }
   @include class-modifire(regular) {
     font-family: $font-base-regular;
@@ -689,7 +698,11 @@ $n: length($dimension);
         border: $border-default #{nth($button-color-code, $i)};
         background: #{nth($button-color-code, $i)};
         @include class-option(clear) {
-          background: $color-white;
+          @if $button-clear-background-color {
+            background: $button-clear-background-color;
+          } @else {
+            background: none;
+          }
           border: $border-default #{nth($button-color-code, $i)};
           color: #{nth($button-color-code, $i)};
         }

@@ -840,13 +840,12 @@ Sides options:
 And vertical, horizontal options:
 
 ```html
-// section { margin-top: 10px; margin-bottom: 10px; }
+// section { margin: 10px 0; }
 <section class="shift-margin_2-vertical"></section>
 
-// section { padding-left: 10px; padding-right: 10px; }
+// section { padding: 0 10px; }
 <section class="shift-padding_2-horizontal"></section>
 ```
-In here you can see that we have side shifts with reset values - `10px 0 0 0` notation. Why? Gnerally in modern apps we should using consistent values for box shifting. Although this is also some kind of class overwriting prevention.
 
 ### Fonts / Texts
 
@@ -1395,7 +1394,12 @@ Usage:
 <button type="button" class="button-color_bgrey">Click me</button>
 ```
 
-There is posibility to reverse button colors and make it more light and flat. To do this use `clear` class modifire.
+There is posibility to reverse button colors and make it more light and flat. To do this use `clear` class option with `color` modifire. In here you have also option to set or remove background for clear buttons - change `$button-clear-background-color` variable to manipulate.
+
+Usage:
+```html
+<button type="button" class="button-color_bwhite_clear">Click me</button>
+```
 
 To put these buttons somewhere use `.actionContainer` element. It has centered `100%` width and it's perfect, relative and worm parent for.
 
