@@ -266,7 +266,7 @@
       @for $i from 1 through $iteration {
         @include class-modifire(#{$operator}_#{$i}) {
           @include class-modifire(horizontal) {
-            padding: 0 $shift-overall * $i;
+            #{$value}: 0 $shift-overall * $i;
           }
         }
       }
@@ -275,7 +275,7 @@
       @for $i from 1 through $iteration {
         @include class-modifire(#{$operator}_#{$i}) {
           @include class-modifire(vertical) {
-            padding: $shift-overall * $i 0;
+            #{$value}: $shift-overall * $i 0;
           }
         }
       }
