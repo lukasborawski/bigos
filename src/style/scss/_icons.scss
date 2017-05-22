@@ -12,6 +12,13 @@
     text-transform: none;
     line-height: 1;
     speak: none;
+    @if $font-icons-stroke {
+      text-shadow:
+        -$font-icons-stroke-size + px -$font-icons-stroke-size + px 0 $font-icons-stroke-color,
+        $font-icons-stroke-size + px -$font-icons-stroke-size + px 0 $font-icons-stroke-color,
+        -$font-icons-stroke-size + px $font-icons-stroke-size + px 0 $font-icons-stroke-color,
+        $font-icons-stroke-size + px $font-icons-stroke-size + px 0 $font-icons-stroke-color;
+    }
 
     $icons:
     "icon" // icon name to use in class declaration

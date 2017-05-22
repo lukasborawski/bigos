@@ -1384,6 +1384,8 @@ Usage:
 
 The path for icons font face is the same as for normal custom used font faces. By default: `../font`.
 
+Additionally icons can have strokes. You can enable them by using control variable `$font-icons-stroke`. Change their appearance by changing `$font-icons-stroke-size` and `$font-icons-stroke-color` variables.
+
 ---
 
 ## Changelog

@@ -157,6 +157,9 @@ $font-icons-colors-code: // font-icons colors code
   $color-grey,
   $color-lightgrey,
   $color-lightergrey;
+$font-icons-stroke: false;
+$font-icons-stroke-size: 1px;
+$font-icons-stroke-color: $color-black;
 
 // Headings
 $headings-count: 6; // number of global headings <h1>/<h6>
