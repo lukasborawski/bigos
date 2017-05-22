@@ -5,6 +5,8 @@
 @import "extends";
 @import "normalize";
 @import "variables";
+@import "base";
+@import "globals";
 
 html {
   height: 100%;
@@ -20,9 +22,3 @@ body {
   font-family: $font-base-regular, $font-base-simple;
   @include font-size($font-base-size);
 }
-
-// leave this imports
-// at the bottom of
-// main stylesheet
-@import "globals";
-@import "base";

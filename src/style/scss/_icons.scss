@@ -12,27 +12,13 @@
     text-transform: none;
     line-height: 1;
     speak: none;
-    // **
-    // --------------------
-    // Icons set has been downloaded
-    // from http://icomoon.io. This is
-    // free set of 3 MIT License, special
-    // selected Icons (Entypo). Notice
-    // that it is only simulation how to
-    // build your own library of icons.
-    // --------------------
-    // **
 
     $icons:
-    "mobile"
-    "house"
-    "screen"
+    "icon" // icon name to use in class declaration
   ;
 
     $icons-code:
-    "\e601"   // mobile
-    "\e615"   // house
-    "\e630"   // screen
+    "\e601"   // code of icon
   ;
 
     $n: length($icons);

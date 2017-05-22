@@ -109,9 +109,11 @@
   &:before,
   &:after {
     display: table;
-    content: ""; }
+    content: "";
+  }
   &:after {
-    clear: both; }
+    clear: both;
+  }
 }
 
 // Text/Font Alternates
@@ -324,7 +326,7 @@
   }
 }
 @mixin position-absolute-custom($coords: 0 0 0 0, $fixed: false) {
-  @if $fixed == fixed {
+  @if $fixed == fixed or $fixed == true {
     position: fixed;
   }
   @else {
@@ -400,7 +402,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
 }
 
-// Gradients
+// Line Gradients
 @mixin background-gradient-linear($position: top, $from: #fff 50%, $color-a: false, $color-b: false, $color_c: false) {
   @if $color-a == false {
     background-color: $from;
@@ -558,127 +560,6 @@
         @content;
       }
     }
-    @if $point == large-screen {
-      @media // Very Large Screens
-      only screen and (min-width: #{$breakpoint-largescreen}),
-      only screen and (min-device-width: #{$breakpoint-largescreen})
-      {
-        @content;
-      }
-    }
-    @if $point == big-screen {
-      @media // Desktops and Laptops
-      only screen and (max-width: #{$breakpoint-bigscreen}),
-      only screen and (max-device-width: #{$breakpoint-bigscreen})
-      {
-        @content;
-      }
-    }
-    @if $point == app-width {
-      @media // Desktops and Laptops
-      only screen and (max-width: #{$breakpoint-appwidth}),
-      only screen and (max-device-width: #{$breakpoint-appwidth})
-      {
-        @content;
-      }
-    }
-    @if $point == ipad-landscape {
-      @media // iPad (portrait and landscape)
-      handheld,
-      only screen and (min-device-pixel-ratio: 2),
-      only screen and (max-width: #{$breakpoint-ipad-max})
-      and (min-width: #{$breakpoint-tablet-max})
-      {
-        @content;
-      }
-    }
-    @if $point == ipad-portrait {
-      @media // iPad (portrait)
-      handheld,
-      only screen and (min-device-pixel-ratio: 2),
-      only screen and (max-width: #{$breakpoint-ipad-min})
-      and (min-width: #{$breakpoint-tablet-min})
-        // and (orientation: portrait)
-      {
-        @content;
-      }
-    }
-    @if $point == tablet-landscape {
-      @media // iPad (portrait and landscape)
-      handheld,
-      only screen and (max-width: #{$breakpoint-tablet-max})
-      and (min-width: #{$breakpoint-iphone-min})
-      {
-        @content;
-      }
-    }
-    @if $point == tablet-portrait {
-      @media // iPad (portrait and landscape)
-      handheld,
-      only screen and (max-width: #{$breakpoint-tablet-min})
-      and (min-width: #{$breakpoint-iphone6-min})
-      {
-        @content;
-      }
-    }
-    @if $point == ipad-mini {
-      @media // iPad-Mini (portrait and landscape)
-      handheld,
-      only screen and (min-device-pixel-ratio: 1),
-      only screen and (max-width: #{$breakpoint-ipad-min})
-      and (min-width: #{$breakpoint-iphone-min})
-      {
-        @content;
-      }
-    }
-    @if $point == iphone6-landscape {
-      @media // iPhone 6 (portrait)
-      handheld,
-      only screen and (min-device-pixel-ratio: 2),
-      only screen and (max-width: #{$breakpoint-iphone6-max})
-      and (min-width: #{$breakpoint-iphone6-min})
-      {
-        @content;
-      }
-    }
-    @if $point == iphone6-portrait {
-      @media // iPhone 6 (portrait)
-      handheld,
-      only screen and (min-device-pixel-ratio: 2),
-      only screen and (max-width: #{$breakpoint-iphone6-min})
-      and (min-width: #{$breakpoint-iphone-min})
-      {
-        @content;
-      }
-    }
-    @if $point == iphone5-landscape {
-      @media // iPhone 5 (landscape, portrait is the same as iphone-portrait)
-      handheld,
-      only screen and (min-device-pixel-ratio: 2),
-      only screen and (max-width: #{$breakpoint-iphone5-max})
-      {
-        @content;
-      }
-    }
-    @if $point == iphone-landscape {
-      @media // iPhone (landscape)
-      handheld,
-      only screen and (min-device-pixel-ratio: 2),
-      only screen and (max-width: #{$breakpoint-iphone-max})
-      and (min-width: #{$breakpoint-iphone-min})
-      {
-        @content;
-      }
-    }
-    @if $point == iphone-portrait {
-      @media // iPhone (portrait)
-      handheld,
-      only screen and (min-device-pixel-ratio: 2),
-      only screen and (max-width: #{$breakpoint-iphone-min})
-      {
-        @content;
-      }
-    }
   }
 }
 
@@ -698,7 +579,7 @@
 }
 @mixin image-rendering($type: crisp) {
   @if $type == crisp {
-    @include prefixr(image-rendering, crisp-edges, moz cstm);
+  @include prefixr(image-rendering, crisp-edges, moz cstm);
     image-rendering: -webkit-optimize-contrast;
   }
   @else {
@@ -709,11 +590,11 @@
 
 // Columns
 @mixin columns-custom($column-width: 200px, $column-count: 0, $column-gap: 20px, $column-rule: false) {
-  $base-unit-size: 1;
-  $base-unit-type: 1px;
-  $base-unit: $base-unit-type * $base-unit-size !default;
-  @include prefixr(column-width, $column-width, webkit moz cstm);
-  @if type-of($column-count) == number and unitless($column-count) {
+    $base-unit-size: 1;
+    $base-unit-type: 1px;
+    $base-unit: $base-unit-type * $base-unit-size !default;
+    @include prefixr(column-width, $column-width, webkit moz cstm);
+    @if type-of($column-count) == number and unitless($column-count) {
     @include prefixr(column-count, $column-count, webkit moz cstm);
   }
   @else if type-of($column-count) == number and not unit($base-unit) != px {

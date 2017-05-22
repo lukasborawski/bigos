@@ -108,6 +108,7 @@ $font-colors-code: // font/text color code
   $color-lightergrey;
 $font-sizes-name:  // font sizes name
   huge,
+  large,
   big,
   medium,
   small,
@@ -115,9 +116,10 @@ $font-sizes-name:  // font sizes name
   micro;
 $font-sizes-number: // font sizes
   24,
+  22,
   20,
-  16,
-  14,
+  15,
+  13,
   12,
   10;
 
@@ -158,15 +160,15 @@ $font-icons-colors-code: // font-icons colors code
 
 // Headings
 $headings-count: 6; // number of global headings <h1>/<h6>
-$headings-size: 2.8; // base headings size
-$headings-size-factor: .3; // reduction in the scale of headings font size
-$headings-lineheight-size: 1; // base headings line height
-$headings-lineheight-factor: .5; // reduction in the scale of headings line height
+$headings-size: 60; // base headings size
+$headings-size-factor: 6; // reduction in the scale of headings font size
+$headings-lineheight-size: 58; // base headings line height
+$headings-lineheight-factor: 5; // reduction in the scale of headings line height
 $headings-bold: true; // disable bold font-face for h1-h3 headings
 
 // Mobile
 $media-queries: true; // disable media-queries system
-$grid-count: 12; // default grid columns count schema - recomended
+$grid-count: 12; // default grid columns count schema - recommended
 
 // Viewports
 $breakpoint-appwidth      : 980px;
@@ -189,7 +191,7 @@ $background-color-name: // background colors names
   bgrey,
   blightgrey,
   lightergrey;
-$background-color-code: // backgrund colors codes
+$background-color-code: // background colors codes
   $color-white,
   $color-black,
   $color-grey,
@@ -229,24 +231,30 @@ $global-images-path: "../img/"; // global images path
 
 // Links/Anhors
 $link-base-color: #000; // project base link color
-$link-decoration: false; // set link decoration
+$link-decoration: false; // set all links decoration
 $link-decoration-type: underline; // link decoration type
 $link-hover-type: none; // link hover decoration type
 $link-hover-color: $color-blue; // link hover color
 $link-visited-color: $color-grey; // link visited decoration type
+$link-class-hover-type: underline; // link class hover decoration type
+$link-class-naked-hover-type: color; // link class naked hover decoration type
+$link-class-naked-hover-color: $color-app-green; // link class naked default hover color
 
 // Buttons
 $button-size-factor: 2; // proportion of growth buttons size
 $button-size-proportion: panoramic; // proportion type of button presentation - use square for equal proportions
 $button-size-iteration: 6; // sizes iteration number
 $button-rounding-iteration: 6; // rounding iteration number
-$button-rounding-factor: 2; // proportion of growth rounded corrners size
+$button-rounding-factor: 2; // proportion of growth rounded corners size
+$button-rounding-full: 100px; // corners full rounding max size
 $button-text-style: regular; // default buttons text style - use custom to change it
 $button-text-size-factor: .5; // default buttons text size
 $button-text-color: $color-white; // default buttons text color
 $button-text-color-opposite: $color-black; // default buttons text color
 $button-text-visited-color: $color-lightenesgrey; // visited buttons text color
 $button-clear-background-color: false; // clear button background
+$button-clear-hover-color: $color-white; // buttons clear option text color
+$button-border: false; // buttons border disable
 $button-shadow: false; // buttons shadow disable
 $button-shadow-size: 0 3px 0; // size of buttons shadow
 $button-shadow-size-active: 0 1px 0; // size of active buttons shadow

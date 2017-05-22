@@ -3,7 +3,7 @@ Bigos
 
 Bigos is a simple, SCSS* only framework**. It's built for modern applications founded on multi module systems. It contains the set of prepared styles, classes and mixins. Comfortable in adaptation and implementation, let you systematize app based on scalable skeleton.
 
-**Major and most important advantage is brevity. This framework includes only base and most needed components. You will not find here complex blocks of styles like in Bootstrap or Fundation. It's only a strong backbone of your feature application. The rest and more advanced features you can define a base on prepared code.** 
+**Major and most important advantage is brevity. This framework includes only base and most needed components. You will not find here complex blocks of styles like in Bootstrap or Fundation. It's only a strong backbone of your feature application. The rest and more advanced features you can define a base on prepared code.**
 
 **Aldo, the whole framework is a lean on special class connection system (CCS) and it may impose the certain character of application code writing. Before you go deeper, first check [syntax](#classes-syntax-class-connection-structure) behind it. After this, you can move on.**
 
@@ -59,22 +59,22 @@ Here's how the whole framework is built. Following individual directories and th
 
 <a name=""></a>
 #### Structure of directories
-	bigos	
+	bigos
 	|---src
-	    |---fonts
-	    |---img
-	    |---js
-	    |---markup
-	    |---style
-	        |---scss
+		|---fonts
+		|---img
+		|---js
+		|---markup
+		|---style
+			|---scss
 	|---test
-	        
+
 ## Normalize
 Bigos includes '_normalize.scss' file with styles normalize system. It's based on [Normalize CSS](https://necolas.github.io/normalize.css/ "Normalize CSS") by Nicolas Gallagher. So, framework styles are not reset to default null values - they are adapted to application structure.
-	        
+
 ## Variables
 
-All variables are defined in `_variables.scss` file. They are devided into three parts: project, global and custom. 
+All variables are defined in `_variables.scss` file. They are devided into three parts: project, global and custom.
 
 * Project part defines all used and dedicated variables like colors or sizes - you can add/create that as much as you want.
 * Global variables are used precisely in the whole framework and shuold stay unchaned.
@@ -84,7 +84,7 @@ All variables are accurately described in the source file.
 
 ## Helpers / Mixins
 
-[Mixins](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins) are small pieces of code that provide lots of combined style features. They can be used as a definition of box layouts, backgrounds, gradients, positions or shifts. Mixins can contain customized variables that create prepared and systematized blocks of code. 
+[Mixins](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#mixins) are small pieces of code that provide lots of combined style features. They can be used as a definition of box layouts, backgrounds, gradients, positions or shifts. Mixins can contain customized variables that create prepared and systematized blocks of code.
 
 Mixins are an integral part of the framework. You can use them with/as special dedicated class system or separatly. Here you can feel free.
 
@@ -137,9 +137,9 @@ As you can see - or not - that kind of class connection gives us some special am
 
 Based on this structure you can define style levels depending on the complexity of nesting several HTML elements. It may be familiar with [BEM](https://en.bem.info/methodology/) methodology (block, element, modifire), and acording to it we can build something similar and common.
 
-Of course there is a black side of this solution. Sometimes when classes will have the same name, parts can overwrites each other. To avoid this try to keep unique class modifires and options even for main blocks/parents. 
+Of course there is a black side of this solution. Sometimes when classes will have the same name, parts can overwrites each other. To avoid this try to keep unique class modifires and options even for main blocks/parents.
 
-OK, back to structure... 
+OK, back to structure...
 
 
 ```scss
@@ -155,18 +155,18 @@ OK, back to structure...
 			bottom: 0px;			
 		}
 	}
-} 
+}
 ```
 
 CSS output:
 
-```css 
+```css
 [class*="block"] {
 	display: inline-block
 }
 [class*="block"][class*="-absolute"] {
 	position: absolute;
-	left: 0px;	
+	left: 0px;
 }
 [class*="block"][class*="-position"][class*="-top"] {
 	top: 0px;
@@ -195,7 +195,7 @@ Now you can use it in your HTML in several ways:
 }
 ```
 
-Another very important advantage of this construction is use of `class-model` independently within defined code. Regardless of which part of the class function will be used, there will be ability to inject unplanned code. 
+Another very important advantage of this construction is use of `class-model` independently within defined code. Regardless of which part of the class function will be used, there will be ability to inject unplanned code.
 
 For example we have this HTML element:
 
@@ -211,7 +211,7 @@ body {
 			// code here
 			@include class-modifire(with) {
 				// code here
-				// 
+				//
 				// css output: [class*="div"][class*="-with"]
 			}
 		}
@@ -229,7 +229,7 @@ body {
 ```
 
 <a name="class-option"></a>
-OK. At the end remember to not use `class-option` notation without nested in `class-modifire` above. Element will be not recognized as a dedicated class connection one and styles for it will be not assigned. Be careful especially when you are using the predefined classes. 
+OK. At the end remember to not use `class-option` notation without nested in `class-modifire` above. Element will be not recognized as a dedicated class connection one and styles for it will be not assigned. Be careful especially when you are using the predefined classes.
 
 **Tip**: Inside framework code there will be a lot of class connections examples, analize them to learn more.
 
@@ -252,7 +252,7 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 
 ---
 
-### Visuals 
+### Visuals
 
 **Font size***
 
@@ -261,7 +261,7 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 * `$font-base-size` variable defined globally
 * `$inherit` - switch to false to overwrite font size value
 
-**Line height*** 
+**Line height***
 
 `line-height($line-height: $font-base-line-height)`
 
@@ -294,15 +294,15 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 **Border radius** - `border-radius($radius: 5px)` - set `50%` value to fully round your object
 
 <a name="border-radius-unregullar"></a>
-**Border radius unregullar** 
+**Border radius unregullar**
 
 `border-radius-unregullar($top-left: 0, $top-right: 0, $bottom-left: 0, $bottom-right: 0)`
 
 * remember that you can use here more than one value as a one corner setup ([more about here](https://lea.verou.me/humble-border-radius/#for-browser))
 
-**Box shadow** 
+**Box shadow**
 
-`box-shadow($shadow-1, $shadow-2, ..., $shadow-4)` 
+`box-shadow($shadow-1, $shadow-2, ..., $shadow-4)`
 
 * possibility of using more than one box shadow setup
 
@@ -333,7 +333,7 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 
 * `$size` variable should have one (only for width) or two (for width and height) values notation like `20px` or `20px 100px`, of course you can use any other unit like `pt` or `vm/hm`
 
-**Position absolute centered** 
+**Position absolute centered**
 
 `position-absolute-center($top: 0)`
 
@@ -344,7 +344,7 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 
 `position-absolute-custom($coords: 0 0 0 0, $fixed: false)`
 
-* `$coords` of absolute position (top right bottom left) should be written without commas 
+* `$coords` of absolute position (top right bottom left) should be written without commas
 * notice that unitless values will be not included as a position value - e.g. if you set `0px 0 0 0px` in output there will be only `position: absolute; top: 0px; left: 0px;` notation
 * change `$fixed` variable to exactly `fixed` value to set position on it
 
@@ -359,7 +359,7 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 * `$image` variable is only a file name, if you have non-typical images/backgrounds path please change `$global-images-path` variable in `_variables.scss` file
 * you must provide all of variables to correctly set background as a block cover - great for flat big photos layouts
 
-**Custom background** 
+**Custom background**
 
 `background-custom($image, $position-horizontal: center,  $position-vertical: top, $background-repeat: no-repeat, $background-size: auto)`
 
@@ -408,14 +408,14 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 
 *more and complex specs about CSS3 transforms you will find [here](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function)
 
-**Transition all** 
+**Transition all**
 
-`transition-all($time: 300ms)` 
+`transition-all($time: 300ms)`
 
 * it will smoothly transit all defined properties
 * you can change transition time
 
-**Custom transition** 
+**Custom transition**
 
 `transition-custom($property, $time: 300ms, $type: ease-in-out)`
 
@@ -430,7 +430,7 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 
 * these two mixins must act together
 * transitions with cubic bezier effect are complicated but very powerfull
-* you can use them instead of more aggravating keyframes animations 
+* you can use them instead of more aggravating keyframes animations
 * more about cubic bezier transitions you will find [here](http://callmenick.com/post/level-up-your-css-animations-with-cubic-bezier), also you can use ready to go [generator](http://cubic-bezier.com/#.17,.67,.83,.67)
 
 **Animations**
@@ -440,10 +440,10 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 `animation-keyframe(animation-name)`
 
 * these two mixins must act together
-* `animation-custom` mixin define animation name and coordinates (these must arrive with no comma notation): 
+* `animation-custom` mixin define animation name and coordinates (these must arrive with no comma notation):
 	* `$duration` - time duration of the animation
 	* `$delay` - delay before the animation starts
-	* `$iteration` - the number of animation repetitions 
+	* `$iteration` - the number of animation repetitions
 * `animation-keyframe` is an defined above animation call, in content of this mixin you can set a whole scenario and animation schema
 
 Simple usage example:
@@ -458,7 +458,7 @@ div {
 	}
 }
 ```
-This will build "fadeout" animation that will take 2 seconds, will be repeated infinite times and will be delayed 0 seconds. The core feature will be change opacity property from 1 to 1 in a 100% process schema. 
+This will build "fadeout" animation that will take 2 seconds, will be repeated infinite times and will be delayed 0 seconds. The core feature will be change opacity property from 1 to 1 in a 100% process schema.
 
 More about CSS animations you can find [here](http://www.w3schools.com/css/css3_animations.asp).
 
@@ -473,19 +473,19 @@ There are two types of mobile mixins. They are built in a slightly different way
 This is the list of dimension names and connected breakpoint variables defined in `_variables.scss` file:
 
 ```
-large-screen 		- $breakpoint-largescreen
-big-screen			- $breakpoint-bigscreen
-app-width			- $breakpoint-appwidth
-ipad-landscape		- $breakpoint-ipad-max
-ipad-portrait		- $breakpoint-ipad-min	
-tablet-portrait		- $breakpoint-tablet-min
-tablet-landscape	- $breakpoint-tablet-max
-ipad-mini			- $breakpoint-ipad-min
-iphone6-landscape	- $breakpoint-iphone6-max
-iphone6-portrait	- $breakpoint-iphone6-min
-iphone5-landscape	- $breakpoint-iphone5-max
-iphone-landscape	- $breakpoint-iphone-max
-iphone-portrait		- $breakpoint-iphone-min
+large-screen 				- $breakpoint-largescreen
+big-screen 				- $breakpoint-bigscreen
+app-width 				- $breakpoint-appwidth
+ipad-landscape 			- $breakpoint-ipad-max
+ipad-portrait	 			- $breakpoint-ipad-min
+tablet-portrait 			- $breakpoint-tablet-min
+tablet-landscape 		- $breakpoint-tablet-max
+ipad-mini 				- $breakpoint-ipad-min
+iphone6-landscape 		- $breakpoint-iphone6-max
+iphone6-portrait 		- $breakpoint-iphone6-min
+iphone5-landscape 		- $breakpoint-iphone5-max
+iphone-landscape 		- $breakpoint-iphone-max
+iphone-portrait 			- $breakpoint-iphone-min
 ```
 Now, the core of mobile mixins usage looks like this:
 
@@ -499,7 +499,7 @@ If you want to use it with custom viewport values use:
 	// for all devices with 640px width or less
 }
 ```
-as you probably noticed there is one other variable `$direction`. This define viewport/device width range that will assign code to the resolution. 
+as you probably noticed there is one other variable `$direction`. This define viewport/device width range that will assign code to the resolution.
 
 Three options in here:
 
@@ -524,20 +524,20 @@ and usage:
 @include breakpoint(640px, 'to') {
 	// content code here will append styles
 	// for all devices that can display less then 640px but not more
-	
+
 	// it's the same mixin as lonely `breakpoint(640px)`
 	// except that here we know exactly what range is defined
 }
 ```
 
-This was the first group of mobile mixins. The second one is more transparent. 
+This was the first group of mobile mixins. The second one is more transparent.
 
 So, as a value of `$point` use one of predefined dimension names. E.g.
 
 ```scss
 @include breakpoint(iphone6-landscape) {
 	// content code here will append styles
-	// for iPhone 6 landscape view	and less	
+	// for iPhone 6 landscape view	and less
 }
 ```
 *notice that all of this predefined rules comes with additional style properties like device pixel ratio
@@ -548,9 +548,9 @@ So, as a value of `$point` use one of predefined dimension names. E.g.
 
 **Calc** - `calc($property, $value)` - ([more about here](https://developer.mozilla.org/en-US/docs/Web/CSS/calc)) - great for mobile features
 
-**Interface Appearance** 
+**Interface Appearance**
 
-`appearance($value: none)` - 
+`appearance($value: none)` -
 
 * the appearance property is used to display an element using a platform-native styling based on the users' operating system's theme
 * you can enable it using this mixin
@@ -559,7 +559,7 @@ So, as a value of `$point` use one of predefined dimension names. E.g.
 
 **Image render** - `image-rendering($type: crisp)` - ([more about here](https://developer.mozilla.org/en-US/docs/Web/CSS/image-rendering))
 
-**Columns** 
+**Columns**
 
 `columns-custom($column-width: 200px, $column-count: 0, $column-gap: 20px, $column-rule: false)`
 
@@ -570,9 +570,9 @@ So, as a value of `$point` use one of predefined dimension names. E.g.
 
 ## Global classes and components
 
-As already mentioned, framework has prepared class system. They can help build overall layout structure and support main and common project styling. You will find here definitions for that kind of features like grids, shifts, borders, backgrounds, text, etc. All of them are defined in special `_base.scss` file. They are strictly based on system variables. 
+As already mentioned, framework has prepared class system. They can help build overall layout structure and support main and common project styling. You will find here definitions for that kind of features like grids, shifts, borders, backgrounds, text, etc. All of them are defined in special `_base.scss` file. They are strictly based on system variables.
 
-Before you will start using them check again the class connection methodology [here](#classes-syntax-class-connection-structure), and the model/modifire/option rules (also [read this](#class-option)). 
+Before you will start using them check again the class connection methodology [here](#classes-syntax-class-connection-structure), and the model/modifire/option rules (also [read this](#class-option)).
 
 <a name="array-variables"></a>
 **Important** - At some class models there are defined speical pair of variables (`$property-option-name` and `$property-option-code`). They appear to define colors and sizes of several elements. They are written in a comma notation. Please keep them unchanged because this construction works like array and system will iterate by them to build these classes. You can add another colors and corresponding names, aldo remember to keep the same number of both and keep some color prefix. Prefix? What for? In some cases compiler may treat them as a hex color presentation and generate color code instead of color name.
@@ -601,25 +601,22 @@ The `link` class - you can use it for inline text elements.
 Class model
 
 ```html
-// this will append all properties from normal 
-// link element and will set it as a block element
-<span class="link"></span> 
-
+<!-- this will append all properties from normal link element and will set it as a block element -->
+<span class="link"></span>
 ```
 
 Class modifires
 
 ```html
-// the same as for above one but as a inline-block element
+<!-- the same as for above one but as a inline-block element -->
 <span class="link-inline"></span>
 
-// the same as normal link element but 
-// without any decoration for normal and hover state
+<!-- the same as normal link element but without any decoration for normal and hover state -->
 <span class="link-naked"></span>
 
-// of course you can use them together
+<!-- of course you can use them together -->
 <span class="link-naked-inline"></span>
-// or
+<!-- or -->
 <span class="link-inline-naked"></span>
 ```
 ---
@@ -631,39 +628,36 @@ This class will help you to set preferred element cursor type
 Class model
 
 ```html
-// this will set only cursor property on auto
-// for all element children
+<!-- this will set only cursor property on auto for all element children -->
 <section class="cursor"></section>
-
 ```
 
 Class modifires
 
 ```html
-// this will set cursor property on pointer
+<!-- this will set cursor property on pointer -->
 <section class="cursor-pointer"></section>
 
-// this will set cursor property on default
+<!-- this will set cursor property on default -->
 <section class="cursor-default"></section>
 
-// this will set cursor property on auto
+<!-- this will set cursor property on auto -->
 <section class="cursor-auto"></section>
-
 ```
 
 Class option
 
 ```html
-// this will set defined cursor property for all children
+<!-- this will set defined cursor property for all children -->
 <section class="cursor-pointer_inherit"></section>
-// or
+<!-- or -->
 <section class="cursord-default_inherit"></section>
 ```
 ---
 
 **Backgrounds**
 
-By using background class model you can set colors for them. 
+By using background class model you can set colors for them.
 
 There are defined two special variables for this purpose:
 
@@ -675,32 +669,28 @@ There are defined two special variables for this purpose:
 Class model
 
 ```html
-// it does not do anything
-// we need class modifire and option
+<!-- it does not do anything - we need class modifire and option -->
 <section class="background"></section>
 ```
 
 Class modifire
 
 ```html
-// it does not do anything
-// we need class option
+<!-- it does not do anything - we need class option -->
 <section class="background-color"></section>
 ```
 
 Class option
 
 ```html
-// use class option as a defined color name 
-// to set background for section element
+<!-- use class option as a defined color name to set background for section element -->
 <section class="background-color_bwhite"></section>
-// or 
+<!-- or -->
 <section class="background-color_bblack"></section>
-// or 
+<!-- or -->
 <section class="background-color_grey"></section>
 
-// you can use all of defined colors in 
-// _variables.scss file and feel free to add your's
+<!-- you can use all of defined colors in _variables.scss file and feel free to add your's -->
 ```
 ---
 
@@ -711,8 +701,7 @@ This class construction is more complicated and has a lot of options.
 But first class model
 
 ```html
-// it does not do anything
-// we need class modifire and option
+<!-- it does not do anything - we need class modifire and option -->
 <section class="border"></section>
 ```
 
@@ -724,9 +713,9 @@ Usage:
 
 ```html
 <section class="border_top"></section>
-// or
+<!-- or -->
 <section class="border_right"></section>
-// or
+<!-- or -->
 <section class="border_full"></section>
 ```
 
@@ -740,32 +729,31 @@ Usage:
 
 ```html
 <section class="border-color_bwhite"></section>
-// or
+<!-- or -->
 <section class="border-color_bblack"></section>
-// or
+<!-- or -->
 <section class="border-color_bred"></section>
 
-// color as a class modifire and
-// color name as a class option
+<!-- color as a class modifire and color name as a class option -->
 ```
 
 Using this class notation you will recive full elemnet border color, but if you want to set color for only one part of element border, connect these two class modifires like that:
 
 ```html
 <section class="border_left-color_bwhite"></section>
-// or
+<!-- or -->
 <section class="border_full-color_bblack"></section>
-// or
+<!-- or -->
 <section class="border_bottom-color_bred"></section>
-// or
+<!-- or -->
 <section class="border_bottom_right-color_bred"></section>
-// or
+<!-- or -->
 <section class="border_bottom_top-color_bred"></section>
 ```
 
 *Border radius*
 
-There are four options for style element border radius 
+There are four options for style element border radius
 
 * `circle` - will set fully rounded element
 * `small, medium, big` - defined in `_variables.scss` file, by default in sequence `2px, 5px, 10px`
@@ -774,7 +762,7 @@ Usage:
 
 ```html
 <section class="border-radius_circle"></section>
-// or
+<!-- or -->
 <section class="border-radius_small"></section>
 ```
 For more advanced border radius configuration use dedicated mixin ([more about here](#border-radius-unregullar)).
@@ -806,62 +794,62 @@ For shift type responds class modifire `margin` or `padding` used with `shift` c
 <section class="shift-margin_1"></section>
 ```
 
-OK, quick instruction - this will set margin property on `5px`. 5 because `$shift-overall` variable is `5px`. Increase the factor to 2 to get `10px` value. By default there is 6 steps interation and this will provide `30px` value of margin property. The same for paddings. To reach higher range, change `$shift-iteration` variable. 
+OK, quick instruction - this will set margin property on `5px`. 5 because `$shift-overall` variable is `5px`. Increase the factor to 2 to get `10px` value. By default there is 6 steps interation and this will provide `30px` value of margin property. The same for paddings. To reach higher range, change `$shift-iteration` variable.
 
 Full options:
 
 ```html
-// section { margin: 5px; }
+<!-- section { margin: 5px; } -->
 <section class="shift-margin_1"></section>
 
-// section { margin: 15px; }
+<!-- section { margin: 15px; } -->
 <section class="shift-margin_3"></section>
 
-// section { margin: 30px; }
+<!-- section { margin: 30px; } -->
 <section class="shift-margin_6"></section>
 
-// section { padding: 30px; }
+<!-- section { padding: 30px; } -->
 <section class="shift-padding_6"></section>
 ```
 
 Sides options:
 
 ```html
-// section { margin: 10px 0 0 0; }
+<!-- section { margin: 10px 0 0 0; } -->
 <section class="shift-margin_2-top"></section>
 
-// section { margin: 0 10px 0 0; }
+<!-- section { margin: 0 10px 0 0; } -->
 <section class="shift-margin_2-right"></section>
 
-// section { padding: 0 0 0 25px; }
+<!-- section { padding: 0 0 0 25px; } -->
 <section class="shift-padding_5-left"></section>
 ```
 
 And vertical, horizontal options:
 
 ```html
-// section { margin: 10px 0; }
+<!-- section { margin: 10px 0; } -->
 <section class="shift-margin_2-vertical"></section>
 
-// section { padding: 0 10px; }
+<!-- section { padding: 0 10px; } -->
 <section class="shift-padding_2-horizontal"></section>
 ```
 
 ### Fonts / Texts
 
-`strong` tag is handled by custom predefined font variables. So if you are using custom font face with bold variant and this font face is your master, all strong elements will recive bold font face for `font-family` property. 
+`strong` tag is handled by custom predefined font variables. So if you are using custom font face with bold variant and this font face is your master, all strong elements will recive bold font face for `font-family` property.
 
 ---
 
 **Text**
 
-`text` class model comes with `color`, `size` and `align` modifires. 
+`text` class model comes with `color`, `size` and `align` modifires.
 
 Colors are defined as a standard list of name/code notation. You can use all of defined colors or add your own in `_variables.sccs` file.
 
 ```html
 <span class="text-color_bwhite"></span>
-// or
+<!-- or -->
 <span class="text-color_bgrey"></span>
 ```
 
@@ -869,7 +857,7 @@ Almost the same "relationship" applies to text sizes. For this, there are `$font
 
 ```html
 <span class="text-size_small"></span>
-// or
+<!-- or -->
 <span class="text-color_big"></span>
 ```
 
@@ -877,29 +865,29 @@ Text align - `left`, `center` and of course `right`.
 
 ```html
 <span class="text-align_center"></span>
-// or
+<!-- or -->
 <span class="text-align_right"></span>
 ```
 
 Text uppercase - use `uppercase` modifire.
 Text capitalize - use `capitalize` modifire.
 
-**Important** - The text class model is a great opportunity to show connection feature. 
+**Important** - The text class model is a great opportunity to show connection feature.
 
 ```html
-// set text color to white, size to tiny (12px) and alignment to right
+<!-- set text color to white, size to tiny (12px) and alignment to right -->
 <span class="text-color_bwhite-size_tiny-align_right"></span>
 
-// or set alignment on center and size to huge
+<!-- or set alignment on center and size to huge -->
 <span class="text-align_center-size_huge"></span>
 ```
 ---
 
 **Fonts**
 
-Configuration for fonts is simple and fully based on predefined variables. 
+Configuration for fonts is simple and fully based on predefined variables.
 
-Want to use custom font face? Enable it by changing `$font-custom` to `true` and define names for several typeface. Your font face is master? Set `$font-custom-master` on `true`. 
+Want to use custom font face? Enable it by changing `$font-custom` to `true` and define names for several typeface. Your font face is master? Set `$font-custom-master` on `true`.
 
 Secondary custom font face? Like above, but use special variables for `$font-secondary`. Framework does not provide third option for custom font face. Three different font faces? Really?
 
@@ -936,17 +924,17 @@ By default this model does nothing. As probably you thought there is no any `dis
 Add full `width` and `height` size for box.
 
 ```html
-// width on 100%
+<!-- width on 100% -->
 <section class="box-full_width"></section>
 
-// height on 100%
+<!-- height on 100% -->
 <section class="box-full_height"></section>
 ```
 
 *Relative box*
 
 ```html
-// relative box position
+<!-- relative box position -->
 <section class="box-relative"></section>
 ```
 
@@ -955,80 +943,80 @@ Add full `width` and `height` size for box.
 <a name="grid-system"></a>
 **Grid**
 
-Grid system construction is simple and generally quite universal. There is `grid` parent element and inside `column` notation. By default grid is splitted into 12 parts - if you want less or more please change `$grid-count` global variable. 
+Grid system construction is simple and generally quite universal. There is `grid` parent element and inside `column` notation. By default grid is splitted into 12 parts - if you want less or more please change `$grid-count` global variable.
 
 Column is an another class model and it cooperates closely with `grid` parent. For them we have `width` modifire with number notation (1-12). Width of columns is defined in `%` units.
 
 Usage:
 
 ```html
-// /-/------------/
+<!-- /-/------------/ -->
 <section class="box-grid">
 	<div class="column-width_1"></section>
 	<div class="column-width_11"></section>
 </section>
 
-// /--/-----------/
+<!-- /--/-----------/ -->
 <section class="box-grid">
 	<div class="column-width_2"></section>
 	<div class="column-width_10"></section>
 </section>
 
-// /---/----------/
+<!-- /---/----------/ -->
 <section class="box-grid">
 	<div class="column-width_3"></section>
 	<div class="column-width_9"></section>
 </section>
 
-// /----/---------/
+<!-- /----/---------/ -->
 <section class="box-grid">
 	<div class="column-width_4"></section>
 	<div class="column-width_8"></section>
 </section>
 
-// /-----/--------/
+<!-- /-----/--------/ -->
 <section class="box-grid">
 	<div class="column-width_5"></section>
 	<div class="column-width_7"></section>
 </section>
 
-// /------/-------/
+<!-- /------/-------/ -->
 <section class="box-grid">
 	<div class="column-width_6"></section>
 	<div class="column-width_6"></section>
 </section>
 
-// /-------/-----/
+<!-- /-------/-----/ -->
 <section class="box-grid">
 	<div class="column-width_7"></section>
 	<div class="column-width_5"></section>
 </section>
 
-// /--------/----/
+<!-- /--------/----/ -->
 <section class="box-grid">
 	<div class="column-width_8"></section>
 	<div class="column-width_4"></section>
 </section>
 
-// /---------/---/
+<!-- /---------/---/ -->
 <section class="box-grid">
 	<div class="column-width_9"></section>
 	<div class="column-width_3"></section>
 </section>
 
-// /----------/--/
+<!-- /----------/--/ -->
 <section class="box-grid">
 	<div class="column-width_10	"></section>
 	<div class="column-width_2"></section>
 </section>
 
-// /-----------/-/
+<!-- /-----------/-/ -->
 <section class="box-grid">
 	<div class="column-width_11"></section>
 	<div class="column-width_1"></section>
 </section>
 
-// /------------/
+<!-- /------------/ -->
 <section class="box-grid">
 	<div class="column-width_12"></section>
 </section>
@@ -1042,17 +1030,17 @@ Be shure that for the `grid` parent is defined width. If not, use `full_width` c
 	<div class="column-width_1"></section>
 </section>
 
-// by default grid box has relative position
+<!-- by default grid box has relative position -->
 ```
 At the end you need to know that `grid` parent will set additional properties for it self.
 
 It will recive:
 
 * `font-size` property on `0`
-* `position` on `relative` 
+* `position` on `relative`
 * and `height` on `auto`
 
-`font-size` reset is for full and hassle-free columns fitting. 
+`font-size` reset is for full and hassle-free columns fitting.
 
 Where is grid gaps? There is no any. Why you ask. Because it affects simple and clean construction of grid system. However there is simple way to achive this solution. How? By using padding shifts.
 
@@ -1063,7 +1051,7 @@ Usage:
 	<div class="column-width_11 shift-padding_2-left"></section>
 	<div class="column-width_1 shift-padding_2-right"></section>
 </section>
-// or
+<!-- or -->
 <section class="box-grid-full_width">
 	<div class="column-width_4 shift-padding_2-horizonatl"></section>
 	<div class="column-width_4 shift-padding_2-horizonatl"></section>
@@ -1090,18 +1078,18 @@ This class modifire uses `transform-translate` to fit elements vertically center
 *Aligned to ...*
 
 ```html
-// top
+<!-- top -->
 <section class="box-vertical_align_top"></section>
-// middle
+<!-- middle -->
 <section class="box-vertical_align_middle"></section>
-// bottom
+<!-- bottom -->
 <section class="box-vertical_align_bottom"></section>
-// baseline
+<!-- baseline -->
 <section class="box-vertical_align_baseline"></section>
 ```
 Remember that all alinged elements should have set `inline-block` value for `display` property. You can achieve this by using inline class modifire below.
 
---- 
+---
 
 **Box with inline elements**
 
@@ -1110,17 +1098,17 @@ OK, you have simple modifire `inline` and two options to set all first level chi
 Usage:
 
 ```html
-// all first level children will be inline-block elements
+<!-- all first level children will be inline-block elements -->
 <section class="box-inline_full"></section>
 
-// selected elements will be inline-block
+<!-- selected elements will be inline-block -->
 <section class="box-inline">
 	<div class="element-inline"></div>
 	<div></div>
 </section>
 ```
 
---- 
+---
 
 **Box with image inside**
 
@@ -1133,8 +1121,8 @@ Usage:
 	<img src="" class="element-image" />
 </section>
 
-// or if image is placed in another block
-// use inherit class option
+<!-- or if image is placed in another block
+use inherit class option -->
 <section class="box-image">
 	<div class="element-image_inherit">
 		<img src="" />
@@ -1142,16 +1130,16 @@ Usage:
 </section>
 ```
 
---- 
+---
 
 **Floated box**
 
 Usage:
 
 ```html
-// right
+<!-- right -->
 <section class="box-float_right"></section>
-// or left
+<!-- or left -->
 <section class="box-float_left"></section>
 ```
 Note that this will set `float` property exactly for this element, not for children.
@@ -1160,7 +1148,7 @@ Note that this will set `float` property exactly for this element, not for child
 
 **Flex box**
 
-Right now flex box is in a very, let's say light state, but of course you can use it in fully functional way. 
+Right now flex box is in a very, let's say light state, but of course you can use it in fully functional way.
 
 Use `flex` class modifire and particular options:
 
@@ -1172,7 +1160,7 @@ Usage:
 
 ```html
 <section class="box-flex_end"></section>
-// or
+<!-- or -->
 <section class="box-flex_center"></section>
 ```
 
@@ -1184,9 +1172,9 @@ Usage (with special class modifire `items`):
 
 ```html
 <section class="box-flex-items_top"></section>
-// or
+<!-- or -->
 <section class="box-flex-items_middle"></section>
-// or
+<!-- or -->
 <section class="box-flex-items_streach"></section>
 ```
 
@@ -1198,10 +1186,10 @@ Usage (with special class modifire/option notation `items_direction`):
 
 ```html
 <section class="box-flex-items_direction_row"></section>
-// or
+<!-- or -->
 <section class="box-flex-items_direction_col"></section>
 
-// of course you can use them together
+<!-- of course you can use them together -->
 <section class="box-flex-items_top-items_direction_col"></section>
 ```
 
@@ -1210,13 +1198,13 @@ Usage (with special class modifire/option notation `items_direction`):
 Except all of that, you also have possibility to set sequence of flex box items (`flex` property). By default there is 1-6 sequence iteration, but you can change it by changing `$flex-box-items-sequence-count` variable. After this, set for one of flex box item one of sequence class, like this:
 
 ```html
-// simple and regullar order
+<!-- simple and regullar order -->
 <section class="box-flex">
 	<div class="box-flex-item-sequence_1"></div>
 	<div class="box-flex-item-sequence_2"></div>
 	<div class="box-flex-item-sequence_3"></div>
 </section>
-// or in the none regullar order
+<!-- or in the none regullar order -->
 <section class="box-flex">
 	<div class="box-flex-item-sequence_4"></div>
 	<div class="box-flex-item-sequence_1"></div>
@@ -1228,117 +1216,15 @@ More about flexbox layout you will find [here](https://css-tricks.com/snippets/c
 
 ---
 
-### Mobile
-
-Mobile dedicated classes are strictly connected with [grid system](#grid-system). The one and only purpose of using them is for break grid based column layout. There are defined coresponded break point dimension names to do this - break layout - in some ways. 
-
-Main class model is:
-
-```html
-<section class="rwd"></section>
-```
-
-The class modifire/option notations collected in `$dimension-name` variable:
-
-```
-break_app_width				=>		$breakpoint-appwidth      : 980px;
-break_landscape_ipad		=>		$breakpoint-ipad-max      : 1024px;
-break_portrait_ipad			=>		$breakpoint-ipad-min      : 768px;
-break_landscape_tablet		=>		$breakpoint-tablet-max    : 800px;
-break_portrait_tablet		=>		$breakpoint-tablet-min    : 600px;
-break_landscape_iphone6		=>		$breakpoint-iphone6-max   : 667px;
-break_portrait_iphone6		=>		$breakpoint-iphone6-min   : 375px;
-break_landscape_iphone5		=>		$breakpoint-iphone5-max   : 568px;
-break_landscape_iphone		=>		$breakpoint-iphone-max    : 480px;
-break_portrait_iphone		=>		$breakpoint-iphone-min    : 320px;
-```
- 
-As you can see their names are similar to devices breakpoints. Also as was mentioned above they have strict dimension value representation. Additionaly these values are used as a mobile/rwd media-queries mixins names. Do not change any of this, or if you need, change them both - names stays equal.
-
-*Break options*
-
-You can break layout on three ways (class options): `full`, `half` and `quarter`. 
-
-To do this there is a special class modifire `cut`.
-
-**Important** - before we digg into some example, some summary. As you can see the mobile/rwd class model consists of two parts - the device declaration and sord of behavior declaration. Use them together to achieve device expected layout changing effect.
-
-And now, usage:
-
-```html
-// normal grid markup
-<section class="box-grid-full_width">
-	<div class="column-width_6"></div>
-	<div class="column-width_6"></div>
-</section>
-
-// now with mobile breaks
-<section class="box-grid-full_width">
-	<div class="column-width_6 rwd-break_portrait_iphone6-cut_full"></div>
-	<div class="column-width_6 rwd-break_portrait_iphone6-cut_full"></div>
-</section>
-// or
-<section class="box-grid-full_width">
-	<div class="column-width_6 rwd-break_landscape_tablet-cut_full"></div>
-	<div class="column-width_6 rwd-break_landscape_tablet-cut_full"></div>
-</section>
-```
-What happened in here? There is two, straight columns layout - typical grid. Now, by adding `rwd-break` notation with `_landscape_tablet` option we set these two columns on full width on tablet screen width devices, and this was handled by using `cut` modifire with `full` option. 
-
-Want to cut unregullar layout on two or four straight columns? Use: `cut_half` or `cut_quarter` class modifire.
-
-By using `cut` modifire you can also hide choosen element. To do this use `hidden` class option, like this:
-
-```html
-<section class="box-grid-full_width">
-	<div class="column-width_6 rwd-break_portrait_iphone6-cut_hidden"></div>
-	<div class="column-width_6 rwd-break_portrait_iphone6-cut_full"></div>
-</section>
-```
-After this, second `div` will take `100%` width and first one will disappear - on iPhone 6 portrait view. 
-
-*Resets*
-
-At the end there are some mobile reset classes. Resets? OK, but for what? For `margin`, `padding` and `border` properties. If you want to reset some of this property for selected device use 'reset' modifire with dedicated class option.
-
-There is two levels of this class options. First one define property, second one define which part we want to reset.
-
-Options variants:
-
-* property type option: `margin`, `padding`, `border`
-* side option: `top`, `bottom`, `left`, `right` and `full`
-
-Usage: 
-
-```html
-<section class="box-grid-full_width">
-	// this will reset all margins
-	<div class="column-width_6 rwd-break_portrait_tablet-reset_margin_full"></div>
-	// this will reset only left margin
-	<div class="column-width_6 rwd-break_portrait_tablet-reset_margin_left"></div>
-	
-	// the same for borders
-	// this will reset all element borders
-	<div class="column-width_6 rwd-break_portrait_tablet-reset_border_full"></div>
-	// this will reset right border of element	
-	<div class="column-width_6 rwd-break_portrait_tablet-reset_border_right"></div>
-	
-	// you can use them together, but not with different options
-	<div class="column-width_6 rwd-break_portrait_tablet-reset_border_full-reset_margin_full"></div>
-</section>
-```
-
----
-
 ### Collections
 
 TBA
- 
+
 ---
 
 ### Buttons
 
-Buttons may be one of the most important elements on our project HTML markup. They navigate and supports page actions. That's why we should have very wide variety of customization. Framework will provides many options for buttons such as sizes, colors and positions. Let's dive into them... 
+Buttons may be one of the most important elements on our project HTML markup. They navigate and supports page actions. That's why we should have very wide variety of customization. Framework will provides many options for buttons such as sizes, colors and positions. Let's dive into them...
 
 Main class model:
 
@@ -1346,7 +1232,7 @@ Main class model:
 <button type="button" class="button">Click me</button>
 ```
 
-Buttons take over custom font face if it will be defined. But to enable this you have to change one special `$button-text-style` variable from `ragular` to `custom`. By default - if it's defined - buttons will take `$font-base-bold` type face. Have defined other type faces? To set ragular use `regular` class modifire, to use thin use `thin`... 
+Buttons take over custom font face if it will be defined. But to enable this you have to change one special `$button-text-style` variable from `ragular` to `custom`. By default - if it's defined - buttons will take `$font-base-bold` type face. Have defined other type faces? To set ragular use `regular` class modifire, to use thin use `thin`...
 
 Example:
 
@@ -1358,7 +1244,7 @@ Let's move on to sizes.
 
 *Sizes and roundings*
 
-There is main and most important variable to handle button sizes - `$button-size-factor` is responsible for proportion of buttons graduation. If you want to biger or smaller buttons change it. By default there is value of `2`. Button sizes has 6 steps of sizing, but you can increase it by changing `$button-size-iteration` variable. 
+There is main and most important variable to handle button sizes - `$button-size-factor` is responsible for proportion of buttons graduation. If you want to biger or smaller buttons change it. By default there is value of `2`. Button sizes has 6 steps of sizing, but you can increase it by changing `$button-size-iteration` variable.
 
 With button sizes are closely related button proportion types - `panoramic` and `square`. By default we have `panoramic` value, that gives us wider side edges of button. Change `$button-size-proportion` variable to `square` to reach equal proportions.
 
@@ -1383,7 +1269,7 @@ Want to more advanced border radius configuration? Use special `border-radius-un
 
 *Colors*
 
-Colors configuration comes with already well known array based structure. 
+Colors configuration comes with already well known array based structure.
 
 Colors and their names are defined with two special variables: `$button-color-name` and `$button-color-code`. Use predefined colors or feel free to add your owne - keeping in mind the dependence of [array iteration thing](#array-variables).
 
@@ -1435,12 +1321,12 @@ Usage:
 <fieldset>
 	<input class="input_regular-scale_1" type="text"/>
 </fieldset>
-// or
+<!-- or -->
 <fieldset>
 	<textarea class="textarea-scale_1"></textarea>
 </fieldset>
 ```
-As you've noticed input element has also `regular` option. This prevents the adoption of styles from other input type elements. For text input's keep this special class option. 
+As you've noticed input element has also `regular` option. This prevents the adoption of styles from other input type elements. For text input's keep this special class option.
 
 Of course there is posibility to change input color. And just like with other elements there is two variables type array iteration - `$input_text-color-name` and `$input_text-color-code`. Use defined ones or set your own.
 
@@ -1453,7 +1339,7 @@ Usage:
 ```
 Rouned inputs? Use `rounded` modifire to set `border-radius` property for them. Size of rounding is defined with `$input_text-border-radius` variable - by default it's size of `$shift-overall` variable.
 
-For more complex `fieldset` parent setup - e.g. with button - there is special modifire named `type`. Dedicated to two type of situations - one with inline input-button elements and other with block styled... 
+For more complex `fieldset` parent setup - e.g. with button - there is special modifire named `type`. Dedicated to two type of situations - one with inline input-button elements and other with block styled...
 
 Usage:
 
@@ -1463,7 +1349,7 @@ Usage:
 		<input class="input-regular" type="text"/>
 		<button class="button" type="post">Send me</button>
 	</fieldset>
-	// or 
+	<!-- or -->
 	<fieldset class="type-blocked">
 		...
 	</fieldset>
@@ -1487,7 +1373,7 @@ TBA
 
 ### Icons
 
-Icons configuration is moved to special file named `_icons.scss`. If you are using special icons font face you can define and enable it by changing dedicated global variables in `_variables.scss` file. Names, codes, colors and sizes works just like with other elements - more about options interation you will find [here](#array-variables). 
+Icons configuration is moved to special file named `_icons.scss`. If you are using special icons font face you can define and enable it by changing dedicated global variables in `_variables.scss` file. Names, codes, colors and sizes works just like with other elements - more about options interation you will find [here](#array-variables).
 
 Icons should be presented as `<i></i>` HTML element. Icons sign is pinned as a `:before` pseudo class.
 
@@ -1503,28 +1389,31 @@ The path for icons font face is the same as for normal custom used font faces. B
 
 ## Changelog
 
+* 22.05.2017 - server changes and fixes, documentation update
 * 26.07.2016 - added full pre version of documentation, updated and improved some parts of code
-* there was couple things before but ... 
+* there was couple things before but ...
 
 <a name=""></a>
 ## Missing and planned features
 
+* ~~Remove mobile/rwd setup in exchange for simple mixins configuration~~
+* Rebuild size factors (use size/scale prefix "s1-s6")
 * ~~Grid system integration with MQ~~,
 * Code inside docs,
 * Divider patterns,
 * ~~Align positions: vertical classes~~,
-* ~~Name of classes sistematize~~`
-* ~~Add gulp build and configuration file~~`
-* ~~Add multiple class model option~~`
-* Expand flexbox base classes`
-* ~~Media queries tight ranges~~`
+* ~~Name of classes sistematize~~,
+* ~~Add gulp build and configuration file~~,
+* ~~Add multiple class model option~~,
+* Expand flexbox base classes,
+* ~~Media queries tight ranges~~,
 
 ###### Small
 
-* ~~Default HTML elements restes: button, input, select~~`
+* ~~Default HTML elements restes: button, input, select~~,
 * Add important option for some elements,
 * Buttons disabled status, types names (primary, error, success),
-* ~~Colors and sizes classes~~``
+* ~~Colors and sizes classes~~,
 * ~~Colors for borders~~,
 * ~~Link style / decorations classes~~,
 * Dept on font size units em/rem,
