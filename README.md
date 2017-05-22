@@ -11,7 +11,7 @@ Bigos is a simple, SCSS* only framework**. It's built for modern applications fo
 
 **please note that this is very early alpha version, so far used with success in commercial but limited number of projects, feel free to create bug issue notification or propose code fix/change as a pull request.
 
-**Actual minified weight: 57kb**.
+**Actual minified weight: 48kb**.
 
 Installation
 ---
@@ -44,14 +44,14 @@ Docs:
    * [Resets](#resets)
    * [Additionals](#additionals-1)
    * [Icons](#icons)
-* [Tests environment](#)   
+* [Tests environment](#)
 * [Changelog - list of changes and improvements](#changelog)
 * [Missing and planned features](#missing-and-planned-features)
 
 
 ---
 ###### Tests SCSS watch path
-	sass --watch src/style/scss/style.scss:test/style.css
+  sass --watch src/style/scss/style.scss:test/style.css
 
 ## Structure
 
@@ -59,15 +59,15 @@ Here's how the whole framework is built. Following individual directories and th
 
 <a name=""></a>
 #### Structure of directories
-	bigos
-	|---src
-		|---fonts
-		|---img
-		|---js
-		|---markup
-		|---style
-			|---scss
-	|---test
+  bigos
+  |---src
+    |---fonts
+    |---img
+    |---js
+    |---markup
+    |---style
+      |---scss
+  |---test
 
 ## Normalize
 Bigos includes '_normalize.scss' file with styles normalize system. It's based on [Normalize CSS](https://necolas.github.io/normalize.css/ "Normalize CSS") by Nicolas Gallagher. So, framework styles are not reset to default null values - they are adapted to application structure.
@@ -92,7 +92,7 @@ To use one of them type:
 
 ```scss
 @include mixin-name($variable(s)) {
-	// content, not always
+  // content, not always
 };
 ```
 
@@ -106,11 +106,11 @@ All base classes are built with special class connection structure (CCS). This s
 
 ```scss
 @include class-model(button) {
-	@include class-modifire(color) {
-		@include class-option(red) {
-			...
-		}
-	}
+  @include class-modifire(color) {
+    @include class-option(red) {
+      ...
+    }
+  }
 }
 ```
 
@@ -118,7 +118,7 @@ In output we will recive:
 
 ```css
 [class*="button"][class*="-color"][class*="_red"] {
-	...
+  ...
 }
 ```
 
@@ -144,17 +144,17 @@ OK, back to structure...
 
 ```scss
 @include class-model(block) {
-	display: inline-block;
-	@include class-modifire(absolute) {
-		position: absolute;
-		left: 0px;
-		@include class-option(top) {
-			top: 0px;
-		}
-		@include class-option(bottom) {
-			bottom: 0px;			
-		}
-	}
+  display: inline-block;
+  @include class-modifire(absolute) {
+    position: absolute;
+    left: 0px;
+    @include class-option(top) {
+      top: 0px;
+    }
+    @include class-option(bottom) {
+      bottom: 0px;
+    }
+  }
 }
 ```
 
@@ -162,17 +162,17 @@ CSS output:
 
 ```css
 [class*="block"] {
-	display: inline-block
+  display: inline-block
 }
 [class*="block"][class*="-absolute"] {
-	position: absolute;
-	left: 0px;
+  position: absolute;
+  left: 0px;
 }
 [class*="block"][class*="-position"][class*="-top"] {
-	top: 0px;
+  top: 0px;
 }
 [class*="block"][class*="-position"][class*="-bottom"] {
-	bottom: 0px;
+  bottom: 0px;
 }
 ```
 
@@ -187,11 +187,11 @@ Now you can use it in your HTML in several ways:
 ```scss
 // class modifire
 @include class-modifire(color, size, structure) {
-	...
+  ...
 }
 // class option
 @include class-option(red, big, relative) {
-	...
+  ...
 }
 ```
 
@@ -205,26 +205,26 @@ and it's in the middle of code tree. Right now we have to inject some style to t
 
 ```scss
 body {
-	main {
-		// use like this
-		@include class-model(normal-div) {
-			// code here
-			@include class-modifire(with) {
-				// code here
-				//
-				// css output: [class*="div"][class*="-with"]
-			}
-		}
-		// or
-		@include class-model(extra) {
-			// code here
-			@include class-option(class) {
-				// code here
-				//
-				// css output: [class*="extra"][class*="_class"]
-			}
-		}
-	}
+  main {
+    // use like this
+    @include class-model(normal-div) {
+      // code here
+      @include class-modifire(with) {
+        // code here
+        //
+        // css output: [class*="div"][class*="-with"]
+      }
+    }
+    // or
+    @include class-model(extra) {
+      // code here
+      @include class-option(class) {
+        // code here
+        //
+        // css output: [class*="extra"][class*="_class"]
+      }
+    }
+  }
 }
 ```
 
@@ -441,21 +441,21 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 
 * these two mixins must act together
 * `animation-custom` mixin define animation name and coordinates (these must arrive with no comma notation):
-	* `$duration` - time duration of the animation
-	* `$delay` - delay before the animation starts
-	* `$iteration` - the number of animation repetitions
+  * `$duration` - time duration of the animation
+  * `$delay` - delay before the animation starts
+  * `$iteration` - the number of animation repetitions
 * `animation-keyframe` is an defined above animation call, in content of this mixin you can set a whole scenario and animation schema
 
 Simple usage example:
 
 ```scss
 div {
-	@include animation-custom(fadeout, 2s 0 infinite);
-	@include animation-keyframe(fadeout) {
-		0% { opacity: 1; }
-		50% { opacity: 0; }
-		100% { opacity: 1; }
-	}
+  @include animation-custom(fadeout, 2s 0 infinite);
+  @include animation-keyframe(fadeout) {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 }
 ```
 This will build "fadeout" animation that will take 2 seconds, will be repeated infinite times and will be delayed 0 seconds. The core feature will be change opacity property from 1 to 1 in a 100% process schema.
@@ -495,8 +495,8 @@ If you want to use it with custom viewport values use:
 
 ```scss
 @include breakpoint(640px) {
-	// content code here will append styles
-	// for all devices with 640px width or less
+  // content code here will append styles
+  // for all devices with 640px width or less
 }
 ```
 as you probably noticed there is one other variable `$direction`. This define viewport/device width range that will assign code to the resolution.
@@ -511,22 +511,22 @@ and usage:
 
 ```scss
 @include breakpoint(640px 1024px, 'from-to') {
-	// content code here will append styles
-	// for all devices that can display 640px but not less
-	// and devices that can display not more that 1024px
+  // content code here will append styles
+  // for all devices that can display 640px but not less
+  // and devices that can display not more that 1024px
 }
 
 @include breakpoint(640px, 'from') {
-	// content code here will append styles
-	// for all devices that can display more than 640px but not less
+  // content code here will append styles
+  // for all devices that can display more than 640px but not less
 }
 
 @include breakpoint(640px, 'to') {
-	// content code here will append styles
-	// for all devices that can display less then 640px but not more
+  // content code here will append styles
+  // for all devices that can display less then 640px but not more
 
-	// it's the same mixin as lonely `breakpoint(640px)`
-	// except that here we know exactly what range is defined
+  // it's the same mixin as lonely `breakpoint(640px)`
+  // except that here we know exactly what range is defined
 }
 ```
 
@@ -536,8 +536,8 @@ So, as a value of `$point` use one of predefined dimension names. E.g.
 
 ```scss
 @include breakpoint(iphone6-landscape) {
-	// content code here will append styles
-	// for iPhone 6 landscape view	and less
+  // content code here will append styles
+  // for iPhone 6 landscape view	and less
 }
 ```
 *notice that all of this predefined rules comes with additional style properties like device pixel ratio
@@ -901,7 +901,7 @@ If you are using custom typeface not as a primary one you have three special cla
 
 **Headings**
 
-Classically we have six defined headings. In oposite to global 'rem' units headings has `em`s. The size is defined by special variables: `$headings-size` and `$headings-size-factor`. Similar for line height: `$headings-lineheight-size` and `$headings-lineheight-factor`. Both of them are made proportionately by size from 1-6.
+Classically we have six defined headings. The size is defined by special variables: `$headings-size` and `$headings-size-factor`. Similar for line height: `$headings-lineheight-size` and `$headings-lineheight-factor`. Both of them are made proportionately by size from 1-6.
 
 For additional comfort framework provide special headings classes - `.h1 .h2 .h3 .h4 .h5 .h6`. Use them - if you need - for none heading elements.
 
@@ -952,73 +952,73 @@ Usage:
 ```html
 <!-- /-/------------/ -->
 <section class="box-grid">
-	<div class="column-width_1"></section>
-	<div class="column-width_11"></section>
+  <div class="column-width_1"></section>
+  <div class="column-width_11"></section>
 </section>
 
 <!-- /--/-----------/ -->
 <section class="box-grid">
-	<div class="column-width_2"></section>
-	<div class="column-width_10"></section>
+  <div class="column-width_2"></section>
+  <div class="column-width_10"></section>
 </section>
 
 <!-- /---/----------/ -->
 <section class="box-grid">
-	<div class="column-width_3"></section>
-	<div class="column-width_9"></section>
+  <div class="column-width_3"></section>
+  <div class="column-width_9"></section>
 </section>
 
 <!-- /----/---------/ -->
 <section class="box-grid">
-	<div class="column-width_4"></section>
-	<div class="column-width_8"></section>
+  <div class="column-width_4"></section>
+  <div class="column-width_8"></section>
 </section>
 
 <!-- /-----/--------/ -->
 <section class="box-grid">
-	<div class="column-width_5"></section>
-	<div class="column-width_7"></section>
+  <div class="column-width_5"></section>
+  <div class="column-width_7"></section>
 </section>
 
 <!-- /------/-------/ -->
 <section class="box-grid">
-	<div class="column-width_6"></section>
-	<div class="column-width_6"></section>
+  <div class="column-width_6"></section>
+  <div class="column-width_6"></section>
 </section>
 
 <!-- /-------/-----/ -->
 <section class="box-grid">
-	<div class="column-width_7"></section>
-	<div class="column-width_5"></section>
+  <div class="column-width_7"></section>
+  <div class="column-width_5"></section>
 </section>
 
 <!-- /--------/----/ -->
 <section class="box-grid">
-	<div class="column-width_8"></section>
-	<div class="column-width_4"></section>
+  <div class="column-width_8"></section>
+  <div class="column-width_4"></section>
 </section>
 
 <!-- /---------/---/ -->
 <section class="box-grid">
-	<div class="column-width_9"></section>
-	<div class="column-width_3"></section>
+  <div class="column-width_9"></section>
+  <div class="column-width_3"></section>
 </section>
 
 <!-- /----------/--/ -->
 <section class="box-grid">
-	<div class="column-width_10	"></section>
-	<div class="column-width_2"></section>
+  <div class="column-width_10	"></section>
+  <div class="column-width_2"></section>
 </section>
 
 <!-- /-----------/-/ -->
 <section class="box-grid">
-	<div class="column-width_11"></section>
-	<div class="column-width_1"></section>
+  <div class="column-width_11"></section>
+  <div class="column-width_1"></section>
 </section>
 
 <!-- /------------/ -->
 <section class="box-grid">
-	<div class="column-width_12"></section>
+  <div class="column-width_12"></section>
 </section>
 ```
 
@@ -1026,8 +1026,8 @@ Be shure that for the `grid` parent is defined width. If not, use `full_width` c
 
 ```html
 <section class="box-grid-full_width">
-	<div class="column-width_11"></section>
-	<div class="column-width_1"></section>
+  <div class="column-width_11"></section>
+  <div class="column-width_1"></section>
 </section>
 
 <!-- by default grid box has relative position -->
@@ -1048,14 +1048,14 @@ Usage:
 
 ```html
 <section class="box-grid-full_width">
-	<div class="column-width_11 shift-padding_2-left"></section>
-	<div class="column-width_1 shift-padding_2-right"></section>
+  <div class="column-width_11 shift-padding_2-left"></section>
+  <div class="column-width_1 shift-padding_2-right"></section>
 </section>
 <!-- or -->
 <section class="box-grid-full_width">
-	<div class="column-width_4 shift-padding_2-horizonatl"></section>
-	<div class="column-width_4 shift-padding_2-horizonatl"></section>
-	<div class="column-width_4 shift-padding_2-horizonatl"></section>
+  <div class="column-width_4 shift-padding_2-horizonatl"></section>
+  <div class="column-width_4 shift-padding_2-horizonatl"></section>
+  <div class="column-width_4 shift-padding_2-horizonatl"></section>
 </section>
 ```
 
@@ -1103,8 +1103,8 @@ Usage:
 
 <!-- selected elements will be inline-block -->
 <section class="box-inline">
-	<div class="element-inline"></div>
-	<div></div>
+  <div class="element-inline"></div>
+  <div></div>
 </section>
 ```
 
@@ -1118,15 +1118,15 @@ Usage:
 
 ```html
 <section class="box-image">
-	<img src="" class="element-image" />
+  <img src="" class="element-image" />
 </section>
 
 <!-- or if image is placed in another block
 use inherit class option -->
 <section class="box-image">
-	<div class="element-image_inherit">
-		<img src="" />
-	</div>
+  <div class="element-image_inherit">
+    <img src="" />
+  </div>
 </section>
 ```
 
@@ -1200,15 +1200,15 @@ Except all of that, you also have possibility to set sequence of flex box items 
 ```html
 <!-- simple and regullar order -->
 <section class="box-flex">
-	<div class="box-flex-item-sequence_1"></div>
-	<div class="box-flex-item-sequence_2"></div>
-	<div class="box-flex-item-sequence_3"></div>
+  <div class="box-flex-item-sequence_1"></div>
+  <div class="box-flex-item-sequence_2"></div>
+  <div class="box-flex-item-sequence_3"></div>
 </section>
 <!-- or in the none regullar order -->
 <section class="box-flex">
-	<div class="box-flex-item-sequence_4"></div>
-	<div class="box-flex-item-sequence_1"></div>
-	<div class="box-flex-item-sequence_5"></div>
+  <div class="box-flex-item-sequence_4"></div>
+  <div class="box-flex-item-sequence_1"></div>
+  <div class="box-flex-item-sequence_5"></div>
 </section>
 ```
 
@@ -1291,7 +1291,7 @@ To put these buttons somewhere use `.actionContainer` element. It has centered `
 
 ```html
 <section class="actionContainer">
-	<button type="button" class="button-...">Click me</button>
+  <button type="button" class="button-...">Click me</button>
 </section>
 ```
 
@@ -1319,11 +1319,11 @@ Usage:
 
 ```html
 <fieldset>
-	<input class="input_regular-scale_1" type="text"/>
+  <input class="input_regular-scale_1" type="text"/>
 </fieldset>
 <!-- or -->
 <fieldset>
-	<textarea class="textarea-scale_1"></textarea>
+  <textarea class="textarea-scale_1"></textarea>
 </fieldset>
 ```
 As you've noticed input element has also `regular` option. This prevents the adoption of styles from other input type elements. For text input's keep this special class option.
@@ -1334,7 +1334,7 @@ Usage:
 
 ```html
 <fieldset>
-	<input class="input-regular-color_bwhite" type="text"/>
+  <input class="input-regular-color_bwhite" type="text"/>
 </fieldset>
 ```
 Rouned inputs? Use `rounded` modifire to set `border-radius` property for them. Size of rounding is defined with `$input_text-border-radius` variable - by default it's size of `$shift-overall` variable.
@@ -1345,14 +1345,14 @@ Usage:
 
 ```html
 <form>
-	<fieldset class="type-inline">
-		<input class="input-regular" type="text"/>
-		<button class="button" type="post">Send me</button>
-	</fieldset>
-	<!-- or -->
-	<fieldset class="type-blocked">
-		...
-	</fieldset>
+  <fieldset class="type-inline">
+    <input class="input-regular" type="text"/>
+    <button class="button" type="post">Send me</button>
+  </fieldset>
+  <!-- or -->
+  <fieldset class="type-blocked">
+    ...
+  </fieldset>
 </form>
 ```
 
