@@ -473,19 +473,19 @@ There are two types of mobile mixins. They are built in a slightly different way
 This is the list of dimension names and connected breakpoint variables defined in `_variables.scss` file:
 
 ```
-large-screen 				- $breakpoint-largescreen
-big-screen 				- $breakpoint-bigscreen
-app-width 				- $breakpoint-appwidth
-ipad-landscape 			- $breakpoint-ipad-max
-ipad-portrait	 			- $breakpoint-ipad-min
-tablet-portrait 			- $breakpoint-tablet-min
-tablet-landscape 		- $breakpoint-tablet-max
-ipad-mini 				- $breakpoint-ipad-min
-iphone6-landscape 		- $breakpoint-iphone6-max
-iphone6-portrait 		- $breakpoint-iphone6-min
-iphone5-landscape 		- $breakpoint-iphone5-max
-iphone-landscape 		- $breakpoint-iphone-max
-iphone-portrait 			- $breakpoint-iphone-min
+large-screen - $breakpoint-largescreen
+big-screen - $breakpoint-bigscreen
+app-width - $breakpoint-appwidth
+ipad-landscape - $breakpoint-ipad-max
+ipad-portrait - $breakpoint-ipad-min
+tablet-portrait - $breakpoint-tablet-min
+tablet-landscape - $breakpoint-tablet-max
+ipad-mini - $breakpoint-ipad-min
+iphone6-landscape - $breakpoint-iphone6-max
+iphone6-portrait - $breakpoint-iphone6-min
+iphone5-landscape - $breakpoint-iphone5-max
+iphone-landscape - $breakpoint-iphone-max
+iphone-portrait - $breakpoint-iphone-min
 ```
 Now, the core of mobile mixins usage looks like this:
 
