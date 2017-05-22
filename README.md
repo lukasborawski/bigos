@@ -37,7 +37,6 @@ Docs:
    * [Fonts](#fonts--texts)
    * [Boxes](#boxes)
    * [Tables](#)
-   * [Mobile](#mobile)
    * [Collections](#collections)
    * [Buttons](#buttons)
    * [Inputs](#inputs)
@@ -78,7 +77,7 @@ All variables are defined in `_variables.scss` file. They are devided into three
 
 * Project part defines all used and dedicated variables like colors or sizes - you can add/create that as much as you want.
 * Global variables are used precisely in the whole framework and shuold stay unchaned.
-* All others are system editable variables. They define visual part of framework, also they are used in a system classes. You can change them accordingly to your own needs and several elements customiziation (e.g. buttons or inputs). Remember that all variables are strictly connected with other parts of framework and they can not be removed.
+* All others are system editable variables. They define visual part of framework, also they are used in a system classes. You can change them accordingly to your own needs and several elements customiziation (i.g. buttons or inputs). Remember that all variables are strictly connected with other parts of framework and they can not be removed.
 
 All variables are accurately described in the source file.
 
@@ -182,7 +181,7 @@ Now you can use it in your HTML in several ways:
 * with absolute position `<div class="block-absolute"></div>`
 * or with absolute position on bottom of parent `<div class="block-absolute_bottom"></div>`
 
-`class-modifire` and `class-option` can be used as a mutiple notation e.g.:
+`class-modifire` and `class-option` can be used as a mutiple notation i.g.:
 
 ```scss
 // class modifire
@@ -289,7 +288,7 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 
 `font-icon($code)`
 
-* icons as a font face are defined by special classes ([more about here](#icons)), but if the need arises use this mixin with the same code as in `_icons.scss` file defined for `$code` variable e.g. "\e900\"
+* icons as a font face are defined by special classes ([more about here](#icons)), but if the need arises use this mixin with the same code as in `_icons.scss` file defined for `$code` variable i.g. "\e900\"
 
 **Border radius** - `border-radius($radius: 5px)` - set `50%` value to fully round your object
 
@@ -345,7 +344,7 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 `position-absolute-custom($coords: 0 0 0 0, $fixed: false)`
 
 * `$coords` of absolute position (top right bottom left) should be written without commas
-* notice that unitless values will be not included as a position value - e.g. if you set `0px 0 0 0px` in output there will be only `position: absolute; top: 0px; left: 0px;` notation
+* notice that unitless values will be not included as a position value - i.g. if you set `0px 0 0 0px` in output there will be only `position: absolute; top: 0px; left: 0px;` notation
 * change `$fixed` variable to exactly `fixed` value to set position on it
 
 **Element verticaly aligned** - `element-vertical-align()` - uses `transform-translate()` mixin
@@ -532,7 +531,7 @@ and usage:
 
 This was the first group of mobile mixins. The second one is more transparent.
 
-So, as a value of `$point` use one of predefined dimension names. E.g.
+So, as a value of `$point` use one of predefined dimension names. i.g.
 
 ```scss
 @include breakpoint(iphone6-landscape) {
@@ -719,7 +718,7 @@ Usage:
 <section class="border_full"></section>
 ```
 
-these class options will define for which part of element we're gonna style our borders. But if you use them solo there will be no visible resaults. Use another modifiers to menage border classes e.g. with color modifire.
+these class options will define for which part of element we're gonna style our borders. But if you use them solo there will be no visible resaults. Use another modifiers to menage border classes i.g. with color modifire.
 
 *Colors*
 
@@ -1339,7 +1338,7 @@ Usage:
 ```
 Rouned inputs? Use `rounded` modifire to set `border-radius` property for them. Size of rounding is defined with `$input_text-border-radius` variable - by default it's size of `$shift-overall` variable.
 
-For more complex `fieldset` parent setup - e.g. with button - there is special modifire named `type`. Dedicated to two type of situations - one with inline input-button elements and other with block styled...
+For more complex `fieldset` parent setup - i.g. with button - there is special modifire named `type`. Dedicated to two type of situations - one with inline input-button elements and other with block styled...
 
 Usage:
 
