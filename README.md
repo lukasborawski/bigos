@@ -1022,7 +1022,7 @@ Usage:
 </section>
 ```
 
-Be shure that for the `grid` parent is defined width. If not, use `full_width` class modifire. Like this:
+Be sure that for the `grid` parent is defined width. If not, use `full_width` class modifire. Like this:
 
 ```html
 <section class="box-grid-full_width">
@@ -1042,7 +1042,7 @@ It will recive:
 
 `font-size` reset is for full and hassle-free columns fitting.
 
-Where is grid gaps? There is no any. Why you ask. Because it affects simple and clean construction of grid system. However there is simple way to achive this solution. How? By using padding shifts.
+Where are the grid gaps? There is no any. Why you ask. Because it affects simple and clean construction of grid system. However there is simple way to achive this solution. How? By using padding shifts.
 
 Usage:
 
@@ -1087,13 +1087,13 @@ This class modifire uses `transform-translate` to fit elements vertically center
 <!-- baseline -->
 <section class="box-vertical_align_baseline"></section>
 ```
-Remember that all alinged elements should have set `inline-block` value for `display` property. You can achieve this by using inline class modifire below.
+Remember that all alinged elements should have set `inline-block` value for `display` property. You can achieve this by using inline class modifire - look below.
 
 ---
 
 **Box with inline elements**
 
-OK, you have simple modifire `inline` and two options to set all first level children or selected one as a `inline-block` elements.
+OK, you have simple modifire `inline` and two options to set all first level children or selected one as a `inline-block` element.
 
 Usage:
 
