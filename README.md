@@ -59,15 +59,15 @@ Here's how the whole framework is built. Following individual directories and th
 <a name=""></a>
 #### Structure of directories
 
-	bigos
-	|---src
-		|---fonts
-		|---img
-		|---js
-		|---markup
-		|---style
-			|---scss
-	|---test
+  bigos
+  |---src
+    |---fonts
+    |---img
+    |---js
+    |---markup
+    |---style
+      |---scss
+  |---test
 
 ## Normalize
 Bigos includes '_normalize.scss' file with styles normalize system. It's based on [Normalize CSS](https://necolas.github.io/normalize.css/ "Normalize CSS") by Nicolas Gallagher. So, framework styles are not reset to default null values - they are adapted to application structure.
@@ -102,11 +102,11 @@ And the list of mixins:
 
 ### Classes Syntax (Class Connection Structure)
 
-All base classes are built with special class connection structure (CCS). This structure is splitted in three elements: `class-model`, `class-modifire` and `class-option`. It looks like this:
+All base classes are built with special class connection structure (CCS). This structure is splitted in three elements: `class-model`, `class-modifier` and `class-option`. It looks like this:
 
 ```scss
 @include class-model(button) {
-  @include class-modifire(color) {
+  @include class-modifier(color) {
     @include class-option(red) {
       ...
     }
@@ -135,9 +135,9 @@ As you can see - or not - that kind of class connection gives us some special am
 * ease of class expansion
 * internal class injection
 
-Based on this structure you can define style levels depending on the complexity of nesting several HTML elements. It may be familiar with [BEM](https://en.bem.info/methodology/) methodology (block, element, modifire), and acording to it we can build something similar and common.
+Based on this structure you can define style levels depending on the complexity of nesting several HTML elements. It may be familiar with [BEM](https://en.bem.info/methodology/) methodology (block, element, modifier), and acording to it we can build something similar and common.
 
-Of course there is a black side of this solution. Sometimes when classes will have the same name, parts can overwrites each other. To avoid this try to keep unique class modifires and options even for main blocks/parents.
+Of course there is a black side of this solution. Sometimes when classes will have the same name, parts can overwrites each other. To avoid this try to keep unique class modifiers and options even for main blocks/parents.
 
 OK, back to structure...
 
@@ -145,7 +145,7 @@ OK, back to structure...
 ```scss
 @include class-model(block) {
   display: inline-block;
-  @include class-modifire(absolute) {
+  @include class-modifier(absolute) {
     position: absolute;
     left: 0px;
     @include class-option(top) {
@@ -182,11 +182,11 @@ Now you can use it in your HTML in several ways:
 * with absolute position `<div class="block-absolute"></div>`
 * or with absolute position on bottom of parent `<div class="block-absolute_bottom"></div>`
 
-`class-modifire` and `class-option` can be used as a mutiple notation i.g.:
+`class-modifier` and `class-option` can be used as a mutiple notation i.g.:
 
 ```scss
-// class modifire
-@include class-modifire(color, size, structure) {
+// class modifier
+@include class-modifier(color, size, structure) {
   ...
 }
 // class option
@@ -209,7 +209,7 @@ body {
     // use like this
     @include class-model(normal-div) {
       // code here
-      @include class-modifire(with) {
+      @include class-modifier(with) {
         // code here
         //
         // css output: [class*="div"][class*="-with"]
@@ -229,7 +229,7 @@ body {
 ```
 
 <a name="class-option"></a>
-OK. At the end remember to not use `class-option` notation without nested in `class-modifire` above. Element will be not recognized as a dedicated class connection one and styles for it will be not assigned. Be careful especially when you are using the predefined classes.
+OK. At the end remember to not use `class-option` notation without nested in `class-modifier` above. Element will be not recognized as a dedicated class connection one and styles for it will be not assigned. Be careful especially when you are using the predefined classes.
 
 **Tip**: Inside framework code there will be a lot of class connections examples, analize them to learn more.
 
@@ -572,7 +572,7 @@ So, as a value of `$point` use one of predefined dimension names. i.g.
 
 As already mentioned, framework has prepared class system. They can help build overall layout structure and support main and common project styling. You will find here definitions for that kind of features like grids, shifts, borders, backgrounds, text, etc. All of them are defined in special `_base.scss` file. They are strictly based on system variables.
 
-Before you will start using them check again the class connection methodology [here](#classes-syntax-class-connection-structure), and the model/modifire/option rules (also [read this](#class-option)).
+Before you will start using them check again the class connection methodology [here](#classes-syntax-class-connection-structure), and the model/modifier/option rules (also [read this](#class-option)).
 
 <a name="array-variables"></a>
 **Important** - At some class models there are defined speical pair of variables (`$property-option-name` and `$property-option-code`). They appear to define colors and sizes of several elements. They are written in a comma notation. Please keep them unchanged because this construction works like array and system will iterate by them to build these classes. You can add another colors and corresponding names, aldo remember to keep the same number of both and keep some color prefix. Prefix? What for? In some cases compiler may treat them as a hex color presentation and generate color code instead of color name.
@@ -605,7 +605,7 @@ Class model
 <span class="link"></span>
 ```
 
-Class modifires
+Class modifiers
 
 ```html
 <!-- the same as for above one but as a inline-block element -->
@@ -632,7 +632,7 @@ Class model
 <section class="cursor"></section>
 ```
 
-Class modifires
+Class modifiers
 
 ```html
 <!-- this will set cursor property on pointer -->
@@ -669,11 +669,11 @@ There are defined two special variables for this purpose:
 Class model
 
 ```html
-<!-- it does not do anything - we need class modifire and option -->
+<!-- it does not do anything - we need class modifier and option -->
 <section class="background"></section>
 ```
 
-Class modifire
+Class modifier
 
 ```html
 <!-- it does not do anything - we need class option -->
@@ -701,7 +701,7 @@ This class construction is more complicated and has a lot of options.
 But first class model
 
 ```html
-<!-- it does not do anything - we need class modifire and option -->
+<!-- it does not do anything - we need class modifier and option -->
 <section class="border"></section>
 ```
 
@@ -719,7 +719,7 @@ Usage:
 <section class="border_full"></section>
 ```
 
-these class options will define for which part of element we're gonna style our borders. But if you use them solo there will be no visible resaults. Use another modifiers to menage border classes i.g. with color modifire.
+these class options will define for which part of element we're gonna style our borders. But if you use them solo there will be no visible resaults. Use another modifiers to menage border classes i.g. with color modifier.
 
 *Colors*
 
@@ -734,10 +734,10 @@ Usage:
 <!-- or -->
 <section class="border-color_bred"></section>
 
-<!-- color as a class modifire and color name as a class option -->
+<!-- color as a class modifier and color name as a class option -->
 ```
 
-Using this class notation you will recive full elemnet border color, but if you want to set color for only one part of element border, connect these two class modifires like that:
+Using this class notation you will recive full elemnet border color, but if you want to set color for only one part of element border, connect these two class modifiers like that:
 
 ```html
 <section class="border_left-color_bwhite"></section>
@@ -769,7 +769,7 @@ For more advanced border radius configuration use dedicated mixin ([more about h
 
 *Bold*
 
-Besides all of these options there is also bold border modifire. For thickness responds `$border-bold-size` variable, use it like this:
+Besides all of these options there is also bold border modifier. For thickness responds `$border-bold-size` variable, use it like this:
 
 ```html
 <section class="border_right-bold"></section>
@@ -788,7 +788,7 @@ There are plenty options of shifts configuration:
 * `top, bottom, left, right`
 * `horizontal, vertical`
 
-For shift type responds class modifire `margin` or `padding` used with `shift` class model.
+For shift type responds class modifier `margin` or `padding` used with `shift` class model.
 
 ```html
 <section class="shift-margin_1"></section>
@@ -843,7 +843,7 @@ And vertical, horizontal options:
 
 **Text**
 
-`text` class model comes with `color`, `size` and `align` modifires.
+`text` class model comes with `color`, `size` and `align` modifiers.
 
 Colors are defined as a standard list of name/code notation. You can use all of defined colors or add your own in `_variables.sccs` file.
 
@@ -869,8 +869,8 @@ Text align - `left`, `center` and of course `right`.
 <span class="text-align_right"></span>
 ```
 
-Text uppercase - use `uppercase` modifire.
-Text capitalize - use `capitalize` modifire.
+Text uppercase - use `uppercase` modifier.
+Text capitalize - use `capitalize` modifier.
 
 **Important** - The text class model is a great opportunity to show connection feature.
 
@@ -896,7 +896,7 @@ Holla, wait, there is a custom font face class.
 If you are using custom typeface not as a primary one you have three special classes to inject style linearly.
 
 * `.cf` - assigned to `$font-base-regular`
-* `.cfb, .cfb` - assigned to `$font-base-bold`
+* `.cfb, .cfs` - assigned to `$font-base-bold`
 * `.cfl` - assigned to `$font-base-light`
 
 **Headings**
@@ -909,7 +909,7 @@ For additional comfort framework provide special headings classes - `.h1 .h2 .h3
 
 ### Boxes
 
-Most likely this class model is most powerful and complex. Follow the all modifires and remember that you can connect all of them.
+Most likely this class model is most powerful and complex. Follow the all modifiers and remember that you can connect all of them.
 
 Main model
 
@@ -945,7 +945,7 @@ Add full `width` and `height` size for box.
 
 Grid system construction is simple and generally quite universal. There is `grid` parent element and inside `column` notation. By default grid is splitted into 12 parts - if you want less or more please change `$grid-count` global variable.
 
-Column is an another class model and it cooperates closely with `grid` parent. For them we have `width` modifire with number notation (1-12). Width of columns is defined in `%` units.
+Column is an another class model and it cooperates closely with `grid` parent. For them we have `width` modifier with number notation (1-12). Width of columns is defined in `%` units.
 
 Usage:
 
@@ -1022,7 +1022,7 @@ Usage:
 </section>
 ```
 
-Be sure that for the `grid` parent is defined width. If not, use `full_width` class modifire. Like this:
+Be sure that for the `grid` parent is defined width. If not, use `full_width` class modifier. Like this:
 
 ```html
 <section class="box-grid-full_width">
@@ -1065,7 +1065,7 @@ Remember that all elements still have `border-box` value for `box-sizing` proper
 
 **Box with aligned elements**
 
-By using this class modifire you will set vertical align for all first level child elements.
+By using this class modifier you will set vertical align for all first level child elements.
 
 *Vertically aligned center*
 
@@ -1073,7 +1073,7 @@ By using this class modifire you will set vertical align for all first level chi
 <section class="box-vertical_align_transform"></section>
 ```
 
-This class modifire uses `transform-translate` to fit elements vertically centered.
+This class modifier uses `transform-translate` to fit elements vertically centered.
 
 *Aligned to ...*
 
@@ -1087,13 +1087,13 @@ This class modifire uses `transform-translate` to fit elements vertically center
 <!-- baseline -->
 <section class="box-vertical_align_baseline"></section>
 ```
-Remember that all alinged elements should have set `inline-block` value for `display` property. You can achieve this by using inline class modifire - look below.
+Remember that all alinged elements should have set `inline-block` value for `display` property. You can achieve this by using inline class modifier - look below.
 
 ---
 
 **Box with inline elements**
 
-OK, you have simple modifire `inline` and two options to set all first level children or selected one as a `inline-block` element.
+OK, you have simple modifier `inline` and two options to set all first level children or selected one as a `inline-block` element.
 
 Usage:
 
@@ -1112,7 +1112,7 @@ Usage:
 
 **Box with image inside**
 
-This modifire will help you to set and precisely fit image to the parent size.
+This modifier will help you to set and precisely fit image to the parent size.
 
 Usage:
 
@@ -1150,7 +1150,7 @@ Note that this will set `float` property exactly for this element, not for child
 
 Right now flex box is in a very, let's say light state, but of course you can use it in fully functional way.
 
-Use `flex` class modifire and particular options:
+Use `flex` class modifier and particular options:
 
 *Content justify*
 
@@ -1168,7 +1168,7 @@ Usage:
 
 * `top`, `middle`, `bottom`, `baseline`, `streach`
 
-Usage (with special class modifire `items`):
+Usage (with special class modifier `items`):
 
 ```html
 <section class="box-flex-items_top"></section>
@@ -1182,7 +1182,7 @@ Usage (with special class modifire `items`):
 
 * `row`, `rowreverse`, `col`, `colreverse`
 
-Usage (with special class modifire/option notation `items_direction`):
+Usage (with special class modifier/option notation `items_direction`):
 
 ```html
 <section class="box-flex-items_direction_row"></section>
@@ -1232,7 +1232,7 @@ Main class model:
 <button type="button" class="button">Click me</button>
 ```
 
-Buttons take over custom font face if it will be defined. But to enable this you have to change one special `$button-text-style` variable from `ragular` to `custom`. By default - if it's defined - buttons will take `$font-base-bold` type face. Have defined other type faces? To set ragular use `regular` class modifire, to use thin use `thin`...
+Buttons take over custom font face if it will be defined. But to enable this you have to change one special `$button-text-style` variable from `ragular` to `custom`. By default - if it's defined - buttons will take `$font-base-bold` type face. Have defined other type faces? To set ragular use `regular` class modifier, to use thin use `thin`...
 
 Example:
 
@@ -1280,7 +1280,7 @@ Usage:
 <button type="button" class="button-color_bgrey">Click me</button>
 ```
 
-There is posibility to reverse button colors and make it more light and flat. To do this use `clear` class option with `color` modifire. In here you have also option to set or remove background for clear buttons - change `$button-clear-background-color` variable to manipulate.
+There is posibility to reverse button colors and make it more light and flat. To do this use `clear` class option with `color` modifier. In here you have also option to set or remove background for clear buttons - change `$button-clear-background-color` variable to manipulate.
 
 Usage:
 ```html
@@ -1297,7 +1297,7 @@ To put these buttons somewhere use `.actionContainer` element. It has centered `
 
 And least but not last - fitting.
 
-If you want to fit some button to parent box you can use `full` class modifire - comes with `width` and `height` options. These two will set button width on full of it parent. Great for grid/column layout.
+If you want to fit some button to parent box you can use `full` class modifier - comes with `width` and `height` options. These two will set button width on full of it parent. Great for grid/column layout.
 
 Usage:
 
@@ -1305,7 +1305,7 @@ Usage:
 <button type="button" class="button-full_width">Click me</button>
 <button type="button" class="button-full_height">Click me</button>
 ```
-Don't forget about class connection system. That's mean that you can use all of this modifires and options together and alternately. More abour CCS [here](#classes-syntax-class-connection-structure).
+Don't forget about class connection system. That's mean that you can use all of this modifiers and options together and alternately. More abour CCS [here](#classes-syntax-class-connection-structure).
 
 ---
 
@@ -1337,9 +1337,9 @@ Usage:
   <input class="input-regular-color_bwhite" type="text"/>
 </fieldset>
 ```
-Rouned inputs? Use `rounded` modifire to set `border-radius` property for them. Size of rounding is defined with `$input_text-border-radius` variable - by default it's size of `$shift-overall` variable.
+Rouned inputs? Use `rounded` modifier to set `border-radius` property for them. Size of rounding is defined with `$input_text-border-radius` variable - by default it's size of `$shift-overall` variable.
 
-For more complex `fieldset` parent setup - i.g. with button - there is special modifire named `type`. Dedicated to two type of situations - one with inline input-button elements and other with block styled...
+For more complex `fieldset` parent setup - i.g. with button - there is special modifier named `type`. Dedicated to two type of situations - one with inline input-button elements and other with block styled...
 
 Usage:
 

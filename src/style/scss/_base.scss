@@ -40,11 +40,11 @@ a {
   cursor: pointer;
   color: $link-base-color;
   // type
-  @include class-modifire(inline) {
+  @include class-modifier(inline) {
     width: auto !important;
     display: inline-block !important;
   }
-  @include class-modifire(naked) {
+  @include class-modifier(naked) {
     text-decoration: none;
     @if $link-class-naked-hover-type == underline {
       &:hover {
@@ -73,15 +73,15 @@ a {
     cursor: auto;
   }
   // type
-  @include class-modifire(pointer) {
+  @include class-modifier(pointer) {
     cursor: pointer;
     @include cursor-inherit(pointer);
   }
-  @include class-modifire(default) {
+  @include class-modifier(default) {
     cursor: default;
     @include cursor-inherit(default);
   }
-  @include class-modifire(auto) {
+  @include class-modifier(auto) {
     cursor: auto;
     @include cursor-inherit(auto);
   }
@@ -89,7 +89,7 @@ a {
 // Backgrounds
 @include class-model(background) {
   // color
-  @include class-modifire(color) {
+  @include class-modifier(color) {
     $n: length($background-color-name);
     @for $i from 1 through $n {
       @include class-option(nth($background-color-name, $i)) {
@@ -112,7 +112,7 @@ a {
     border: $border-default $border-default-color;
   }
   // color
-  @include class-modifire(color) {
+  @include class-modifier(color) {
     $n: length($border-color-name);
     @for $i from 1 through $n {
       @include class-option(nth($border-color-name, $i)) {
@@ -123,13 +123,13 @@ a {
     }
   }
   // others
-  @include class-modifire(bold) {
+  @include class-modifier(bold) {
     border-width: $border-bold-size !important;
   }
-  @include class-modifire(none) {
+  @include class-modifier(none) {
     border: none !important;
   }
-  @include class-modifire(radius) {
+  @include class-modifier(radius) {
     @include class-option(circle) {
       @include border-radius(50%);
     }
@@ -178,7 +178,7 @@ strong {
   }
 }
 @include class-model(text) {
-  @include class-modifire(color) {
+  @include class-modifier(color) {
     $n-colors: length($font-colors-name);
     @for $i from 1 through $n-colors {
       @include class-option(nth($font-colors-name, $i)) {
@@ -186,7 +186,7 @@ strong {
       }
     }
   }
-  @include class-modifire(size) {
+  @include class-modifier(size) {
     $n-sizes: length($font-sizes-name);
     @for $i from 1 through $n-sizes {
       @include class-option(nth($font-sizes-name, $i)) {
@@ -194,7 +194,7 @@ strong {
       }
     }
   }
-  @include class-modifire(align) {
+  @include class-modifier(align) {
      @include class-option(right) {
       text-align: right;
     }
@@ -205,10 +205,10 @@ strong {
       text-align: center;
     }
   }
-  @include class-modifire(uppercase) {
+  @include class-modifier(uppercase) {
     text-transform: uppercase;
   }
-  @include class-modifire(capitalize) {
+  @include class-modifier(capitalize) {
     text-transform: capitalize;
   }
 }
@@ -305,7 +305,7 @@ $prefix: text;
 
 @include class-model(box) {
   // Box with default setup
-  @include class-modifire(full) {
+  @include class-modifier(full) {
     @include class-option(width) {
       width: $width-100;
     }
@@ -317,11 +317,11 @@ $prefix: text;
       }
     }
   }
-  @include class-modifire(relative) {
+  @include class-modifier(relative) {
     position: relative;
   }
   // Box with grid system
-  @include class-modifire(grid) {
+  @include class-modifier(grid) {
     height: auto;
     position: relative;
     @include font-size(0);
@@ -329,7 +329,7 @@ $prefix: text;
       vertical-align: top;
     }
     @include class-model(column, false) {
-      @include class-modifire(full) {
+      @include class-modifier(full) {
         @include class-option(width) {
           width: $width-100;
         }
@@ -342,19 +342,19 @@ $prefix: text;
       @include font-size($font-base-size);
       // $grid-count defined in _variables
       @for $i from 1 through $grid-count {
-        @include class-modifire(width_#{$i}) {
+        @include class-modifier(width_#{$i}) {
           width: 100% / $grid-count * $i;
         }
       }
       @for $i from 1 through $grid-count {
-        @include class-modifire(offset_#{$i}) {
+        @include class-modifier(offset_#{$i}) {
           width: 100% / $grid-count * $i;
         }
       }
     }
   }
   // Box with horizontal align elements
-  @include class-modifire(vertical_align) {
+  @include class-modifier(vertical_align) {
     @include class-option(transform) {
       > * {
         @include element-vertical-align;
@@ -391,7 +391,7 @@ $prefix: text;
     }
   }
   // Box with inline elements
-  @include class-modifire(inline) {
+  @include class-modifier(inline) {
     display: inline-block;
     .element-inline {
       @include font-size($font-base-size);
@@ -404,7 +404,7 @@ $prefix: text;
     }
   }
   // Box with images
-  @include class-modifire(image) {
+  @include class-modifier(image) {
     position: relative;
     height: auto;
     %image-extended {
@@ -412,7 +412,7 @@ $prefix: text;
       height: auto;
       position: relative;
       display: inline-block;
-      @include class-modifire(full) {
+      @include class-modifier(full) {
         @include class-option(height) {
           height: $height-100;
         }
@@ -429,7 +429,7 @@ $prefix: text;
     }
   }
   // Box with floated elements
-  @include class-modifire(float) {
+  @include class-modifier(float) {
     overflow: hidden;
     width: $width-100;
     @include class-option(left) {
@@ -440,7 +440,7 @@ $prefix: text;
     }
   }
   // Box with flex layout
-  @include class-modifire(flex) {
+  @include class-modifier(flex) {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -461,7 +461,7 @@ $prefix: text;
       justify-content: space-around;
     }
     // items positions
-    @include class-modifire(items) {
+    @include class-modifier(items) {
       @include class-option(top) {
         align-items: flex-start;
       }
@@ -493,14 +493,14 @@ $prefix: text;
         }
       }
     }
-    @include class-modifire(item) {
+    @include class-modifier(item) {
       @for $i from 1 through $flex-box-items-sequence-count{
-        @include class-modifire("sequence_#{$i}") {
+        @include class-modifier("sequence_#{$i}") {
           flex: $i;
         }
       }
     }
-    @include class-modifire(flow) {
+    @include class-modifier(flow) {
       @include class-option(wraprow) {
         flex-flow: row wrap;
       }
@@ -523,19 +523,19 @@ $prefix: text;
 
 @include class-model(box-table) {
   table-layout: fixed;
-  @include class-modifire(row) {
+  @include class-modifier(row) {
     width: 100%;
     display: table;
   }
-  @include class-modifire(col) {
+  @include class-modifier(col) {
     width: auto;
     display: table-cell;
     vertical-align: middle;
-    @include class-modifire(truncate) {
+    @include class-modifier(truncate) {
        @include text-truncate;
     }
   }
-  @include class-modifire(width) {
+  @include class-modifier(width) {
     @for $i from 1 through 20{
       @include class-option("#{$i}0") {
         width: $i * 10 + px;
@@ -549,7 +549,7 @@ $prefix: text;
 // --------------------
 
 @include class-model(breadcrumbs) {
-   @include class-modifire(headstrong) {
+   @include class-modifier(headstrong) {
     li {
       &:first-child {
         @if $font-custom {
@@ -604,7 +604,7 @@ $prefix: text;
     @else {
       font-family: $font-base-regular;
     }
-    @include class-modifire(thin) {
+    @include class-modifier(thin) {
       @if $font-base-thin{
         font-family: $font-base-thin;
       }
@@ -621,20 +621,20 @@ $prefix: text;
   @else {
     font-weight: bold;
   }
-  @include class-modifire(regular) {
+  @include class-modifier(regular) {
     font-family: $font-base-regular;
   }
   // sizes
   @for $i from 1 through $button-size-iteration {
-    @include class-modifire("size_#{$i}") {
+    @include class-modifier("size_#{$i}") {
       @include font-size($font-root-size + ($i * $button-text-size-factor));
       @if $button-size-proportion == panoramic {
-        padding: (4 + $i * $button-size-factor + px) (2 * 20 + $i * $button-size-factor + px);
+        padding: (4 + $i * $button-size-factor + px) (2 * $button-size-horizontal-gap + $i * $button-size-factor + px);
       }
       @else {
         padding: (4 + $i * $button-size-factor + px) (4 + $i * $button-size-factor + px);
       }
-      @include class-modifire(full) {
+      @include class-modifier(full) {
          @include class-option(width) {
           padding: (2 + $i * $button-size-factor + px) ($i * $button-size-factor + px);
         }
@@ -642,25 +642,29 @@ $prefix: text;
     }
   }
   // roundings
-  @include class-modifire("rounded") {
-    @for $i from 1 through $button-rounding-iteration{
-      @include class-option(#{$i}) {
-         @include border-radius(1 + $i * $button-rounding-factor + px);
-      }
+  @include class-modifier("rounded") {
+    @if $button-rounding-fixed {
+       @include border-radius($button-rounding-fixed-size);
     }
-    @include class-option(full) {
-      @include border-radius($button-rounding-full);
+    @else {
+       @for $i from 1 through $button-rounding-iteration{
+        @include class-option(#{$i}) {
+           @include border-radius(1 + $i * $button-rounding-factor + px);
+        }
+      }
+      @include class-option(full) {
+         @include border-radius($button-rounding-full);
+      }
     }
   }
   // colors - defined in _variables
   $n-colors: length($button-color-name);
-  @include class-modifire(color) {
+  @include class-modifier(color) {
     @for $i from 1 through $n-colors{
       @include class-option(nth($button-color-name, $i)) {
-        /* nth($button-color-name, $i) == lightgrey or nth($button-color-name, $i) == lightergrey, */
-        @if #{nth($button-color-name, $i)} {
-          color: $button-text-color-opposite !important;
-        }
+        // @if #{nth($button-color-name, $i)} == lightergrey {
+        //   color: $button-text-color-opposite !important;
+        // }
         @if $button-border {
           border: $border-default #{nth($button-color-code, $i)};
         }
@@ -710,7 +714,7 @@ $prefix: text;
       }
     }
   }
-  @include class-modifire(full) {
+  @include class-modifier(full) {
     @include class-option(width) {
       width: 100%;
       text-align: center;
@@ -731,7 +735,7 @@ $prefix: text;
     vertical-align: middle;
     // margin-top: -4%; // proportion between button height and icon position
   }
-  @include class-modifire(react) {
+  @include class-modifier(react) {
     &:disabled {
       @include opacity(0.5);
     }
@@ -754,18 +758,18 @@ fieldset {
       color: $input_text-color;
       border: $input-text-border;
       // options
-      @include class-modifire(rounded) {
+      @include class-modifier(rounded) {
         @include border-radius($input_text-border-radius);
       }
       // sizes
       @for $i from 1 through $input_text-size-iteration {
-        @include class-modifire("scale_#{$i}") {
+        @include class-modifier("scale_#{$i}") {
           padding: 2 + $i * $input_text-size-factor + px;
           // @include font-size($font-base-size + $i);
         }
       }
       // colors
-      @include class-modifire(color) {
+      @include class-modifier(color) {
         $n-colors: length($input_text-color-name);
         @for $i from 1 through $n-colors {
           @include class-option(nth($input_text-color-name, $i)) {
@@ -776,14 +780,14 @@ fieldset {
     }
   }
   @include class-model(type) {
-    @include class-modifire(inlined) {
+    @include class-modifier(inlined) {
       input,
       label {
         display: inline-block;
         width: auto;
       }
     }
-    @include class-modifire(blocked) {
+    @include class-modifier(blocked) {
       input,
       label {
         display: block;
@@ -791,7 +795,7 @@ fieldset {
       }
     }
     // Search Input
-    @include class-modifire(search) {
+    @include class-modifier(search) {
       button {
         width: 15%;
       }
@@ -807,7 +811,7 @@ fieldset {
     width: $width-100;
     resize: none;
     @for $i from 1 through $textarea-size-iteration {
-      @include class-modifire("scale_#{$i}") {
+      @include class-modifier("scale_#{$i}") {
         @if $textarea-text-resize == true {
           @include font-size($font-base-size + $i * $textarea-text-size-factor);
         }
@@ -818,7 +822,7 @@ fieldset {
         height: $textarea-size-factor * $i + px;
       }
     }
-    @include class-modifire(rounded) {
+    @include class-modifier(rounded) {
       @include border-radius($input_text-border-radius);
     }
   }
@@ -830,7 +834,7 @@ fieldset {
 
 @include class-model(reset) {
   // Borders
-  @include class-modifire(border) {
+  @include class-modifier(border) {
     $types: top, right, bottom, left;
     @each $type in $types {
       @include class-option($type) {
@@ -842,13 +846,13 @@ fieldset {
     }
   }
   // Background
-  @include class-modifire(bg) {
+  @include class-modifier(bg) {
     background: none;
   }
-  @include class-modifire(margin) {
+  @include class-modifier(margin) {
     margin: 0 !important;
   }
-  @include class-modifire(padding) {
+  @include class-modifier(padding) {
     $types: left, right, top, bottom;
     @each $type in $types {
         @include class-option($type) {

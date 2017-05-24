@@ -31,7 +31,7 @@
     $n: length($icons);
     @for $i from 1 through $n {
       @if $font-icons-prefix == false {
-        @include class-modifire(nth($icons, $i)) {
+        @include class-modifier(nth($icons, $i)) {
           &:before {
             content: "#{nth($icons-code, $i)}";
             vertical-align: middle;
@@ -39,7 +39,7 @@
         }
       }
       @else {
-        @include class-modifire($font-icons-prefix + "_" + nth($icons, $i)) {
+        @include class-modifier($font-icons-prefix + "_" + nth($icons, $i)) {
           &:before {
             content: "#{nth($icons-code, $i)}";
             vertical-align: middle;
@@ -49,12 +49,12 @@
     }
     // sizes
     @for $i from 1 through 6 {
-      @include class-modifire("size_#{$i}") {
+      @include class-modifier("size_#{$i}") {
         @include font-size(4 + $i * $font-icons-size-factor);
       }
     }
     // colors
-    @include class-modifire(color) {
+    @include class-modifier(color) {
       $n-colors: length($font-icons-colors-name);
       @for $i from 1 through $n-colors {
         @include class-option(nth($font-icons-colors-name, $i)) {

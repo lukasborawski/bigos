@@ -18,7 +18,7 @@
   }
 }
 // Modifier
-@mixin class-modifire($name-1: false, $name-2: false, $name-3: false, $name-4: false, $name-5: false) {
+@mixin class-modifier($name-1: false, $name-2: false, $name-3: false, $name-4: false, $name-5: false) {
   @at-root {
     @if $name-1 and $name-1 != false and not $name-2 and not $name-3 and not $name-4 and not $name-5   {
       &[class*="-#{$name-1}"] {
@@ -259,15 +259,15 @@
   @each $type in $types {
     @if $type == normal {
       @for $i from 1 through $iteration {
-        @include class-modifire(#{$operator}_#{$i}) {
+        @include class-modifier(#{$operator}_#{$i}) {
           #{$value}: $shift-overall * $i
         }
       }
     }
     @if $type == horizontal {
       @for $i from 1 through $iteration {
-        @include class-modifire(#{$operator}_#{$i}) {
-          @include class-modifire(horizontal) {
+        @include class-modifier(#{$operator}_#{$i}) {
+          @include class-modifier(horizontal) {
             #{$value}: 0 $shift-overall * $i;
           }
         }
@@ -275,8 +275,8 @@
     }
     @if $type == vertical {
       @for $i from 1 through $iteration {
-        @include class-modifire(#{$operator}_#{$i}) {
-          @include class-modifire(vertical) {
+        @include class-modifier(#{$operator}_#{$i}) {
+          @include class-modifier(vertical) {
             #{$value}: $shift-overall * $i 0;
           }
         }
@@ -284,29 +284,29 @@
     }
     @if $type == top {
       @for $i from 1 through $iteration {
-        @include class-modifire(#{$operator}_#{$i}) {
-          @include class-modifire(top) { #{$value}: ($shift-overall * $i) 0 0 0 }
+        @include class-modifier(#{$operator}_#{$i}) {
+          @include class-modifier(top) { #{$value}: ($shift-overall * $i) 0 0 0 }
         }
       }
     }
     @if $type == bottom {
       @for $i from 1 through $iteration {
-        @include class-modifire(#{$operator}_#{$i}) {
-          @include class-modifire(bottom) { #{$value}: 0 0 ($shift-overall * $i) 0 }
+        @include class-modifier(#{$operator}_#{$i}) {
+          @include class-modifier(bottom) { #{$value}: 0 0 ($shift-overall * $i) 0 }
         }
       }
     }
     @if $type == left {
       @for $i from 1 through $iteration {
-        @include class-modifire(#{$operator}_#{$i}) {
-          @include class-modifire(left) { #{$value}: 0 0 0 ($shift-overall * $i) }
+        @include class-modifier(#{$operator}_#{$i}) {
+          @include class-modifier(left) { #{$value}: 0 0 0 ($shift-overall * $i) }
         }
       }
     }
     @if $type == right {
       @for $i from 1 through $iteration {
-        @include class-modifire(#{$operator}_#{$i}) {
-          @include class-modifire(right) { #{$value}: 0 ($shift-overall * $i) 0 0 }
+        @include class-modifier(#{$operator}_#{$i}) {
+          @include class-modifier(right) { #{$value}: 0 ($shift-overall * $i) 0 0 }
         }
       }
     }
