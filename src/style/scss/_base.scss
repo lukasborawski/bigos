@@ -735,10 +735,9 @@ $prefix: text;
     vertical-align: middle;
     // margin-top: -4%; // proportion between button height and icon position
   }
-  @include class-modifier(react) {
-    &:disabled {
-      @include opacity(0.5);
-    }
+  &:disabled {
+    @include opacity(0.5);
+    pointer-events: none;
   }
 }
 .actionContainer {
