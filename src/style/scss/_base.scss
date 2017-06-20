@@ -706,11 +706,11 @@ $prefix: text;
   @else {
     &:active,
     &:hover {
-      @include box-shadow(inset 200px 200px 0 0 rgba(0, 0, 0, .5));
-      color: $button-text-hover-color;
+      @include box-shadow(inset 200px 200px 0 0 rgba($button-hover-shadow-color, $button-hover-shadow-transparency));
+      color: $button-hover-text-color;
       span,
       strong {
-        color: $button-text-hover-color !important;
+        color: $button-hover-text-color !important;
       }
     }
   }
