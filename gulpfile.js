@@ -80,7 +80,7 @@ gulp.task('prod', function() {
  Default Dev Builder
  -------------------------------------------------
  */
-gulp.task('default, dev', function() {
+gulp.task('default', function() {
     var tasks = ['sass', 'watch'];
     var sync = tasks.map(function(task) {
         return function(callback) {
