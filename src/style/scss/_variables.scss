@@ -258,7 +258,7 @@ $button-text-size-factor: .5; // buttons default text size
 $button-text-color: $color-white; // buttons default text color
 $button-text-color-opposite: $color-black; // buttons default text color
 $button-hover-text-color: $color-black; // buttons default text color on hover state
-$button-hover-shadow-color: 0, 0, 0; // buttons shadow rbg color on hover state
+$button-hover-shadow-color: rgb(0, 0, 0); // buttons shadow rbg color on hover state
 $button-hover-shadow-transparency: 0.5; // buttons shadow transparency factor on hover state
 $button-text-visited-color: $color-lightenesgrey; // buttons default text color on visited state
 $button-clear-background-color: false; // buttons clear option background
