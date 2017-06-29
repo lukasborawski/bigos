@@ -50,7 +50,7 @@ Docs:
 
 ---
 ###### Tests SCSS watch path
-  sass --watch src/style/scss/style.scss:test/style.css
+  `sass --watch src/style/scss/style.scss:test/style.css`
 
 ## Structure
 
@@ -61,7 +61,7 @@ Here's how the whole framework is built. Following individual directories and th
 
     bigos
     |---src
-         |---scss
+        |---scss
 
 ## Normalize
 Bigos includes '_normalize.scss' file with styles normalize system. It's based on [Normalize CSS](https://necolas.github.io/normalize.css/ "Normalize CSS") by Nicolas Gallagher. So, framework styles are not reset to default null values - they are adapted to application structure.
