@@ -59,15 +59,9 @@ Here's how the whole framework is built. Following individual directories and th
 <a name=""></a>
 #### Structure of directories
 
-  	bigos
-  	|---src
-   		|---fonts
-   		|---img
-   		|---js
-   		|---markup
-		|---style
-   			|---scss
-   	|---test
+    bigos
+    |---src
+         |---scss
 
 ## Normalize
 Bigos includes '_normalize.scss' file with styles normalize system. It's based on [Normalize CSS](https://necolas.github.io/normalize.css/ "Normalize CSS") by Nicolas Gallagher. So, framework styles are not reset to default null values - they are adapted to application structure.
@@ -1391,6 +1385,7 @@ Additionally icons can have strokes. You can enable them by using control variab
 
 ## Changelog
 
+* 29.06.2017 - updated to 0.3 version, changed major structure, bug fixes, button hover state changes
 * 22.05.2017 - server changes and fixes, documentation update
 * 26.07.2016 - added full pre version of documentation, updated and improved some parts of code
 * there was couple things before but ...
@@ -1407,14 +1402,14 @@ Additionally icons can have strokes. You can enable them by using control variab
 * ~~Name of classes sistematize~~,
 * ~~Add gulp build and configuration file~~,
 * ~~Add multiple class model option~~,
-* Expand flexbox base classes,
+* ~~Expand flexbox base classes~~,
 * ~~Media queries tight ranges~~,
 
 ###### Small
 
 * ~~Default HTML elements restes: button, input, select~~,
 * Add important option for some elements,
-* Buttons disabled status, types names (primary, error, success),
+* ~~Buttons disabled status~~, types names (primary, error, success),
 * ~~Colors and sizes classes~~,
 * ~~Colors for borders~~,
 * ~~Link style / decorations classes~~,
