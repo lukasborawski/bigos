@@ -23,8 +23,8 @@ var minify = require('gulp-minify-css');
  Paths
  -------------------------------------------------
  */
-var sass_src = 'src/style/scss/',
-    style_src = 'src/style/',
+var sass_src = 'src/',
+    style_src = '/',
     test_style_src = 'test/';
 /*
  -------------------------------------------------
@@ -61,7 +61,7 @@ gulp.task('watch', function() {
  Production Builder
  -------------------------------------------------
  Start this task only on your production instance.
- The task will minify your generated style file .
+ The task will minify your generated style file.
  -------------------------------------------------
  */
 gulp.task('prod', function() {
@@ -80,7 +80,7 @@ gulp.task('prod', function() {
  Default Dev Builder
  -------------------------------------------------
  */
-gulp.task('default, dev', function() {
+gulp.task('default', function() {
     var tasks = ['sass', 'watch'];
     var sync = tasks.map(function(task) {
         return function(callback) {

@@ -7,12 +7,12 @@
 // Model
 @mixin class-model($model, $inherit: true) {
   @if $inherit == false {
-    > [class*="#{$model}"] {
+    > [class|="#{$model}"] {
       @content;
     }
   }
   @else {
-    [class*="#{$model}"] {
+    [class|="#{$model}"] {
       @content;
     }
   }

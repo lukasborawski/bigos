@@ -165,7 +165,7 @@ button, input {
 }
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   cursor: pointer;
-  -webkit-appearance: button;
+  @include appearance(button);
 }
 button[disabled], input[disabled] {
   cursor: default;
@@ -196,7 +196,8 @@ input[type="search"] {
 input, textarea {
   outline: none 0;
   border-radius: 0; // webkit default
-  // @include appearance();
+  box-shadow: none;
+  @include appearance();
 }
 textarea {
   overflow: auto;
@@ -211,6 +212,6 @@ table {
   // textarea: focus,
   input[type="text"]:focus,
   select:focus {
-    @include font-size(16)
+    @include font-size(12)
   }
 }
