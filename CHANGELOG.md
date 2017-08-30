@@ -1,5 +1,6 @@
 ## Changelog
 
+* 30.08.2017 - flexbox full handling (#2) + several fixes and corrects
 * 29.06.2017 - updated to 0.3 version, changed major structure, bug fixes, button hover state changes
 * 22.05.2017 - server changes and fixes, documentation update
 * 26.07.2016 - added full pre version of documentation, updated and improved some parts of code
