@@ -586,10 +586,18 @@ Couple avaliable variables:
 * `$link-decoration` - set link decoration true/false
 * `$link-decoration-type` - if you will set link decoration on `true` this variable will attach dedicated link decoration, by default `underline`
 * `$link-hover-type` - this variable will handle hover state for links, set here *"color"* property if you want change link color on hover, if not, leave none to keep none hover state for links, set *"underline"* or other property to set other link hover state
-* `$link-hover-color` - if you will use *"color"* as a link hover type this variable will set chosen color, blue by default
+* `$link-hover-color` - if you will use `color` as a link hover type this variable will set chosen color, blue by default
 * `$link-visited-color` - this is clear
 
-The `link` class - you can use it for inline text elements.
+The `link` class - you can use it for inline text elements. For those there are separated variables:
+
+* `$link-class-type` - this is clear - `underline` or `color`
+* `$link-class-hover-type` - the same as above
+
+There is also special configuration to set links oposite type named `naked`; and the variables:
+
+* `$link-class-naked-hover-type` - `underline` or `color`
+* `$link-class-naked-hover-color` - used if `$link-class-naked-hover-type` is `color`
 
 Class model
 

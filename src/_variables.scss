@@ -251,10 +251,10 @@ $link-decoration-type: underline; // links decoration type
 $link-hover-type: underline; // links hover decoration type
 $link-hover-color: $color-black; // links hover color name
 $link-visited-color: $color-black; // links visited decoration type
-$link-class-type: underline; // links visited decoration type
-$link-class-hover-type: none; // links class hover decoration type
-$link-class-naked-hover-type: color; // links class naked hover decoration type
-$link-class-naked-hover-color: $color-black; // links class naked default hover color
+$link-class-type: underline; // .link class visited decoration type
+$link-class-hover-type: none; // .link class hover decoration type
+$link-class-naked-hover-type: color; // .link class naked hover decoration type
+$link-class-naked-hover-color: $color-black; // .link class naked default hover color
 
 // Buttons
 $button-size-factor: 2; // proportion of buttons growth size
