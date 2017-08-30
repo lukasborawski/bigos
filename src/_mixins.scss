@@ -7,12 +7,12 @@
 // Model
 @mixin class-model($model, $inherit: true) {
   @if $inherit == false {
-    > [class*="#{$model}"] {
+    > [class|="#{$model}"] {
       @content;
     }
   }
   @else {
-    [class*="#{$model}"] {
+    [class|="#{$model}"] {
       @content;
     }
   }
@@ -20,7 +20,7 @@
 // Modifier
 @mixin class-modifier($name-1: false, $name-2: false, $name-3: false, $name-4: false, $name-5: false) {
   @at-root {
-    @if $name-1 and $name-1 != false and not $name-2 and not $name-3 and not $name-4 and not $name-5   {
+    @if $name-1 and $name-1 != false and not $name-2 and not $name-3 and not $name-4 and not $name-5 {
       &[class*="-#{$name-1}"] {
         @content;
       }
@@ -75,6 +75,11 @@
         @content;
       }
     }
+  }
+}
+@mixin class-separator($prefix) {
+  &[class="#{$prefix}"] {
+    @content;
   }
 }
 
@@ -237,7 +242,7 @@
 }
 @mixin element-height-full {
   min-height: 100%;
-  height: auto !important;
+  height: auto;
   height: 100%;
 }
 @mixin element-size($size) {
@@ -626,5 +631,10 @@
     $style: nth($column-rule-coords, 2);
     $color: nth($column-rule-coords, 3);
     @include prefixr(column-rule, $width $style $color, webkit moz cstm);
+  }
+  > * {
+    // -webkit-column-break-inside: avoid;
+    // page-break-inside: avoid;
+    // break-inside: avoid-page;
   }
 }

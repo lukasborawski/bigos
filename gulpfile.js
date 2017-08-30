@@ -18,13 +18,14 @@ var async = require('async');
 // SASS, Styles Plugins
 var sass = require('gulp-ruby-sass');
 var minify = require('gulp-minify-css');
+var livereload = require('gulp-livereload');
 /*
  -------------------------------------------------
  Paths
  -------------------------------------------------
  */
 var sass_src = 'src/',
-    style_src = '/',
+    style_src = 'dist/',
     test_style_src = 'test/';
 /*
  -------------------------------------------------
@@ -33,20 +34,20 @@ var sass_src = 'src/',
  */
 // SASS, Style Tasks
 gulp.task('sass', function () {
-    gulp.src([sass_src + 'style.scss'])
-        .pipe(sass())
-        .pipe(gulp.dest(style_src));
+  return sass(sass_src + 'style.scss')
+      .on('error', function (err) { console.log(err.message); })
+      .pipe(gulp.dest(style_src))
 });
 gulp.task('sass-test', function () {
-    gulp.src([sass_src + 'style.scss'])
-        .pipe(sass())
-        // .pipe(minify({ keepBreaks: false }))
-        .pipe(gulp.dest(test_style_src));
+  return sass(sass_src + 'style.scss')
+      .on('error', function (err) { console.log(err.message); })
+      .pipe(gulp.dest(test_style_src))
+      .pipe(livereload())
 });
 gulp.task('minify', function() {
-    gulp.src([style_src + '/style.css'])
-        .pipe(minify({ keepBreaks: false }))
-        .pipe(gulp.dest(style_src))
+  gulp.src([style_src + '/style.css'])
+      .pipe(minify({keepBreaks: false}))
+      .pipe(gulp.dest(style_src))
 });
 /*
  -------------------------------------------------
@@ -54,7 +55,10 @@ gulp.task('minify', function() {
  -------------------------------------------------
  */
 gulp.task('watch', function() {
-    gulp.watch(sass_src + '*.scss');
+  gulp.watch(sass_src + '*.scss', ['sass']);
+});
+gulp.task('watch-test', function() {
+  gulp.watch(sass_src + '*.scss', ['sass-test']);
 });
 /*
  -------------------------------------------------
@@ -81,15 +85,15 @@ gulp.task('prod', function() {
  -------------------------------------------------
  */
 gulp.task('default', function() {
-    var tasks = ['sass', 'watch'];
-    var sync = tasks.map(function(task) {
-        return function(callback) {
-            gulp.start(task, function(err) {
-                callback(err);
-            });
-        };
-    });
-    async.series(sync);
+  var tasks = ['watch'];
+  var sync = tasks.map(function(task) {
+      return function(callback) {
+          gulp.start(task, function(err) {
+              callback(err);
+          });
+      };
+  });
+  async.series(sync);
 });
 /*
  -------------------------------------------------
@@ -97,13 +101,13 @@ gulp.task('default', function() {
  -------------------------------------------------
  */
 gulp.task('test', function() {
-    var tasks = ['sass-test', 'watch'];
-    var sync = tasks.map(function(task) {
-        return function(callback) {
-            gulp.start(task, function(err) {
-                callback(err);
-            });
-        };
-    });
-    async.series(sync);
+  var tasks = ['watch-test'];
+  var sync = tasks.map(function(task) {
+      return function(callback) {
+          gulp.start(task, function(err) {
+              callback(err);
+          });
+      };
+  });
+  async.series(sync);
 });

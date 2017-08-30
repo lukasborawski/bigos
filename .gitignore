@@ -60,7 +60,4 @@ test/*
 
 # Others #
 ##################
-# components/*
-# components
-# src/markup/*
 node_modules/

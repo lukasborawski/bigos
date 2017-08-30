@@ -917,11 +917,20 @@ By default this model does nothing. As probably you thought there is no any `dis
 Add full `width` and `height` size for box.
 
 ```html
-<!-- width on 100% -->
+<!-- width on 100% of parent -->
 <section class="box-full_width"></section>
+
+<!-- width on 100% of screen -->
+<section class="box-full_width_ofscreen"></section>
 
 <!-- height on 100% -->
 <section class="box-full_height"></section>
+
+<!-- height on 100% of screen -->
+<section class="box-full_height_ofscreen"></section>
+
+<!-- flexible height - sets height on auto -->
+<section class="box-full_height_flexible"></section>
 ```
 
 *Relative box*
@@ -1141,69 +1150,141 @@ Note that this will set `float` property exactly for this element, not for child
 
 **Flex box**
 
-Right now flex box is in a very, let's say light state, but of course you can use it in fully functional way.
-
 Use `flex` class modifier and particular options:
 
 *Content justify*
 
-* `end`, `center`, `spacebetween`, `spacearound`
+* `start`, `middle`, `end`, `spacebetween`, `spacearound`, `spaceevenly`
+
+Use as a class option  with class modifier `content` and class option `justify`:
+
+```html
+<section class="box-flex-content_justify_bottom"></section>
+<!-- or -->
+<section class="box-flex-content_justify_center"></section>
+```
+
+*Content alignment*
+
+If your flex box items fills more than two lines you can set vertical alignment for them, but only when the parent container has bigger height than content.
+
+* `start`, `middle`, `end`, `spacebetween`, `spacearound`, `stretch`
+
+Use as a class option with class modifier `content` and class option `align`:
+
+```html
+<section class="box-flex-content_align_top"></section>
+<!-- or -->
+<section class="box-flex-content_align_middle"></section>
+<!-- or -->
+<section class="box-flex-content_align_spacebetween"></section>
+```
+
+*Items wrapping*
+
+By default flex box items wrapping to the next line, if they're not fit to the block/container width. If you want to avoid that behavior set special class option on `nowrap`.
 
 Usage:
 
 ```html
-<section class="box-flex_end"></section>
-<!-- or -->
-<section class="box-flex_center"></section>
+<section class="box-flex_nowrap"></section>
 ```
 
-*Items aligment*
+*Items alignment*
 
-* `top`, `middle`, `bottom`, `baseline`, `streach`
+* `top`, `middle`, `bottom`, `baseline`, `stretch` 
+* `auto` - only for single item alignment
 
-Usage (with special class modifier `items`):
+Use as a class option with special class modifier/option `content` and `items`):
 
 ```html
-<section class="box-flex-items_top"></section>
+<section class="box-flex-content_items_top"></section>
 <!-- or -->
-<section class="box-flex-items_middle"></section>
+<section class="box-flex-content_items_middle"></section>
 <!-- or -->
-<section class="box-flex-items_streach"></section>
+<section class="box-flex-content_items_stretch"></section>
+```
+
+If you want to set alignment for several items use this class options not with block/container but with child of it - element with class modifier `item`.
+
+```html
+<section class="box-flex-items_top">
+  <div class="box-flex-item_bottom"></div>
+  <div class="box-flex-item_middle"></div>
+  <div class="box-flex-item_stretch"></div>
+</section>
 ```
 
 *Items direction*
 
 * `row`, `rowreverse`, `col`, `colreverse`
 
-Usage (with special class modifier/option notation `items_direction`):
+Use as a class option `direction_{$type}` with special class modifier/option `content` and `items`):
 
 ```html
-<section class="box-flex-items_direction_row"></section>
+<section class="box-flex-content_items_direction_row"></section>
 <!-- or -->
-<section class="box-flex-items_direction_col"></section>
+<section class="box-flex-content_items_direction_col"></section>
 
 <!-- of course you can use them together -->
-<section class="box-flex-items_top-items_direction_col"></section>
+<section class="box-flex-content-items_top-items_direction_col"></section>
 ```
 
-*Items sequence*
+As a special feature there is defined direction-wrapping flow shorthand.
 
-Except all of that, you also have possibility to set sequence of flex box items (`flex` property). By default there is 1-6 sequence iteration, but you can change it by changing `$flex-box-items-sequence-count` variable. After this, set for one of flex box item one of sequence class, like this:
+```html
+<section class="box-flex-flow_rowwrap"></section>
+```
+
+*Item width*
+
+Except all of that, you also have possibility to set width/sequence of flex box items (`flex` property). By default there is 1-6 sequence iteration, but you can change it by changing `$flex-box-items-sequence-count` variable. After this, set for one of flex box item one of sequence class, like this:
+
+Use as a child of box-flex block with special class midifier `item`:
 
 ```html
 <!-- simple and regullar order -->
 <section class="box-flex">
-  <div class="box-flex-item-sequence_1"></div>
-  <div class="box-flex-item-sequence_2"></div>
-  <div class="box-flex-item-sequence_3"></div>
+  <div class="box-flex-item-width_1"></div>
+  <div class="box-flex-item-width_2"></div>
+  <div class="box-flex-item-width_3"></div>
 </section>
 <!-- or in the none regullar order -->
 <section class="box-flex">
-  <div class="box-flex-item-sequence_4"></div>
-  <div class="box-flex-item-sequence_1"></div>
-  <div class="box-flex-item-sequence_5"></div>
+  <div class="box-flex-item-width_4"></div>
+  <div class="box-flex-item-width_1"></div>
+  <div class="box-flex-item-width_5"></div>
 </section>
 ```
+
+*Item grow/shrink*
+
+Items also can grow and shrink. Use value between 0 to `$flex-box-items-shrink-count` or `$flex-box-items-grow-count` (default: 6) to execute several items growing or shrinking.
+
+Use as a child of box-flex block with special class midifier `item`:
+
+```html
+<!-- shrink -->
+<section class="box-flex">
+  <div class="box-flex-item-shrink_1"></div>
+  <div class="box-flex-item-shrink_2"></div>
+  <div class="box-flex-item-shrink_1"></div>
+</section>
+<!-- grow -->
+<section class="box-flex">
+  <div class="box-flex-item-grow_1"></div>
+  <div class="box-flex-item-grow_2"></div>
+  <div class="box-flex-item-grow_1"></div>
+</section>
+<!-- mixed -->
+<section class="box-flex">
+  <div class="box-flex-item-shrink_4"></div>
+  <div class="box-flex-item-grow_2"></div>
+  <div class="box-flex-item-shrink_4"></div>
+</section>
+```
+
+-
 
 More about flexbox layout you will find [here](https://css-tricks.com/snippets/css/a-guide-to-flexbox/).
 
@@ -1384,44 +1465,4 @@ Additionally icons can have strokes. You can enable them by using control variab
 
 ## Changelog
 
-* 29.06.2017 - updated to 0.3 version, changed major structure, bug fixes, button hover state changes
-* 22.05.2017 - server changes and fixes, documentation update
-* 26.07.2016 - added full pre version of documentation, updated and improved some parts of code
-* there was couple things before but ...
-
-<a name=""></a>
-## Missing and planned features
-
-* ~~Remove mobile/rwd setup in exchange for simple mixins configuration~~
-* Rebuild size factors (use size/scale prefix "s1-s6")
-* ~~Grid system integration with MQ~~,
-* Code inside docs,
-* Divider patterns,
-* ~~Align positions: vertical classes~~,
-* ~~Name of classes sistematize~~,
-* ~~Add gulp build and configuration file~~,
-* ~~Add multiple class model option~~,
-* ~~Expand flexbox base classes~~,
-* ~~Media queries tight ranges~~,
-
-###### Small
-
-* ~~Default HTML elements restes: button, input, select~~,
-* Add important option for some elements,
-* ~~Buttons disabled status~~, types names (primary, error, success),
-* ~~Colors and sizes classes~~,
-* ~~Colors for borders~~,
-* ~~Link style / decorations classes~~,
-* Dept on font size units em/rem,
-* ~~Background colors classes~~,
-* Fonts variants for font style,
-* Reduced mobile/desktop classes,
-* ~~Fonts variants for font sizes : small, medium, big~~,
-* Adaptive heights for blocks,
-* ~~Grid columns vertical positions~~,
-* Lined icons,
-* Line height classes,
-* Mobile setup for texts,
-* ~~Border radius classes~~,
-* ~~Text wrap class~~,
-* Add button states (in progress),
+Go to [changelog file](CHANGELOG.md) to check all recent updates.

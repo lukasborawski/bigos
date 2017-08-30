@@ -17,7 +17,7 @@ $color-app-grey: #ccc;
 // --------------------
 // Global variables should be left unchanged.
 // They are used precisely in the whole framework.
-// You can use them globally.
+// You can also use them globally.
 // --------------------
 // **
 
@@ -75,9 +75,9 @@ $margin-centered: 0 auto;
 // SYSTEM
 // --------------------
 // System variables define the appearance and behavior
-// of the various functions and parts of the visual.
+// of the various functions and parts of the visuals.
 // You can change them according to the data stored
-// in the project area. Check out the docs.
+// in the project area. Please check out the docs first.
 // --------------------
 // **
 
@@ -130,20 +130,20 @@ $font-custom-master: false; // custom font will be master
 $font-base-thin: false; // font face Thin file name
 $font-base-light: false; // font face Light file name
 $font-base-medium: false; // font face Medium file name
-$font-base-regular: false; // e.g. 'Custom-Rg' // font face Ragular file name
+$font-base-regular: false; // i.e. 'Custom-Rg' // font face Ragular file name
 $font-base-bold: false; // font face Bold  file name
-$font-base-semibold: false; // font face SemiBold  file name
+$font-base-semibold: false; // font face SemiBold file name
 
-$font-base-regular-it: false; // e.g. 'Custom-Rg-It'; // font face Regular Italic
+$font-base-regular-it: false; // i.e. 'Custom-Rg-It'; // font face Regular Italic
 
 $font-secondary: false; // secondary font face will be used
-$font-secondary-regular: false; // secondary font face Regular
-$font-secondary-bold: false; // secondary font face Bold
-$font-secondary-semibold: false; // secondary font face Semi Bold
+$font-secondary-regular: false; // secondary font face Regular file name
+$font-secondary-bold: false; // secondary font face Bold file name
+$font-secondary-semibold: false; // secondary font face Semi Bold file name
 
 $font-icons: false; // icons library will be built
-$font-icons-name: 'fonticons'; // font-icons name - file name must be the same
-$font-icons-prefix: false; // if you need prefix, set in "" operator
+$font-icons-name: 'fonticons'; // icons font face file name
+$font-icons-prefix: false; // if you need prefix, set as a string
 $font-icons-size-factor: 8; // scale of icons size
 $font-icons-colors-name: // font-icons colors name
   bwhite,
@@ -162,16 +162,12 @@ $font-icons-stroke-size: 1px; // icons stroke width
 $font-icons-stroke-color: $color-black; // icons stroke color
 
 // Headings
-$headings-count: 6; // number of global headings <h1>/<h6>
+$headings-count: 6; // number of global headings <h1>/<h6> - 6 is max
 $headings-size: 60; // base headings size
-$headings-size-factor: 6; // reduction in the scale of headings font size
+$headings-size-factor: 6; // proportion of headings growth size
 $headings-lineheight-size: 58; // base headings line height
 $headings-lineheight-factor: 5; // reduction in the scale of headings line height
-$headings-bold: true; // disable bold font-face for h1-h3 headings
-
-// Mobile
-$media-queries: true; // disable media-queries system
-$grid-count: 12; // default grid columns count schema - recommended
+$headings-bold: true; // enable bold font-face for h1-h3 headings
 
 // Viewports
 $breakpoint-appwidth      : 980px;
@@ -222,9 +218,25 @@ $border-color-code: // border colors code
   $color-lightgrey,
   $color-lightergrey;
 
+// Mobile
+$media-queries: true; // disable media-queries system
+
+// Grid box
+$grid-count: 12; // default grid columns count schema - recommended
+
 // Flex box
 $flex-box: false; // disable flex box layout
-$flex-box-items-sequence-count: 6; // sequence of flex box layout items
+$flex-box-items-sequence-count: 12; // width of flex box layout items
+$flex-box-items-shrink-count: 6; // size of flex box item shrink
+$flex-box-items-grow-count: 6; // size of flex box item grow
+$flex-box-items-alignments-name: // names of flex box items alignment mode
+  start, middle, end, baseline, stretch, auto;
+$flex-box-items-alignments-value: // values of flex box items alignment mode
+  flex-start, center, flex-end, baseline, stretch, auto;
+$flex-box-content-alignments-name: // names of flex box content alignment mode
+  top, middle, bottom, spacebetween, spacearound, spaceevenly, stretch;
+$flex-box-content-alignments-value: // values of flex box content alignment mode
+  flex-start, center, flex-end, space-between, space-around, space-evenly, stretch;
 
 // Sprites
 $global-sprite-type: "png"; // format of global sprite image
@@ -236,32 +248,34 @@ $global-images-path: "../img/"; // global images path
 $link-base-color: #000; // links global, base color
 $link-decoration: false; // links global decoration
 $link-decoration-type: underline; // links decoration type
-$link-hover-type: none; // links hover decoration type
-$link-hover-color: $color-blue; // links hover color name
-$link-visited-color: $color-grey; // links visited decoration type
-$link-class-hover-type: underline; // link class hover decoration type
-$link-class-naked-hover-type: color; // link class naked hover decoration type
-$link-class-naked-hover-color: $color-grey; // link class naked default hover color
+$link-hover-type: underline; // links hover decoration type
+$link-hover-color: $color-black; // links hover color name
+$link-visited-color: $color-black; // links visited decoration type
+$link-class-type: underline; // links visited decoration type
+$link-class-hover-type: none; // links class hover decoration type
+$link-class-naked-hover-type: color; // links class naked hover decoration type
+$link-class-naked-hover-color: $color-black; // links class naked default hover color
 
 // Buttons
 $button-size-factor: 2; // proportion of buttons growth size
-$button-size-proportion: panoramic; // proportion type of buttons presentation - use square for equal proportions
+$button-size-proportion: panoramic; // proportion type of buttons presentation - use square for equal
 $button-size-iteration: 6; // buttons sizes iteration number
 $button-size-horizontal-gap: 20; // buttons horizontal padding gap range
 $button-rounding-fixed: true; // buttons will get the same border radius
 $button-rounding-fixed-size: 5px; // buttons fixed border radius size
 $button-rounding-iteration: 6; // buttons roundings iteration number
-$button-rounding-factor: 2; // buttons proportion of growth rounded corners size
+$button-rounding-factor: 2; // proportion of buttons growth rounded corners size
 $button-rounding-full: 100px; // buttons corners full rounding max size
 $button-text-style: regular; // buttons default text style - use custom to change it
-$button-text-size-factor: .5; // buttons default text size
+$button-text-size-factor: .5; // proportion of buttons growth text size
 $button-text-color: $color-white; // buttons default text color
-$button-text-color-opposite: $color-black; // buttons default text color
-$button-hover-text-color: $color-black; // buttons default text color on hover state
-$button-hover-shadow-color: rgb(0, 0, 0); // buttons shadow rbg color on hover state
+$button-opposite-color: bwhite; // button opposite color
+$button-opposite-text-color: $color-black; // button opposite text color
+$button-hover-text-color: $color-white; // buttons default text color on hover state
+$button-hover-shadow-color: rgba(0, 0, 0, 1); // buttons shadow rbg color on hover state
 $button-hover-shadow-transparency: 0.5; // buttons shadow transparency factor on hover state
 $button-text-visited-color: $color-lightenesgrey; // buttons default text color on visited state
-$button-clear-background-color: false; // buttons clear option background
+$button-clear-background-color: false; // buttons clear option background color
 $button-clear-hover-color: $color-white; // buttons clear option text color
 $button-border: false; // buttons border disable/enable
 $button-shadow: false; // buttons shadow disable/enable
@@ -282,12 +296,12 @@ $button-color-code: // buttons colors code
   $color-lightergrey;
 
 // Inputs
-$input_text-size-factor: 1.5; // text input proportion of growth inputs size
-$input_text-size-iteration: 6; // text input  sizes iteration number
-$input_text-color: $color-grey; // text input value color
+$input_text-size-factor: 1.5; // proportion of growth inputs size
+$input_text-size-iteration: 6; // text input sizes iteration number
+$input_text-color: $color-grey; // text input text color
 $input-text-border: 1px solid $color-lightergrey; // text input border color
 $input_text-border-radius: $shift-overall; // text input border radius factor
-$input_text-color-name: // text input colors names
+$input_text-color-name: // text input colors name
   bblack,
   bgrey,
   blightgrey,
