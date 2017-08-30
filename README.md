@@ -45,7 +45,6 @@ Docs:
    * [Icons](#icons)
 * [Tests environment](#)
 * [Changelog - list of changes and improvements](#changelog)
-* [Missing and planned features](#missing-and-planned-features)
 
 
 ---
