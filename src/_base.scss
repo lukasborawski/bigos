@@ -31,7 +31,14 @@ a {
     }
   }
   &.active,
+  &:active,
+  &:focus,
   &:visited {
+    @if $link-decoration {
+      text-decoration: $link-decoration-type;
+    } @else {
+      text-decoration: none
+    }
     color: $link-visited-color;
   }
 }
@@ -39,10 +46,11 @@ a {
   display: block;
   cursor: pointer;
   color: $link-base-color;
-  // type
+  text-decoration: $link-class-type;
+  // types
   @include class-modifier(inline) {
-    width: auto !important;
-    display: inline-block !important;
+    width: auto;
+    display: inline-block;
   }
   @include class-modifier(naked) {
     text-decoration: none;
@@ -64,7 +72,7 @@ a {
 @mixin cursor-inherit($value) {
    @include class-option(inherit) {
     * {
-      cursor: $value !important;
+      cursor: $value;
     }
   }
 }
@@ -103,28 +111,24 @@ a {
   // types
   @each $border-type in $border-types {
      @include class-option($border-type) {
-      border-#{$border-type}: $border-default !important;
-      border-color: $border-default-color;
-      border: none;
+      border-#{$border-type}: $border-default $border-default-color;
     }
   }
   @include class-option(full) {
     border: $border-default $border-default-color;
   }
-  // color
+  // colors
   @include class-modifier(color) {
     $n: length($border-color-name);
     @for $i from 1 through $n {
       @include class-option(nth($border-color-name, $i)) {
-        border-width: 1px;
-        border-style: $border-default;
-        border-color: #{nth($border-color-code, $i)} !important;
+        border-color: #{nth($border-color-code, $i)};
       }
     }
   }
   // others
   @include class-modifier(bold) {
-    border-width: $border-bold-size !important;
+    border-width: $border-bold-size;
   }
   @include class-modifier(none) {
     border: none !important;
@@ -158,7 +162,7 @@ a {
 
 strong {
   @if $font-custom == true {
-     @if $font-custom-master == true{
+    @if $font-custom-master == true {
       @if $font-base-bold {
         font-family: $font-base-bold;
       }
@@ -217,19 +221,19 @@ strong {
     @include font-face($font-base-thin);
   }
   @if $font-base-regular and not $font-base-regular == false {
-     @include font-face($font-base-regular);
+    @include font-face($font-base-regular);
   }
   @if $font-base-light and not $font-base-light == false {
-     @include font-face($font-base-light);
+    @include font-face($font-base-light);
   }
   @if $font-base-medium and not $font-base-medium == false {
-     @include font-face($font-base-medium);
+    @include font-face($font-base-medium);
   }
   @if $font-base-bold and not $font-base-bold == false {
-     @include font-face($font-base-bold);
+    @include font-face($font-base-bold);
   }
   @if $font-base-semibold and not $font-base-semibold == false {
-     @include font-face($font-base-semibold);
+    @include font-face($font-base-semibold);
   }
   @if $headings-bold and $font-base-bold {
     h1,
@@ -297,6 +301,15 @@ $prefix: text;
     font-weight: 400;
     font-family: $font-base-light;
   }
+  .csf {
+    font-family: $font-secondary-regular;
+  }
+  .csfb {
+    font-family: $font-secondary-bold;
+  }
+  .csfl {
+    font-family: $font-secondary-light;
+  }
 }
 
 // --------------------
@@ -308,13 +321,18 @@ $prefix: text;
   @include class-modifier(full) {
     @include class-option(width) {
       width: $width-100;
+      @include class-option(ofscreen) {
+        width: 100vw;
+      };
     }
     @include class-option(height) {
       height: $height-100;
       @include class-option(flexible) {
-        height: auto !important;
-        // min-height: $height-100;
+        height: auto;
       }
+      @include class-option(ofscreen) {
+        height: 100vh;
+      };
     }
   }
   @include class-modifier(relative) {
@@ -445,39 +463,23 @@ $prefix: text;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    // flexbox settings
-    flex-wrap: nowrap;
-    // content justify
-    @include class-option(end) {
-      justify-content: flex-end;
-    }
-    @include class-option(center) {
-      justify-content: flex-end;
-    }
-    @include class-option(spacebetween) {
-      justify-content: space-between;
-    }
-    @include class-option(spacearound) {
-      justify-content: space-around;
-    }
-    // items positions
-    @include class-modifier(items) {
-      @include class-option(top) {
-        align-items: flex-start;
-      }
-      @include class-option(bottom) {
-        align-items: flex-end;
-      }
-      @include class-option(middle) {
-        align-items: center;
-      }
-      @include class-option(baseline) {
-        align-items: baseline;
-      }
-      @include class-option(stretch) {
-        align-items: stretch;
-      }
-      // items direction
+    // settings
+    flex-wrap: wrap;
+    @include class-option(nowrap) {
+      flex-wrap: nowrap;
+    };
+    // content
+    @include class-modifier(content) {
+      // items align
+      @include class-option(items) {
+        $n-items-alignments: length($flex-box-items-alignments-name);
+        @for $i from 1 through $n-items-alignments {
+          @include class-option(nth($flex-box-items-alignments-name, $i)) {
+            align-items: nth($flex-box-items-alignments-value, $i)
+          }
+        }
+      };
+      // content direction
       @include class-option(direction) {
         @include class-option(row) {
           flex-direction: row;
@@ -492,19 +494,59 @@ $prefix: text;
           flex-direction: column-reverse;
         }
       }
-    }
+      // content alignmen
+      @include class-option(align) {
+        $n-content-alignments: length($flex-box-content-alignments-name);
+        @for $i from 1 through $n-content-alignments {
+          @include class-option(nth($flex-box-content-alignments-name, $i)) {
+            align-content: nth($flex-box-content-alignments-value, $i)
+          }
+        }
+      };
+      // content justify
+      @include class-option(justify) {
+        $n-content-alignments: length($flex-box-content-alignments-name);
+        @for $i from 1 through $n-content-alignments {
+          @include class-option(nth($flex-box-content-alignments-name, $i)) {
+            justify-content: nth($flex-box-content-alignments-value, $i)
+          }
+        }
+      };
+    };
     @include class-modifier(item) {
-      @for $i from 1 through $flex-box-items-sequence-count{
-        @include class-modifier("sequence_#{$i}") {
-          flex: $i;
+      // item width
+      @for $i from 1 through $flex-box-items-sequence-count {
+        @include class-modifier("width_#{$i}") {
+          flex-basis: 100% / $flex-box-items-sequence-count * $i;
+        }
+      }
+      // item shrink
+      @for $i from 1 through $flex-box-items-shrink-count {
+        @include class-modifier("shrink_#{$i}") {
+          flex-shrink: $i;
+        }
+      }
+      // item grow
+      @for $i from 1 through $flex-box-items-grow-count {
+        @include class-modifier("grow_#{$i}") {
+          flex-grow: $i;
+        }
+      }
+      // item alignment
+      $n-items-alignments: length($flex-box-items-alignments-name);
+      @for $i from 1 through $n-items-alignments {
+        @include class-option(nth($flex-box-items-alignments-name, $i)) {
+          align-self: nth($flex-box-items-alignments-value, $i)
         }
       }
     }
+    // flex flow shorthand
     @include class-modifier(flow) {
-      @include class-option(wraprow) {
+      @include class-option(rowwrap) {
         flex-flow: row wrap;
       }
     }
+    // column case mode
     @include class-model(column) {
       height: auto;
     }
@@ -632,7 +674,7 @@ $prefix: text;
         padding: (4 + $i * $button-size-factor + px) (2 * $button-size-horizontal-gap + $i * $button-size-factor + px);
       }
       @else {
-        padding: (4 + $i * $button-size-factor + px) (4 + $i * $button-size-factor + px);
+        padding: 4 + $i * $button-size-factor + px;
       }
       @include class-modifier(full) {
          @include class-option(width) {
@@ -660,28 +702,40 @@ $prefix: text;
   // colors - defined in _variables
   $n-colors: length($button-color-name);
   @include class-modifier(color) {
-    @for $i from 1 through $n-colors{
+    @for $i from 1 through $n-colors {
       @include class-option(nth($button-color-name, $i)) {
-        // @if #{nth($button-color-name, $i)} == lightergrey {
-        //   color: $button-text-color-opposite !important;
-        // }
+        @if nth($button-color-name, $i) == $button-opposite-color {
+          color: $button-opposite-text-color !important;
+          &:active,
+          &:hover {
+            span,
+            strong {
+              color: inherit !important;
+            }
+          }
+        }
         @if $button-border {
           border: $border-default #{nth($button-color-code, $i)};
         }
         background: #{nth($button-color-code, $i)};
         @include class-option(clear) {
-          @if $button-clear-background-color{
+          @if $button-clear-background-color {
             background: $button-clear-background-color;
           }
           @else {
             background: none;
           }
-          border: $border-default #{nth($button-color-code, $i)};
+          @include box-shadow(
+            inset 1px 0px #{nth($button-color-code, $i)},
+            inset -1px 0px #{nth($button-color-code, $i)},
+            inset 0px 1px #{nth($button-color-code, $i)},
+            inset 0px -1px #{nth($button-color-code, $i)}
+          );
           color: #{nth($button-color-code, $i)};
           &:active,
           &:hover {
-            @if (#{nth($button-color-code, $i)} == 'bwhite') {
-              color: $button-text-color-opposite;
+            @if (nth($button-color-name, $i) == $button-opposite-color) {
+              color: $button-opposite-text-color;
             }
             @else {
               color: $color-white;
@@ -764,7 +818,6 @@ fieldset {
       @for $i from 1 through $input_text-size-iteration {
         @include class-modifier("scale_#{$i}") {
           padding: 2 + $i * $input_text-size-factor + px;
-          // @include font-size($font-base-size + $i);
         }
       }
       // colors

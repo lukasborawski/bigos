@@ -1,9 +1,13 @@
 {
-  "repository": "/",
-  "dependencies": {},
+  "name": "Bigos",
+  "version": "0.3.0",
+  "license": "MIT",
+  "repository": "/src",
   "devDependencies": {
     "gulp": "~3.8",
     "async": "0.9",
-    "gulp-ruby-sass": "~0.7"
+    "gulp-ruby-sass": "~2.0.4",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-livereload": "latest"
   }
 }
