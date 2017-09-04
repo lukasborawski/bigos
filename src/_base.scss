@@ -247,20 +247,21 @@ strong {
       font-family: $font-base-regular;
     }
   }
-  @else {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-weight: normal;
-    }
-  }
   @if $font-base-regular-it {
     em {
       font-family: $font-base-regular-it;
     }
+  }
+}
+@else {
+  font-weight: $font-base-regular-weight;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: $font-base-bold-weight;
   }
 }
 @if $font-secondary == true {
