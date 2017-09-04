@@ -662,7 +662,7 @@ $prefix: text;
     }
   }
   @else {
-    font-weight: bold;
+    font-weight: $button-text-weight;
   }
   @include class-modifier(regular) {
     font-family: $font-base-regular;

@@ -269,6 +269,7 @@ $button-rounding-iteration: 6; // buttons roundings iteration number
 $button-rounding-factor: 2; // proportion of buttons growth rounded corners size
 $button-rounding-full: 100px; // buttons corners full rounding max size
 $button-text-style: regular; // buttons default text style - use custom to change it
+$button-text-weight: 400; // buttons default text weight if there is no custom font
 $button-text-size-factor: .5; // proportion of buttons growth text size
 $button-text-color: $color-white; // buttons default text color
 $button-opposite-color: bwhite; // button opposite color
