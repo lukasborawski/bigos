@@ -691,7 +691,7 @@ $prefix: text;
     }
     @else {
        @for $i from 1 through $button-rounding-iteration{
-        @include class-option(#{$i}) {
+        @include class-option(r#{$i}) {
            @include border-radius(1 + $i * $button-rounding-factor + px);
         }
       }
