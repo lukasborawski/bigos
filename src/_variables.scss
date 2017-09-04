@@ -241,10 +241,10 @@ $flex-box-content-alignments-value: // values of flex box content alignment mode
   flex-start, center, flex-end, space-between, space-around, space-evenly, stretch;
 
 // Sprites
-$global-sprite-type: "png"; // format of global sprite image
-$global-sprite-name: "global_sprite"; // name of global sprite image
+$global-sprite-type: 'png'; // format of global sprite image
+$global-sprite-name: 'global_sprite'; // name of global sprite image
 $global-sprite-size: 300px 300px; // size of global sprite image
-$global-images-path: "../img/"; // global images path
+$global-images-path: '../img/'; // global images path
 
 // Links/Anhors
 $link-base-color: #000; // links global, base color
