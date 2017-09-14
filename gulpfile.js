@@ -49,6 +49,11 @@ gulp.task('minify', function() {
       .pipe(minify({keepBreaks: false}))
       .pipe(gulp.dest(style_src))
 });
+gulp.task('minify-test', function() {
+  gulp.src([test_style_src + '/style.css'])
+      .pipe(minify({keepBreaks: false}))
+      .pipe(gulp.dest(test_style_src))
+});
 /*
  -------------------------------------------------
  Watchers
@@ -101,7 +106,7 @@ gulp.task('default', function() {
  -------------------------------------------------
  */
 gulp.task('test', function() {
-  var tasks = ['watch-test'];
+  var tasks = ['watch-test', 'minify-test'];
   var sync = tasks.map(function(task) {
       return function(callback) {
           gulp.start(task, function(err) {

@@ -408,27 +408,24 @@
 }
 
 // Line Gradients
-@mixin background-gradient-linear($position: top, $from: #fff 50%, $color-a: false, $color-b: false, $color_c: false) {
+@mixin background-gradient-linear($position: 0, $from: #fff 50%, $color-a: false, $color-b: false, $color_c: false) {
   @if $color-a == false {
     background-color: $from;
   }
-  @if $color-a != false {
+  @if $color-a and not $color-b and not $color-c {
     background-color: $from;
     background-image: -webkit-linear-gradient($position, $from, $color-a);
     background-image: linear-gradient($position, $from, $color-a);
-    // filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($from)}', endColorstr='#{ie-hex-str($color-a)}');
   }
-  @else if $color-a and $color-b != false {
+  @if $color-a and $color-b and not $color-c {
     background-color: $from;
     background-image: -webkit-linear-gradient($position, $from, $color-a, $color-b);
     background-image: linear-gradient($position, $from, $color-a, $color-b);
-    // filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($from)}', endColorstr='#{ie-hex-str($color-b)}');
   }
-  @else if $color-a and $color-b and $color-c != false {
+  @if $color-a and $color-b and $color-c {
     background-color: $from;
     background-image: -webkit-linear-gradient($position, $from, $color-a, $color-b, $color-c);
     background-image: linear-gradient($position, $from, $color-a, $color-b, $color-c);
-    // filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#{ie-hex-str($from)}', endColorstr='#{ie-hex-str($color-c)}');
   }
   .ie-9 & {
     filter: none !important;

@@ -57,6 +57,7 @@ src/js/libs/bower_components
 # Tests #
 ##################
 test/*
+dist/
 
 # Others #
 ##################

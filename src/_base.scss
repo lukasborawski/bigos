@@ -177,7 +177,7 @@ strong {
     }
   }
   @else {
-    font-family: $font-base-simple;
+    font-family: inherit;
     font-weight: bold;
   }
 }
@@ -790,7 +790,7 @@ $prefix: text;
     vertical-align: middle;
     // margin-top: -4%; // proportion between button height and icon position
   }
-  &:disabled {
+  &:disabled, @include class-modifier(disabled) {
     @include opacity(0.5);
     pointer-events: none;
   }
@@ -830,6 +830,10 @@ fieldset {
           }
         }
       }
+    }
+    @include class-modifier(disabled) {
+      @include opacity(0.5);
+      pointer-events: none;
     }
   }
   @include class-model(type) {

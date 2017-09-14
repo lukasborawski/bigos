@@ -11,7 +11,7 @@ Bigos is a simple, SCSS* only framework**. It's built for modern applications fo
 
 **please note that this is very early alpha version, so far used with success in commercial but limited number of projects, feel free to create bug issue notification or propose code fix/change as a pull request.
 
-**Actual minified weight: 48kb**.
+**Actual minified weight: 32kb**.
 
 Installation
 ---
@@ -1199,7 +1199,7 @@ Usage:
 
 *Items alignment*
 
-* `top`, `middle`, `bottom`, `baseline`, `stretch` 
+* `top`, `middle`, `bottom`, `baseline`, `stretch`
 * `auto` - only for single item alignment
 
 Use as a class option with special class modifier/option `content` and `items`):
