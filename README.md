@@ -373,10 +373,11 @@ OK. At the end remember to not use `class-option` notation without nested in `cl
 
 **Gradients***
 
-`background-gradient-linear($position: top, $from: #fff 50%, $color-a: false, $color-b: false, $color_c: false)`
+`background-gradient-linear($position: 0, $from: #fff 50%, $color-a: false, $color-b: false, $color_c: false)`
 
 * possibility of using more than two color gradient (max 4)
 * remember that you can manipulate position of gradients move ([more about here](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient))
+* use numeric values to set gradient direction or conected predefined definitions
 
 *there is no radial gradient mixin - sory
 
