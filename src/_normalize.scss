@@ -199,6 +199,11 @@ input, textarea {
   box-shadow: none;
   @include appearance();
 }
+select {
+  &::-ms-expand {
+    display: none;
+  }
+}
 textarea {
   overflow: auto;
   vertical-align: top;
