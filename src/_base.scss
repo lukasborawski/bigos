@@ -519,6 +519,7 @@ $prefix: text;
       @for $i from 1 through $flex-box-items-sequence-count {
         @include class-modifier("width_#{$i}") {
           flex-basis: 100% / $flex-box-items-sequence-count * $i;
+          flex: 100 / $flex-box-items-sequence-count * $i;
         }
       }
       // item shrink
