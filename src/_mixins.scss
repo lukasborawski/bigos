@@ -220,7 +220,7 @@
     color: $color;
   }
   &:-ms-input-placeholder {
-    color: $color;
+    color: $color !important;
   }
 }
 @mixin element-disabled {
