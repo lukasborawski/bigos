@@ -697,9 +697,7 @@ Class option
 
 **Borders**
 
-This class construction is more complicated and has a lot of options.
-
-But first class model
+Border class model:
 
 ```html
 <!-- it does not do anything - we need class modifier and option -->
@@ -708,7 +706,7 @@ But first class model
 
 *Types*
 
-Border types are notated as a class option and we have couple of them: `top, left, right, bottom, full`
+Border types are notated as a class options: `top, left, right, bottom, full`
 
 Usage:
 
@@ -720,7 +718,7 @@ Usage:
 <section class="border_full"></section>
 ```
 
-these class options will define for which part of element we're gonna style our borders. But if you use them solo there will be no visible resaults. Use another modifiers to menage border classes i.g. with color modifier.
+these class options will define which side of element will style our borders. Note that used solo will not gives visible resaults. You have to use another modifiers to menage border classes i.g. with color modifier.
 
 *Colors*
 
@@ -738,7 +736,7 @@ Usage:
 <!-- color as a class modifier and color name as a class option -->
 ```
 
-Using this class notation you will recive full elemnet border color, but if you want to set color for only one part of element border, connect these two class modifiers like that:
+By using this class notation you will recive full elemnet border color, but if you want to set color for only one type of element border connect these two class modifiers like this:
 
 ```html
 <section class="border_left-color_bwhite"></section>
@@ -754,7 +752,7 @@ Using this class notation you will recive full elemnet border color, but if you 
 
 *Border radius*
 
-There are four options for style element border radius
+There are four options to style element border radius
 
 * `circle` - will set fully rounded element
 * `small, medium, big` - defined in `_variables.scss` file, by default in sequence `2px, 5px, 10px`
