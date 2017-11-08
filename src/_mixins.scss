@@ -7,12 +7,12 @@
 // Model
 @mixin class-model($model, $inherit: true) {
   @if $inherit == false {
-    > [class|="#{$model}"] {
+    > [class*="#{$model}"] {
       @content;
     }
   }
   @else {
-    [class|="#{$model}"] {
+    [class*="#{$model}"] {
       @content;
     }
   }
@@ -408,7 +408,7 @@
 }
 
 // Line Gradients
-@mixin background-gradient-linear($position: 0, $from: #fff 50%, $color-a: false, $color-b: false, $color_c: false) {
+@mixin background-gradient-linear($position: to-bottom, $from: #fff 50%, $color-a: false, $color-b: false, $color_c: false) {
   @if $color-a == false {
     background-color: $from;
   }
