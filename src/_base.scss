@@ -580,9 +580,9 @@ $prefix: text;
     }
   }
   @include class-modifier(width) {
-    @for $i from 1 through 20{
-      @include class-option("#{$i}0") {
-        width: $i * 10 + px;
+    @for $i from 1 through 10 {
+      @include class-option("#{$i}") {
+        width: $i * 100 + px;
       }
     }
   }
