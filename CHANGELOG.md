@@ -10,7 +10,7 @@
 ## Missing and planned features / fixes
 
 ###### Major
-* Bower
+* Mixins refactor (prepare for none prefixes era)
 * ~~Get rid of importants!~~
 * Unify mixins iterations (get rid of ,)
 * ~~Remove mobile/rwd setup in exchange for simple mixins configuration~~
