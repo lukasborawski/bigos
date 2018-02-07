@@ -254,7 +254,6 @@ strong {
   }
 }
 @else {
-  font-weight: $font-base-regular-weight;
   h1,
   h2,
   h3,
@@ -791,7 +790,7 @@ $prefix: text;
     vertical-align: middle;
     // margin-top: -4%; // proportion between button height and icon position
   }
-  &:disabled, @include class-modifier(disabled) {
+  &:disabled {
     @include opacity(0.5);
     pointer-events: none;
   }

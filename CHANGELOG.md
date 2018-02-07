@@ -21,7 +21,7 @@
 * ~~Align positions: vertical classes~~
 * ~~Name of classes sistematize~~
 * ~~Add gulp build and configuration file~~
-* ~~Add multiple class model option~~
+* ~~Add multiple class model option~~``
 * ~~Expand flexbox base classes~~
 * ~~Media queries tight ranges~~
 
