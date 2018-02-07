@@ -49,7 +49,7 @@ Docs:
 
 ---
 ###### Tests SCSS watch path
-  `sass --watch src/style/scss/style.scss:test/style.css`
+  `sass --watch src/style.scss:test/style.css`
 
 ## Structure
 
