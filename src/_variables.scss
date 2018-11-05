@@ -2,7 +2,7 @@
 // --------------------
 // PROJECT
 // --------------------
-// Project variables define
+// Project variables defines
 // special and additional data
 // for custom app functions and
 // features like colors or sizes.
@@ -15,7 +15,7 @@ $color-app-grey: #ccc;
 // --------------------
 // GLOBAL
 // --------------------
-// Global variables should be left unchanged.
+// Global variables should be unchanged.
 // They are used precisely in the whole framework.
 // You can also use them globally.
 // --------------------
@@ -74,7 +74,7 @@ $margin-centered: 0 auto;
 // --------------------
 // SYSTEM
 // --------------------
-// System variables define the appearance and behavior
+// System variables defines the appearance and behavior
 // of the various functions and parts of the visuals.
 // You can change them according to the data stored
 // in the project area. Please check out the docs first.
@@ -116,7 +116,7 @@ $font-sizes-name:  // font sizes name
   small,
   tiny,
   micro;
-$font-sizes-number: // font sizes
+$font-sizes-number: // font sizes number
   24,
   22,
   20,
@@ -200,14 +200,14 @@ $background-color-code: // background colors codes
   $color-lightergrey;
 
 // Borders
-$border-default: 1px solid; // default value of border width
-$border-default-color: $color-lightgrey; // default value of border color
-$border-bold-size: 2px; // border bold size
-$border-radius-small: 2px; // border radius size - small
-$border-radius-medium: 5px; // border radius size -  medium
-$border-radius-big: 10px; // border radius size - big
+$border-default: 1px solid; // default value of borders width
+$border-default-color: $color-lightgrey; // default value of borders color
+$border-bold-size: 2px; // borders bold size
+$border-radius-small: 2px; // borders radius size - small
+$border-radius-medium: 5px; // borders radius size -  medium
+$border-radius-big: 10px; // borders radius size - big
 $border-types: top, right, bottom, left;
-$border-color-name: // border colors name
+$border-color-name: // borders colors name
   bwhite,
   bblack,
   bgrey,
@@ -259,30 +259,32 @@ $link-class-naked-hover-type: color; // .link class naked hover decoration type
 $link-class-naked-hover-color: $color-black; // .link class naked default hover color
 
 // Buttons
-$button-size-factor: 2; // proportion of buttons growth size
+$button-size-factor: 1.7; // proportion of buttons growth size
 $button-size-proportion: panoramic; // proportion type of buttons presentation - use square for equal
 $button-size-iteration: 6; // buttons sizes iteration number
 $button-size-horizontal-gap: 20; // buttons horizontal padding gap range
-$button-rounding-fixed: true; // buttons will get the same border radius
+$button-rounding-fixed: false; // buttons will get the same border radius
 $button-rounding-fixed-size: 5px; // buttons fixed border radius size
 $button-rounding-iteration: 6; // buttons roundings iteration number
 $button-rounding-factor: 2; // proportion of buttons growth rounded corners size
 $button-rounding-full: 100px; // buttons corners full rounding max size
 $button-text-style: regular; // buttons default text style - use custom to change it
-$button-text-weight: 400; // buttons default text weight if there is no custom font
+$button-text-weight: 700; // buttons default text weight if there is no custom font
 $button-text-size-factor: .5; // proportion of buttons growth text size
 $button-text-color: $color-white; // buttons default text color
-$button-opposite-color: bwhite; // button opposite color
+$button-opposite-color: $color-white; // button opposite color
 $button-opposite-text-color: $color-black; // button opposite text color
 $button-hover-text-color: $color-white; // buttons default text color on hover state
-$button-hover-shadow-color: rgba(0, 0, 0, 1); // buttons shadow rbg color on hover state
-$button-hover-shadow-transparency: 0.5; // buttons shadow transparency factor on hover state
+$button-hover-shadow-color: rgb(0, 0, 0); // buttons shadow rbg color on hover state
+$button-hover-shadow-transparency: 0.2; // buttons shadow transparency factor on hover state
 $button-text-visited-color: $color-lightenesgrey; // buttons default text color on visited state
 $button-clear-background-color: false; // buttons clear option background color
 $button-clear-hover-color: $color-white; // buttons clear option text color
 $button-border: false; // buttons border disable/enable
+$button-border-type: solid; // buttons border disable/enable
+$button-border-size: 1px; // buttons border size
 $button-shadow: false; // buttons shadow disable/enable
-$button-shadow-size: 0 3px 0; // buttons shadow size
+$button-shadow-size: 0 1px 0px; // buttons shadow size
 $button-shadow-size-active: 0 1px 0; // active buttons shadow size
 $button-shadow-color: $color-lightgrey; // buttons shadow color
 $button-color-name: // buttons colors names
@@ -299,7 +301,7 @@ $button-color-code: // buttons colors code
   $color-lightergrey;
 
 // Inputs
-$input_text-size-factor: 1.5; // proportion of growth inputs size
+$input_text-size-factor: 1.5; // proportion of inputs size growth
 $input_text-size-iteration: 6; // text input sizes iteration number
 $input_text-color: $color-grey; // text input text color
 $input-text-border: 1px solid $color-lightergrey; // text input border color
@@ -315,11 +317,11 @@ $input_text-color-code: // text input colors code
   $color-lightgrey,
   $color-lightergrey;
 
-$textarea-size-factor: 20; // textarea height proportion of growth
-$textarea-size-iteration: 6; // sizes iteration number
-$textarea-text-resize: false; // disable text scalable function
-$textarea-text-size-factor: .5; // textarea text size factor value
-$textarea-text-size: 12; // textarea test size if it is't scalable
+$textarea-size-factor: 20; // proportion of textareas size growth
+$textarea-size-iteration: 6; // textareas sizes iteration number
+$textarea-text-resize: false; // disable textareas scaleable
+$textarea-text-size-factor: .5; // proportion of textareas text size growth
+$textarea-text-size: 12; // textareas text size if it is't scaleable
 
 // Others
 $ui-appearance: false;
