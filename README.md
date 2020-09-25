@@ -5,7 +5,7 @@ Bigos is a simple, SCSS* only framework**. It's built for modern applications fo
 
 **Major and most important advantage is brevity. This framework includes only base and most needed components. You will not find here complex blocks of styles like in Bootstrap or Fundation. It's only a strong backbone of your feature application. The rest and more advanced features you can define a base on prepared code.**
 
-**Aldo, the whole framework is a lean on special class connection system (CCS) and it may impose the certain character of application code writing. Before you go deeper, first check [syntax](#classes-syntax-class-connection-structure) behind it. After this, you can move on.**
+**Although, the whole framework is a lean on special class connection system (CCS) and it may impose the certain character of application code writing. Before you go deeper, first check [syntax](#classes-syntax-class-connection-structure) behind it. After this, you can move on.**
 
 *if you're not familiar with, here you'll find more about [SASS](http://sass-lang.com/) and [SCSS](http://stackoverflow.com/questions/5654447/whats-the-difference-between-scss-and-sass) language.
 
