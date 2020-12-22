@@ -627,7 +627,6 @@ $prefix: text;
 // --------------------
 // BUTTONS
 // --------------------
-
 @include class-model(button) {
   border: none;
   cursor: pointer;
@@ -641,7 +640,7 @@ $prefix: text;
     vertical-align: middle;
   }
   @if $font-custom and $button-text-style != regular {
-    @if $font-base-bold{
+    @if $font-base-bold {
       font-family: $font-base-bold;
     }
     @else {
@@ -716,7 +715,7 @@ $prefix: text;
           }
         }
         @if $button-border {
-          border: $border-default #{nth($button-color-code, $i)};
+          border: $button-border-size $button-border-type #{nth($button-color-code, $i)};
         }
         background: #{nth($button-color-code, $i)};
         @include class-option(clear) {
@@ -727,10 +726,10 @@ $prefix: text;
             background: none;
           }
           @include box-shadow(
-            inset 1px 0px #{nth($button-color-code, $i)},
-            inset -1px 0px #{nth($button-color-code, $i)},
-            inset 0px 1px #{nth($button-color-code, $i)},
-            inset 0px -1px #{nth($button-color-code, $i)}
+            inset $button-border-size 0px #{nth($button-color-code, $i)},
+            inset -#{$button-border-size} 0px #{nth($button-color-code, $i)},
+            inset 0px $button-border-size #{nth($button-color-code, $i)},
+            inset 0px -#{$button-border-size} #{nth($button-color-code, $i)}
           );
           color: #{nth($button-color-code, $i)};
           &:active,
@@ -750,23 +749,30 @@ $prefix: text;
   }
   // shadow
   @if $button-shadow == true {
-    @include box-shadow($button-shadow-size $button-shadow-color);
-    &:hover {
-      @include box-shadow($button-shadow-size $button-shadow-color, inset 200px 200px 0 0 rgba(0, 0, 0, .03));
-    }
-    &:active {
-      @include box-shadow($button-shadow-size-active $button-shadow-color, inset 200px 200px 0 0 rgba(0, 0, 0, .03));
-    }
-  }
-  @else {
-    &:active,
-    &:hover {
-      @include box-shadow(inset 200px 200px 0 0 $button-hover-shadow-color);
-      color: $button-hover-text-color;
-      span,
-      strong {
-        color: $button-hover-text-color !important;
+    @include class-modifier(shadow) {
+      @include box-shadow($button-shadow-size $button-shadow-color);
+      &:hover {
+        @include box-shadow($button-shadow-size $button-shadow-color, inset 200px 200px 0 0 rgba($button-hover-shadow-color, $button-hover-shadow-transparency));
       }
+      &:active {
+        @include box-shadow($button-shadow-size-active $button-shadow-color, inset 200px 200px 0 0 rgba($button-hover-shadow-color, $button-hover-shadow-transparency));
+      }
+      &:hover, &:active {
+        color: $button-hover-text-color;
+        span,
+        strong {
+          color: $button-hover-text-color !important;
+        }
+      }
+    };
+  }
+  &:active,
+  &:hover {
+    @include box-shadow(inset 200px 200px 0 0 rgba($button-hover-shadow-color, $button-hover-shadow-transparency));
+    color: $button-hover-text-color;
+    span,
+    strong {
+      color: $button-hover-text-color !important;
     }
   }
   @include class-modifier(full) {
