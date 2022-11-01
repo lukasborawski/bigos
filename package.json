@@ -4,9 +4,9 @@
   "license": "MIT",
   "repository": "/src",
   "devDependencies": {
-    "gulp": "~3.8",
+    "gulp": "~4.0",
     "async": "0.9",
-    "gulp-ruby-sass": "~2.0.4",
+    "gulp-ruby-sass": "~2.1.1",
     "gulp-minify-css": "^1.2.4",
     "gulp-livereload": "latest"
   }
